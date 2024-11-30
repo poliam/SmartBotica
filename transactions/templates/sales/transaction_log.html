@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Transaction Log{% endblock title %}
+
+{% block content %}
+<div class="container-fluid my-5">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1 class="text-primary">
+                <i class="fas fa-file-invoice-dollar mr-2"></i>
+                Transaction Log
+            </h1>
+        </div>
+        <div class="col-md-6 text-right">
+            <a class="btn btn-outline-success" href="{% url 'new-sale' %}">
+                <i class="fas fa-plus mr-2"></i>New Sale
+            </a>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <select id="sortFilter" class="form-control">
+                <option value="date_nearest">Sort by Date (Nearest)</option>
+                <option value="total_highest">Sort by Total Amount (Highest)</option>
+                <option value="total_lowest">Sort by Total Amount (Lowest)</option>
+            </select>
+        </div>
+    </div>
+
+    {% if sale_bills %}
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered text-center table-striped" id="transactionTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Sale ID</th>
+                        <th>Date</th>
+                        <th>Total Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bill in sale_bills %}
+                        <tr class="main-row">
+                            <td>{{ bill.billno }}</td>
+                            <td>{{ bill.time|date:"Y-m-d H:i:s" }}</td>
+                            <td>{{ bill.get_total_price }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary toggle-details" data-target="#details-{{ bill.billno }}">
+                                    View Details
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="collapse-row">
+                            <td colspan="4" class="p-0">
+                                <div id="details-{{ bill.billno }}" class="collapse bg-light p-3">
+                                    <h6 class="text-primary">Sale Details</h6>
+                                    <table class="table table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Quantity</th>
+                                                <th>Unit Price</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in bill.salebillno.all %}
+                                                <tr>
+                                                    <td>{{ item.product.generic_name }} ({{ item.product.brand_name }})</td>
+                                                    <td>{{ item.quantity }}</td>
+                                                    <td>{{ item.perprice }}</td>
+                                                    <td>{{ item.totalprice }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="row mt-4">
+            <div class="col-md-12 d-flex justify-content-center">
+                {% if is_paginated %}
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-sm">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=1" aria-label="First">&laquo;&laquo;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">&laquo;</a>
+                                </li>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="page-item active" aria-current="page">
+                                        <span class="page-link">{{ num }}</span>
+                                    </li>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">&raquo;&raquo;</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div class="row my-5">
+            <div class="col-md-12 text-center">
+                <h3 class="text-muted">No transactions recorded yet.</h3>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Handle "View Details" and "Close" toggle
+    $(document).on("click", ".toggle-details", function () {
+        const target = $(this).data("target");
+        $(target).collapse("toggle");
+
+        // Update button text after the collapse event is completed
+        $(target).on('shown.bs.collapse', () => {
+            $(this).text("Close");
+        });
+
+        $(target).on('hidden.bs.collapse', () => {
+            $(this).text("View Details");
+        });
+    });
+
+    // Sort filters
+    $("#sortFilter").on("change", function () {
+        const value = $(this).val();
+        const rows = $("#transactionTable tbody tr.main-row");
+        const sortedRows = [...rows].sort((rowA, rowB) => {
+            const dateA = new Date($(rowA).find("td:nth-child(2)").text().trim());
+            const dateB = new Date($(rowB).find("td:nth-child(2)").text().trim());
+            const totalA = parseFloat($(rowA).find("td:nth-child(3)").text().trim());
+            const totalB = parseFloat($(rowB).find("td:nth-child(3)").text().trim());
+
+            if (value === "date_nearest") return dateB - dateA;
+            if (value === "total_highest") return totalB - totalA;
+            if (value === "total_lowest") return totalA - totalB;
+        });
+
+        $("#transactionTable tbody").html(sortedRows);
+    });
+</script>
+
+{% endblock content %}
