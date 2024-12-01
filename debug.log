@@ -13313,3 +13313,15 @@ DEBUG 2024-12-01 01:20:59,583 views Search Query:
 DEBUG 2024-12-01 01:20:59,585 views Filtered Queryset Count: 13
 DEBUG 2024-12-01 01:25:16,515 proactor_events Using proactor: IocpProactor
 DEBUG 2024-12-01 01:25:16,645 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 13:43:11,781 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-01 13:43:22,452 log Not Found: /favicon.ico
+DEBUG 2024-12-01 13:46:39,521 views Selected items on GET: []
+DEBUG 2024-12-01 13:47:14,589 views Selected items on GET: []
+INFO 2024-12-01 13:49:09,816 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-01 13:49:26,918 views Search Query: 
+DEBUG 2024-12-01 13:49:26,922 views Filtered Queryset Count: 13
+DEBUG 2024-12-01 13:53:49,401 views Selected items on GET: []
+DEBUG 2024-12-01 13:53:51,647 views Search Query: 
+DEBUG 2024-12-01 13:53:51,649 views Filtered Queryset Count: 13
+DEBUG 2024-12-01 14:06:13,545 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-01 14:06:13,688 proactor_events Using proactor: IocpProactor
