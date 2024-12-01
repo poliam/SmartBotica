@@ -13325,3 +13325,520 @@ DEBUG 2024-12-01 13:53:51,647 views Search Query:
 DEBUG 2024-12-01 13:53:51,649 views Filtered Queryset Count: 13
 DEBUG 2024-12-01 14:06:13,545 proactor_events Using proactor: IocpProactor
 DEBUG 2024-12-01 14:06:13,688 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 20:13:05,234 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-01 20:15:24,200 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 797, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 20:15:34,174 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 797, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 20:24:11,994 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 797, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+INFO 2024-12-01 20:48:19,352 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-01 20:48:22,441 views Selected items on GET: []
+DEBUG 2024-12-01 20:49:24,278 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-01 20:49:24,454 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-01 20:49:24,541 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-01 20:49:36,388 views Suggestions sent: [{'pk': 21, 'generic_name': 'Losartan', 'brand_name': 'Lifezar', 'dosage_strength': '50mg', 'form__name': 'Tablet', 'quantity': 60}]
+INFO 2024-12-01 22:16:59,189 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-01 22:18:46,281 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 797, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+INFO 2024-12-01 22:23:27,910 autoreload D:\4th Year College\SmartBotika\inventory\views.py changed, reloading.
+DEBUG 2024-12-01 22:23:27,911 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:23:28,858 autoreload Watching for file changes with StatReloader
+INFO 2024-12-01 22:23:39,518 autoreload D:\4th Year College\SmartBotika\inventory\urls.py changed, reloading.
+DEBUG 2024-12-01 22:23:39,518 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:23:40,456 autoreload Watching for file changes with StatReloader
+INFO 2024-12-01 22:23:41,958 autoreload D:\4th Year College\SmartBotika\inventory\urls.py changed, reloading.
+DEBUG 2024-12-01 22:23:41,959 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:23:42,909 autoreload Watching for file changes with StatReloader
+INFO 2024-12-01 22:23:57,687 autoreload D:\4th Year College\SmartBotika\inventory\urls.py changed, reloading.
+DEBUG 2024-12-01 22:23:57,688 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:23:58,639 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-01 22:24:04,947 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:29:32,489 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:30:30,480 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:33:24,092 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+INFO 2024-12-01 22:36:55,882 autoreload D:\4th Year College\SmartBotika\inventory\urls.py changed, reloading.
+DEBUG 2024-12-01 22:36:55,882 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:36:56,886 autoreload Watching for file changes with StatReloader
+INFO 2024-12-01 22:37:07,243 autoreload D:\4th Year College\SmartBotika\inventory\urls.py changed, reloading.
+DEBUG 2024-12-01 22:37:07,244 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:37:08,272 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-01 22:37:47,084 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:37:47,883 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:37:48,093 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:37:51,660 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+INFO 2024-12-01 22:39:00,072 autoreload D:\4th Year College\SmartBotika\core\settings.py changed, reloading.
+DEBUG 2024-12-01 22:39:00,072 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:39:00,963 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-01 22:39:04,355 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:39:05,333 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:39:05,542 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:39:05,780 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+INFO 2024-12-01 22:39:12,626 autoreload D:\4th Year College\SmartBotika\core\settings.py changed, reloading.
+DEBUG 2024-12-01 22:39:12,627 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:39:13,422 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-01 22:39:15,498 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:39:15,984 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:39:16,198 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:39:16,563 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+ERROR 2024-12-01 22:39:17,345 log Internal Server Error: /inventory/pharmacologic-categories/edit/4/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotika\inventory\views.py", line 812, in edit_pharmacologic_category
+    return render(request, 'edit_pharmacologic_category.html', {'form': form, 'category': category})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
+DEBUG 2024-12-01 22:41:27,840 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-01 22:41:27,979 proactor_events Using proactor: IocpProactor

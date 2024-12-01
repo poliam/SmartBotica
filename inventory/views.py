@@ -525,6 +525,21 @@ def edit_medicine(request, pk):
     else:
         form = StockForm(instance=medicine)
     return render(request, 'edit_medicine.html', {'form': form})
+
+def edit_pharmacologic_category(request, pk):
+    category = get_object_or_404(PharmacologicCategory, pk=pk)
+    if request.method == 'POST':
+        form = PharmacologicCategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"'{category.name}' updated successfully.")
+            return redirect('populate-pharmacologic-categories')
+        else:
+            messages.error(request, "Error updating the category. Please check your input.")
+    else:
+        form = PharmacologicCategoryForm(instance=category)
+    return render(request, 'edit_categories.html', {'form': form, 'category': category})
+
 def add_new_stock_view(request):
     low_stock_products = list(Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False))
 

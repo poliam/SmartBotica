@@ -46,5 +46,6 @@ urlpatterns = [
     path('add-medicine-history/', AddMedicineHistoryView.as_view(), name='add-medicine-history'),
     path('search-products/', views.search_suggestions, name='search-products'),
     path('edit-medicine/<int:pk>/', edit_medicine, name='edit-medicine'),
+    path('pharmacologic-categories/edit/<int:pk>/', views.edit_pharmacologic_category, name='edit-pharmacologic-category'),
 
 ]
