@@ -13842,3 +13842,118 @@ Traceback (most recent call last):
 django.template.exceptions.TemplateDoesNotExist: edit_pharmacologic_category.html
 DEBUG 2024-12-01 22:41:27,840 proactor_events Using proactor: IocpProactor
 DEBUG 2024-12-01 22:41:27,979 proactor_events Using proactor: IocpProactor
+INFO 2024-12-01 22:47:55,314 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-02 00:19:38,704 views Search Query: 
+DEBUG 2024-12-02 00:19:38,708 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:20:43,534 views Search Query: 
+DEBUG 2024-12-02 00:20:43,537 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:20:50,347 views Search Query: 
+DEBUG 2024-12-02 00:20:50,350 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:22:11,945 views Search Query: 
+DEBUG 2024-12-02 00:22:11,947 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:23:03,204 views Stock updated successfully: Cetirizine (Virlix)
+DEBUG 2024-12-02 00:23:03,211 views StockHistory created for stock: Cetirizine (Virlix)
+DEBUG 2024-12-02 00:23:14,367 views Search Query: 
+DEBUG 2024-12-02 00:23:14,370 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:23:17,525 views Search Query: 
+DEBUG 2024-12-02 00:23:17,529 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:23:44,976 views Stock updated successfully: Cetirizine (Virlix)
+DEBUG 2024-12-02 00:23:44,980 views StockHistory created for stock: Cetirizine (Virlix)
+DEBUG 2024-12-02 00:23:47,326 views Search Query: 
+DEBUG 2024-12-02 00:23:47,331 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:38:09,294 views Search Query: 
+DEBUG 2024-12-02 00:38:09,298 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:38:58,418 views Search Query: 
+DEBUG 2024-12-02 00:38:58,421 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:44:35,502 views Search Query: 
+DEBUG 2024-12-02 00:44:35,505 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:44:49,487 views Search Query: 
+DEBUG 2024-12-02 00:44:49,491 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:44:57,974 views Search Query: 
+DEBUG 2024-12-02 00:44:57,977 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 00:46:12,947 views Selected items on GET: []
+DEBUG 2024-12-02 00:46:16,747 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:16,999 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:17,198 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:17,369 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:19,159 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 00:46:19,297 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 00:46:19,429 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 00:46:25,546 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 00:46:25,830 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 00:46:28,428 views Suggestions sent: [{'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}]
+DEBUG 2024-12-02 00:46:29,235 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:29,767 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:29,811 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:29,926 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:30,069 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:30,597 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:31,104 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:31,145 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:31,182 views Suggestions sent: []
+DEBUG 2024-12-02 00:46:31,217 views Suggestions sent: [{'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}]
+DEBUG 2024-12-02 00:46:44,773 views Search Query: 
+DEBUG 2024-12-02 00:46:44,776 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 01:16:01,144 views Selected items on GET: []
+DEBUG 2024-12-02 01:16:04,582 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 01:16:04,769 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 01:16:04,897 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 01:16:05,237 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 01:16:05,459 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 01:16:24,088 views Suggestions sent: [{'pk': 21, 'generic_name': 'Losartan', 'brand_name': 'Lifezar', 'dosage_strength': '50mg', 'form__name': 'Tablet', 'quantity': 60}]
+DEBUG 2024-12-02 01:16:35,988 views Suggestions sent: []
+DEBUG 2024-12-02 01:16:36,309 views Suggestions sent: []
+DEBUG 2024-12-02 01:16:36,476 views Suggestions sent: []
+DEBUG 2024-12-02 01:16:36,928 views Suggestions sent: []
+DEBUG 2024-12-02 01:16:37,429 views Suggestions sent: []
+DEBUG 2024-12-02 01:16:38,813 views Suggestions sent: []
+DEBUG 2024-12-02 01:16:41,622 views Suggestions sent: [{'pk': 16, 'generic_name': 'Salbutamol', 'brand_name': 'Ventolin', 'dosage_strength': '2mg', 'form__name': 'Syrup', 'quantity': 65}, {'pk': 19, 'generic_name': 'Mefenamic Acid', 'brand_name': 'Ponstan', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 40}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 21, 'generic_name': 'Losartan', 'brand_name': 'Lifezar', 'dosage_strength': '50mg', 'form__name': 'Tablet', 'quantity': 60}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 01:16:42,310 views Suggestions sent: []
+DEBUG 2024-12-02 01:16:43,018 views Suggestions sent: [{'pk': 16, 'generic_name': 'Salbutamol', 'brand_name': 'Ventolin', 'dosage_strength': '2mg', 'form__name': 'Syrup', 'quantity': 65}, {'pk': 19, 'generic_name': 'Mefenamic Acid', 'brand_name': 'Ponstan', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 40}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 21, 'generic_name': 'Losartan', 'brand_name': 'Lifezar', 'dosage_strength': '50mg', 'form__name': 'Tablet', 'quantity': 60}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+DEBUG 2024-12-02 01:17:14,575 views Suggestions sent: [{'pk': 11, 'generic_name': 'Ibuprofen', 'brand_name': 'Medicol', 'dosage_strength': '200mg', 'form__name': 'Capsule', 'quantity': 25}, {'pk': 19, 'generic_name': 'Mefenamic Acid', 'brand_name': 'Ponstan', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 40}, {'pk': 25, 'generic_name': 'Metformin', 'brand_name': 'Glucophage', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 80}, {'pk': 26, 'generic_name': 'Ibuprofen', 'brand_name': 'Medicol', 'dosage_strength': '500mg', 'form__name': 'Syrup', 'quantity': 23}, {'pk': 27, 'generic_name': 'Ibuprofen', 'brand_name': 'Medicol', 'dosage_strength': '200mg', 'form__name': 'Inhaler', 'quantity': 250}]
+DEBUG 2024-12-02 01:18:41,228 views Search Query: 
+DEBUG 2024-12-02 01:18:41,231 views Filtered Queryset Count: 13
+INFO 2024-12-02 10:45:00,901 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-02 10:45:09,712 log Not Found: /favicon.ico
+DEBUG 2024-12-02 10:50:05,829 views Search Query: 
+DEBUG 2024-12-02 10:50:05,829 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 10:50:51,043 views Search Query: 
+DEBUG 2024-12-02 10:50:51,043 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 10:54:55,323 views Search Query: 
+DEBUG 2024-12-02 10:54:55,336 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:05:55,594 views Search Query: 
+DEBUG 2024-12-02 11:05:55,594 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:13:40,369 views Search Query: 
+DEBUG 2024-12-02 11:13:40,369 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:13:44,437 views Search Query: 
+DEBUG 2024-12-02 11:13:44,441 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:23:07,059 views Search Query: 
+DEBUG 2024-12-02 11:23:07,059 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:25:35,802 views Selected items on GET: []
+DEBUG 2024-12-02 11:31:07,998 views Suggestions sent: []
+DEBUG 2024-12-02 11:31:10,695 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 91}]
+DEBUG 2024-12-02 11:31:10,821 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 91}]
+DEBUG 2024-12-02 11:31:10,963 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 91}]
+DEBUG 2024-12-02 11:31:21,853 views Suggestions sent: [{'pk': 11, 'generic_name': 'Ibuprofen', 'brand_name': 'Medicol', 'dosage_strength': '200mg', 'form__name': 'Capsule', 'quantity': 25}, {'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 4}, {'pk': 26, 'generic_name': 'Ibuprofen', 'brand_name': 'Medicol', 'dosage_strength': '500mg', 'form__name': 'Syrup', 'quantity': 23}, {'pk': 27, 'generic_name': 'Ibuprofen', 'brand_name': 'Medicol', 'dosage_strength': '200mg', 'form__name': 'Inhaler', 'quantity': 200}]
+DEBUG 2024-12-02 11:36:07,677 views Search Query: 
+DEBUG 2024-12-02 11:36:07,679 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:42:24,853 views Search Query: 
+DEBUG 2024-12-02 11:42:24,856 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:43:26,769 views Search Query: 
+DEBUG 2024-12-02 11:43:26,771 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:44:08,575 views Search Query: 
+DEBUG 2024-12-02 11:44:08,577 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:44:14,263 views Search Query: 
+DEBUG 2024-12-02 11:44:14,264 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:44:17,296 views Search Query: 
+DEBUG 2024-12-02 11:44:17,298 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:44:36,098 views Search Query: 
+DEBUG 2024-12-02 11:44:36,100 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:44:37,956 views Search Query: 
+DEBUG 2024-12-02 11:44:37,958 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:44:40,031 views Search Query: 
+DEBUG 2024-12-02 11:44:40,034 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:44:46,336 views Search Query: 
+DEBUG 2024-12-02 11:44:46,338 views Filtered Queryset Count: 13
+DEBUG 2024-12-02 11:45:58,336 views Search Query: 
+DEBUG 2024-12-02 11:45:58,338 views Filtered Queryset Count: 13
