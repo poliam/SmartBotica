@@ -20,14 +20,13 @@
                 </div>
             </div>
         </div>
-        
 
         <!-- Revenue Card -->
         <div class="col-md-3">
             <div class="card border border-warning shadow h-100">
                 <div class="card-body d-flex flex-column align-items-center">
                     <i class="fas fa-wallet text-warning fa-3x mb-3"></i>
-                    <h5 class="fw-bold">₱ {{ overview_data.revenue }}</h5>
+                    <h5 id="revenueCard" class="fw-bold">₱ {{ overview_data.revenue }}</h5>
                     <p class="text-muted">Revenue</p>
                     <a href="{% url 'transaction-log' %}" class="btn btn-outline-warning btn-sm mt-auto">View Detailed Report &raquo;</a>
                 </div>
@@ -58,6 +57,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Filter Section -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <label for="salesFilter" class="form-label fw-bold">Filter Sales By:</label>
+        <select id="salesFilter" class="form-select">
+            <option value="weekly" {% if selected_filter == 'weekly' %}selected{% endif %}>Weekly</option>
+            <option value="monthly" {% if selected_filter == 'monthly' %}selected{% endif %}>Monthly</option>
+            <option value="yearly" {% if selected_filter == 'yearly' %}selected{% endif %}>Yearly</option>
+        </select>
+    </div>
+</div>
+
+<script>
+    $('#salesFilter').on('change', function () {
+        const filter = $(this).val();
+        $.ajax({
+            url: '{% url "get_sales_data" %}',
+            data: { filter: filter },
+            success: function (data) {
+                window.LineGraph.data.labels = data.sales_labels;
+                window.LineGraph.data.datasets[0].data = data.sales_values;
+                window.LineGraph.update();
+            },
+            error: function () {
+                alert('Failed to fetch sales data.');
+            },
+        });
+    });
+</script>
+
 
     <!-- Sales Overview Graph -->
     <h5 class="fw-bold mt-4">Sales Overview</h5>
@@ -95,38 +125,39 @@
         </div>
 
         <!-- Top Sales Products -->
-<div class="col-md-6">
-    <div class="card shadow-sm">
-        <div class="card-header bg-light">
-            <h5 class="fw-bold text-dark mb-0">Top Sales Products of the Day</h5>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                {% for product in top_products %}
-                    <div class="col-md-12">
-                        <div class="card text-center border-0 shadow-sm">
-                            <div class="card-body">
-                                <h6 class="fw-bold text-primary">{{ product.product__generic_name }}</h6>
-                                <p class="text-muted mb-0">Qty Sold: {{ product.total_quantity }}</p>
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="fw-bold text-dark mb-0">Top Sales Products</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        {% for product in top_products %}
+                            <div class="col-md-12">
+                                <div class="card text-center border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="fw-bold text-primary">{{ product.product__generic_name }}</h6>
+                                        <p class="text-muted mb-0">Qty Sold: {{ product.total_quantity }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        {% empty %}
+                            <div class="alert alert-info text-center m-0" role="alert">
+                                No sales data available.
+                            </div>
+                        {% endfor %}
                     </div>
-                {% empty %}
-                    <div class="alert alert-info text-center m-0" role="alert">
-                        No sales data available for today.
-                    </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    $(function() {
+    $(function () {
         var lineConfig = {
             type: 'line',
             data: {
@@ -164,7 +195,29 @@
         };
 
         var lineCtx = document.getElementById('line-graph').getContext('2d');
-        window.LineGraph = new Chart(lineCtx, lineConfig);
+        var lineGraph = new Chart(lineCtx, lineConfig);
+
+        // Handle filter change
+        $('#salesFilter').on('change', function () {
+            const filter = $(this).val();
+            $.ajax({
+                url: '{% url "get_sales_data" %}',
+                data: { filter: filter },
+                success: function (data) {
+                    // Update chart data
+                    lineGraph.data.labels = data.sales_labels;
+                    lineGraph.data.datasets[0].data = data.sales_values;
+                    lineGraph.update();
+
+                    // Update revenue card
+                    $('#revenueCard').text(`₱ ${data.total_revenue}`);
+                },
+                error: function () {
+                    alert('Failed to fetch sales data.');
+                },
+            });
+        });
     });
 </script>
+
 {% endblock content %}

@@ -23,7 +23,15 @@ from .models import DosageForm
 from inventory.forms import DosageFormEditForm
 from .models import PharmacologicCategory
 from .forms import PharmacologicCategoryForm
-
+from django.shortcuts import render
+from django.db.models import Sum
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.api import SARIMAX
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import pandas as pd
+import numpy as np
+from transactions.models import SaleItem, SaleBill  # Import from transactions
+from inventory.models import Stock  # Import
 
 from inventory import models
 def fetch_dosage_forms(request):
@@ -864,3 +872,83 @@ def delete_medicine(request, pk):
         return redirect('add-medicine-history')
     return render(request, 'delete_medicine.html', {'medicine': medicine})
 
+from django.shortcuts import render
+from django.db.models import Sum
+import pandas as pd
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+
+def demand_predictions(request):
+    # Fetch sales data from SaleItem and group by product
+    sales_data = (
+        SaleItem.objects.select_related('product')
+        .values('product__generic_name', 'product__pharmacologic_category', 'billno__time')
+        .annotate(quantity_sold=Sum('quantity'), total_price=Sum('totalprice'))
+    )
+    print("Sales Data Count:", len(sales_data))
+
+    # Convert to DataFrame
+    df = pd.DataFrame(sales_data)
+    if df.empty:
+        return render(request, "inventory/no_data.html", {"message": "No sales data available."})
+
+    # Ensure data is properly formatted
+    df['billno__time'] = pd.to_datetime(df['billno__time'])
+    df.rename(columns={'product__generic_name': 'ProductName', 'billno__time': 'SaleDate', 'quantity_sold': 'QuantitySold'}, inplace=True)
+    df.set_index('SaleDate', inplace=True)
+
+    # Identify top 30 products by demand
+    top_30_products = df.groupby("ProductName")["QuantitySold"].sum().nlargest(30).index.tolist()
+
+    adf_results = []
+    predictions = []
+
+    for product in top_30_products:
+        product_data = df[df["ProductName"] == product]["QuantitySold"].resample("W-MON").sum().fillna(0)
+        print(f"Product: {product}, Data Points: {len(product_data)}, Data: {product_data}")
+
+        # Check for sufficient data points and ensure variability
+        if len(product_data) < 8:  # Updated minimum threshold
+            print(f"Skipping {product} due to insufficient data points ({len(product_data)}).")
+            continue
+        if product_data.nunique() <= 1:
+            print(f"Skipping {product} due to constant data values.")
+            continue
+
+        # ADF Test for Stationarity
+        try:
+            adf_result = adfuller(product_data, regression='c')  # 'c' adds constant but no trend
+            adf_results.append({
+                "product": product,
+                "adf_statistic": adf_result[0],
+                "p_value": adf_result[1],
+                "is_stationary": adf_result[1] <= 0.05
+            })
+        except ValueError as e:
+            print(f"ADF test failed for {product}: {e}")
+            continue
+
+        # Forecasting with SARIMA
+        try:
+            train_data, test_data = product_data[:-4], product_data[-4:]
+            model = SARIMAX(train_data, order=(1, 1, 1), seasonal_order=(0, 1, 1, 52), enforce_stationarity=False, enforce_invertibility=False)
+            result = model.fit(disp=False)
+
+            # Predict next 4 weeks
+            forecast = result.forecast(steps=4)
+            predictions.append({
+                "product": product,
+                "actual": test_data.tolist(),
+                "predicted": forecast.tolist(),
+            })
+        except (ValueError, np.linalg.LinAlgError) as e:
+            print(f"SARIMA model failed for {product}: {e}")
+            continue
+
+    # Pass results to template
+    context = {
+        "adf_results": adf_results,
+        "predictions": predictions,
+        "top_30_products": top_30_products,
+    }
+    return render(request, "demand_predictions.html", context)

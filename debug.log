@@ -14109,3 +14109,928 @@ DEBUG 2024-12-04 20:15:08,052 views Search Query:
 DEBUG 2024-12-04 20:15:08,054 views Filtered Queryset Count: 13
 DEBUG 2024-12-04 20:15:16,621 views Selected items on GET: []
 DEBUG 2024-12-04 20:15:27,632 views Selected items on GET: []
+INFO 2024-12-04 21:23:29,689 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-04 21:23:31,744 log Not Found: /favicon.ico
+INFO 2024-12-04 21:31:13,471 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\urls.py changed, reloading.
+DEBUG 2024-12-04 21:31:13,472 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:31:13,920 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:31:51,229 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:31:51,230 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:31:51,639 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:32:18,363 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:32:18,363 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:32:18,818 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:32:42,566 autoreload C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\Lib\site-packages\pytz\__init__.py changed, reloading.
+DEBUG 2024-12-04 21:32:42,567 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:32:43,005 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:32:52,752 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:32:52,754 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:32:53,158 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:33:03,971 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:33:03,972 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:33:04,353 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:33:26,519 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:33:26,520 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:33:26,965 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:34:35,992 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:34:35,992 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:34:36,555 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:35:01,614 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:35:01,615 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:35:02,083 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 21:38:53,799 views Search Query: 
+DEBUG 2024-12-04 21:38:53,800 views Filtered Queryset Count: 13
+DEBUG 2024-12-04 21:39:08,069 views Search Query: 
+DEBUG 2024-12-04 21:39:08,070 views Filtered Queryset Count: 13
+DEBUG 2024-12-04 21:39:10,556 views Search Query: 
+DEBUG 2024-12-04 21:39:10,558 views Filtered Queryset Count: 13
+ERROR 2024-12-04 21:39:53,514 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 878, in demand_predictions
+    SaleItem.objects.select_related('product')
+NameError: name 'SaleItem' is not defined
+ERROR 2024-12-04 21:40:05,979 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 878, in demand_predictions
+    SaleItem.objects.select_related('product')
+NameError: name 'SaleItem' is not defined
+DEBUG 2024-12-04 21:42:16,792 views Selected items on GET: []
+DEBUG 2024-12-04 21:42:19,530 views Suggestions sent: [{'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 4}, {'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}]
+INFO 2024-12-04 21:44:16,695 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:44:16,697 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:44:17,184 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-04 21:44:21,851 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 906, in demand_predictions
+    adf_result = adfuller(product_data)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\stattools.py", line 293, in adfuller
+    raise ValueError(
+ValueError: sample size is too short to use selected regression component
+INFO 2024-12-04 21:45:25,695 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:45:25,697 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:45:26,261 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-04 21:45:27,335 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:45:29,239 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+INFO 2024-12-04 21:45:36,195 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:45:36,196 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:45:36,674 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-04 21:45:39,036 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+INFO 2024-12-04 21:45:51,043 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:45:51,045 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:45:51,608 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-04 21:45:52,589 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 906, in demand_predictions
+    adf_result = adfuller(product_data)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\stattools.py", line 293, in adfuller
+    raise ValueError(
+ValueError: sample size is too short to use selected regression component
+INFO 2024-12-04 21:46:10,288 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:46:10,290 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:46:10,770 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-04 21:46:15,664 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:16,405 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:16,737 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:16,977 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:17,182 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:17,432 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:17,650 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:17,910 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:18,288 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:18,397 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:18,626 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:18,865 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:19,117 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:19,338 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:19,581 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:19,790 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:20,111 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:20,375 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "inventory/demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+ERROR 2024-12-04 21:46:53,408 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inventory/demand_predictions.html
+INFO 2024-12-04 21:46:53,701 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:46:53,702 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:46:54,203 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-04 21:46:55,196 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 477, in parse
+    raise self.error(token, e)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 475, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 811, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 448, in parse
+    raise self.error(token, e)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 446, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 562, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 661, in __init__
+    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ' Statistic' from 'result.ADF Statistic'
+ERROR 2024-12-04 21:46:55,347 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 937, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 477, in parse
+    raise self.error(token, e)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 475, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 811, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 448, in parse
+    raise self.error(token, e)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 446, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 562, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 661, in __init__
+    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ' Statistic' from 'result.ADF Statistic'
+INFO 2024-12-04 21:57:09,777 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:57:09,778 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:57:10,361 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 21:57:16,785 views Search Query: 
+DEBUG 2024-12-04 21:57:16,786 views Filtered Queryset Count: 18
+INFO 2024-12-04 21:59:07,080 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:59:07,081 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:59:07,561 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:59:14,109 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:59:14,110 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:59:14,518 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 21:59:22,097 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 21:59:22,098 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 21:59:22,477 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 22:01:01,450 views Search Query: 
+DEBUG 2024-12-04 22:01:01,452 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 22:01:03,620 views Search Query: 
+DEBUG 2024-12-04 22:01:03,621 views Filtered Queryset Count: 18
+INFO 2024-12-04 22:02:27,008 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:02:27,009 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:02:27,494 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 22:02:30,835 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:02:30,836 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:02:31,229 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 22:02:39,295 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-04 22:02:39,408 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:02:44,914 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 22:04:12,104 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:04:12,104 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:04:12,661 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-04 22:06:13,619 log Not Found: /favicon.ico
+INFO 2024-12-04 22:07:00,595 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:07:00,596 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:07:01,147 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 22:07:17,612 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:07:17,613 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:07:18,076 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-04 22:11:34,432 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 913, in demand_predictions
+    adf_result = adfuller(product_data)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\stattools.py", line 293, in adfuller
+    raise ValueError(
+ValueError: sample size is too short to use selected regression component
+ERROR 2024-12-04 22:12:18,338 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 913, in demand_predictions
+    adf_result = adfuller(product_data)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\stattools.py", line 293, in adfuller
+    raise ValueError(
+ValueError: sample size is too short to use selected regression component
+ERROR 2024-12-04 22:13:16,958 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py", line 926, in demand_predictions
+    result = model.fit()
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\statespace\mlemodel.py", line 705, in fit
+    mlefit = super().fit(start_params, method=method,
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\base\model.py", line 566, in fit
+    xopt, retvals, optim_settings = optimizer._fit(f, score, start_params,
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\base\optimizer.py", line 243, in _fit
+    xopt, retvals = func(objective, gradient, start_params, fargs, kwargs,
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\base\optimizer.py", line 660, in _fit_lbfgs
+    retvals = optimize.fmin_l_bfgs_b(func, start_params, maxiter=maxiter,
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_lbfgsb_py.py", line 199, in fmin_l_bfgs_b
+    res = _minimize_lbfgsb(fun, x0, args=args, jac=jac, bounds=bounds,
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_lbfgsb_py.py", line 361, in _minimize_lbfgsb
+    f, g = func_and_grad(x)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_differentiable_functions.py", line 285, in fun_and_grad
+    self._update_fun()
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_differentiable_functions.py", line 251, in _update_fun
+    self._update_fun_impl()
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_differentiable_functions.py", line 155, in update_fun
+    self.f = fun_wrapped(self.x)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_differentiable_functions.py", line 137, in fun_wrapped
+    fx = fun(np.copy(x), *args)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\base\model.py", line 534, in f
+    return -self.loglike(params, *args) / nobs
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\statespace\mlemodel.py", line 940, in loglike
+    loglike = self.ssm.loglike(complex_step=complex_step, **kwargs)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\statespace\kalman_filter.py", line 1001, in loglike
+    kfilter = self._filter(**kwargs)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\statespace\kalman_filter.py", line 921, in _filter
+    self._initialize_state(prefix=prefix, complex_step=complex_step)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\statsmodels\tsa\statespace\representation.py", line 1058, in _initialize_state
+    self._statespaces[prefix].initialize(self.initialization,
+  File "statsmodels\\tsa\\statespace\\_representation.pyx", line 1373, in statsmodels.tsa.statespace._representation.dStatespace.initialize
+  File "statsmodels\\tsa\\statespace\\_representation.pyx", line 1362, in statsmodels.tsa.statespace._representation.dStatespace.initialize
+  File "statsmodels\\tsa\\statespace\\_initialization.pyx", line 288, in statsmodels.tsa.statespace._initialization.dInitialization.initialize
+  File "statsmodels\\tsa\\statespace\\_initialization.pyx", line 406, in statsmodels.tsa.statespace._initialization.dInitialization.initialize_stationary_stationary_cov
+  File "statsmodels\\tsa\\statespace\\_tools.pyx", line 1626, in statsmodels.tsa.statespace._tools._dsolve_discrete_lyapunov
+numpy.linalg.LinAlgError: Schur decomposition solver error.
+INFO 2024-12-04 22:15:47,601 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:15:47,602 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:15:48,082 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 22:15:57,479 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-04 22:15:57,619 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:16:04,208 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 22:17:25,030 views Search Query: 
+DEBUG 2024-12-04 22:17:25,032 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 22:17:26,916 views Search Query: 
+DEBUG 2024-12-04 22:17:26,918 views Filtered Queryset Count: 18
+INFO 2024-12-04 22:18:18,254 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:18:18,255 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:18:18,845 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 22:18:25,501 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:18:25,503 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:18:26,100 autoreload Watching for file changes with StatReloader
+INFO 2024-12-04 22:19:31,141 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-04 22:19:31,141 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:19:31,726 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 22:19:37,039 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-04 22:19:37,167 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:19:41,782 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 22:19:52,701 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-04 22:19:52,823 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 22:21:19,755 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-04 22:28:42,956 views Search Query: 
+DEBUG 2024-12-04 22:28:42,958 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 22:28:44,618 views Search Query: 
+DEBUG 2024-12-04 22:28:44,618 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 22:28:47,830 views Search Query: 
+DEBUG 2024-12-04 22:28:47,833 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 22:29:33,266 views Search Query: 
+DEBUG 2024-12-04 22:29:33,268 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 22:29:34,779 views Selected items on GET: []
+DEBUG 2024-12-04 22:29:41,447 views Search Query: 
+DEBUG 2024-12-04 22:29:41,449 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 22:29:49,996 views Search Query: 
+DEBUG 2024-12-04 22:29:49,997 views Filtered Queryset Count: 18
+DEBUG 2024-12-04 23:50:27,712 views Search Query: 
+DEBUG 2024-12-04 23:50:27,713 views Filtered Queryset Count: 18
+INFO 2024-12-04 23:58:20,494 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-04 23:58:20,495 proactor_events Using proactor: IocpProactor
+INFO 2024-12-04 23:58:21,164 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:00:58,094 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-05 00:00:58,096 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:00:58,565 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-05 00:03:42,889 views Search Query: 
+DEBUG 2024-12-05 00:03:42,890 views Filtered Queryset Count: 18
+DEBUG 2024-12-05 00:03:42,960 views Search Query: 
+DEBUG 2024-12-05 00:03:42,962 views Filtered Queryset Count: 18
+DEBUG 2024-12-05 00:03:45,526 views Selected items on GET: []
+DEBUG 2024-12-05 00:03:48,245 views Search Query: 
+DEBUG 2024-12-05 00:03:48,247 views Filtered Queryset Count: 18
+DEBUG 2024-12-05 00:08:12,372 views Search Query: 
+DEBUG 2024-12-05 00:08:12,374 views Filtered Queryset Count: 18
+INFO 2024-12-05 00:16:48,482 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\models.py changed, reloading.
+DEBUG 2024-12-05 00:16:48,484 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:16:49,144 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:20:10,375 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\models.py changed, reloading.
+DEBUG 2024-12-05 00:20:10,377 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:20:10,750 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:20:31,302 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\models.py changed, reloading.
+DEBUG 2024-12-05 00:20:31,303 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:20:31,715 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:20:55,650 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-05 00:20:55,652 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:20:56,135 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:21:01,591 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-05 00:21:01,593 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:21:02,105 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:21:28,524 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\models.py changed, reloading.
+DEBUG 2024-12-05 00:21:28,525 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:21:29,089 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:23:40,363 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\models.py changed, reloading.
+DEBUG 2024-12-05 00:23:40,364 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:23:40,976 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:26:48,695 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\models.py changed, reloading.
+DEBUG 2024-12-05 00:26:48,696 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:26:49,320 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-05 00:27:58,840 base Method Not Allowed (GET): /transactions/sales/new
+WARNING 2024-12-05 00:27:58,841 log Method Not Allowed: /transactions/sales/new
+WARNING 2024-12-05 00:28:04,568 base Method Not Allowed (GET): /transactions/sales/new
+WARNING 2024-12-05 00:28:04,568 log Method Not Allowed: /transactions/sales/new
+DEBUG 2024-12-05 00:28:14,967 views Search Query: 
+DEBUG 2024-12-05 00:28:14,969 views Filtered Queryset Count: 18
+DEBUG 2024-12-05 00:28:18,234 views Search Query: 
+DEBUG 2024-12-05 00:28:18,262 views Filtered Queryset Count: 18
+WARNING 2024-12-05 00:28:19,976 base Method Not Allowed (GET): /transactions/sales/new
+WARNING 2024-12-05 00:28:20,068 log Method Not Allowed: /transactions/sales/new
+DEBUG 2024-12-05 00:28:29,105 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-05 00:28:29,249 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:28:34,960 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-05 00:28:36,107 base Method Not Allowed (GET): /transactions/sales/new
+WARNING 2024-12-05 00:28:36,107 log Method Not Allowed: /transactions/sales/new
+WARNING 2024-12-05 00:28:38,001 base Method Not Allowed (GET): /transactions/sales/new
+WARNING 2024-12-05 00:28:38,002 log Method Not Allowed: /transactions/sales/new
+WARNING 2024-12-05 00:28:38,881 base Method Not Allowed (GET): /transactions/sales/new
+WARNING 2024-12-05 00:28:38,882 log Method Not Allowed: /transactions/sales/new
+INFO 2024-12-05 00:29:14,174 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-05 00:29:14,175 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:29:14,706 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-05 00:29:15,964 views Selected items on GET: []
+DEBUG 2024-12-05 00:29:19,156 views Suggestions sent: []
+DEBUG 2024-12-05 00:29:19,345 views Suggestions sent: []
+INFO 2024-12-05 00:30:58,234 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-05 00:30:58,235 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:30:58,791 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-05 00:31:00,509 views Selected items on GET: []
+DEBUG 2024-12-05 00:31:01,284 views Selected items on GET: []
+DEBUG 2024-12-05 00:31:03,585 views Suggestions sent: [{'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}, {'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 3}]
+DEBUG 2024-12-05 00:31:03,856 views Suggestions sent: [{'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 3}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}]
+ERROR 2024-12-05 00:31:19,394 views Error completing sale: duplicate key value violates unique constraint "sale_bill_pkey"
+DETAIL:  Key (billno)=(20) already exists.
+
+DEBUG 2024-12-05 00:31:19,450 views Selected items on GET: []
+DEBUG 2024-12-05 00:33:06,583 views Suggestions sent: [{'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}, {'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 3}]
+ERROR 2024-12-05 00:33:11,993 views Error completing sale: duplicate key value violates unique constraint "sale_bill_pkey"
+DETAIL:  Key (billno)=(21) already exists.
+
+DEBUG 2024-12-05 00:33:12,031 views Selected items on GET: []
+DEBUG 2024-12-05 00:33:13,407 views Selected items on GET: []
+INFO 2024-12-05 00:34:33,799 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-05 00:34:33,801 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:34:34,404 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-05 00:34:35,507 views Selected items on GET: []
+DEBUG 2024-12-05 00:34:39,985 views Suggestions sent: [{'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}, {'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 3}]
+DEBUG 2024-12-05 00:34:40,203 views Suggestions sent: [{'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 3}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}]
+ERROR 2024-12-05 00:34:45,282 views Error completing sale: duplicate key value violates unique constraint "sale_bill_pkey"
+DETAIL:  Key (billno)=(22) already exists.
+
+DEBUG 2024-12-05 00:34:45,319 views Selected items on GET: []
+DEBUG 2024-12-05 00:36:32,207 views Suggestions sent: [{'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}, {'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 3}]
+DEBUG 2024-12-05 00:36:32,488 views Suggestions sent: [{'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 3}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 3}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 101}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}]
+ERROR 2024-12-05 00:36:38,617 log Internal Server Error: /transactions/sales/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py", line 145, in transaction_log
+    paginator = Paginator(sale_bills, 10)  # Display 10 bills per page
+NameError: name 'Paginator' is not defined
+INFO 2024-12-05 00:37:07,881 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-05 00:37:07,882 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:37:08,558 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-05 00:38:06,890 views Search Query: 
+DEBUG 2024-12-05 00:38:06,891 views Filtered Queryset Count: 18
+INFO 2024-12-05 00:43:23,232 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 00:43:23,235 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:43:23,910 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:44:52,330 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 00:44:52,331 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:44:52,884 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-05 00:45:00,017 log Internal Server Error: /get-sales-data/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py", line 93, in get_sales_data
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not None
+ERROR 2024-12-05 00:45:23,923 log Internal Server Error: /get-sales-data/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py", line 93, in get_sales_data
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not None
+ERROR 2024-12-05 00:46:13,954 log Internal Server Error: /get-sales-data/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py", line 93, in get_sales_data
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not None
+ERROR 2024-12-05 00:46:16,548 log Internal Server Error: /get-sales-data/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py", line 93, in get_sales_data
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not None
+DEBUG 2024-12-05 00:46:37,858 views Selected items on GET: []
+DEBUG 2024-12-05 00:46:39,099 views Search Query: 
+DEBUG 2024-12-05 00:46:39,101 views Filtered Queryset Count: 18
+INFO 2024-12-05 00:47:07,722 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 00:47:07,724 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:47:08,471 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-05 00:47:11,790 log Internal Server Error: /get-sales-data/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py", line 100, in get_sales_data
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not None
+ERROR 2024-12-05 00:47:23,652 log Internal Server Error: /get-sales-data/
+Traceback (most recent call last):
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\NICK SENTERO\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py", line 100, in get_sales_data
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not None
+INFO 2024-12-05 00:48:25,956 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 00:48:25,957 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:48:26,543 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:50:23,621 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 00:50:23,622 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:50:24,081 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:52:57,750 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 00:52:57,751 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:52:58,297 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 00:53:16,065 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 00:53:16,067 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 00:53:16,641 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 01:08:59,301 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 01:08:59,302 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 01:08:59,827 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 01:10:50,557 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 01:10:50,559 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 01:10:51,101 autoreload Watching for file changes with StatReloader
+INFO 2024-12-05 01:17:41,895 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 01:17:41,898 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 01:17:42,390 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-05 01:18:01,227 views Search Query: 
+DEBUG 2024-12-05 01:18:01,229 views Filtered Queryset Count: 18
+INFO 2024-12-05 01:21:33,961 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-05 01:21:33,963 proactor_events Using proactor: IocpProactor
+INFO 2024-12-05 01:21:34,464 autoreload Watching for file changes with StatReloader

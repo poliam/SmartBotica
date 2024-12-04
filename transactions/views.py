@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 import logging
 import json  # Ensure this line is added
+from django.core.paginator import Paginator
 
 logger = logging.getLogger(__name__)
 
@@ -72,8 +73,8 @@ class SaleCreateView(View):
                 messages.error(request, "No items selected for sale.")
                 return redirect('new-sale')
 
-            # Create a new SaleBill
-            sale_bill = SaleBill.objects.create()
+            # Create a new SaleBill with the current user as the salesperson
+            sale_bill = SaleBill.objects.create(salesperson=request.user)
 
             for item in selected_items:
                 try:
@@ -125,7 +126,7 @@ class SaleCreateView(View):
 
             # Clear session data
             request.session.pop('selected_items', None)
-            messages.success(request, "Sale completed successfully.")
+            messages.success(request, f"Sale completed successfully by {request.user.username}.")
             return redirect('sales-list')
 
         except json.JSONDecodeError:
@@ -139,8 +140,17 @@ class SaleCreateView(View):
 
 
 
-
 def transaction_log(request):
-    # Get all SaleBill objects with prefetch of related SaleItems
-    sale_bills = SaleBill.objects.prefetch_related('salebillno').all()
-    return render(request, 'sales/transaction_log.html', {'sale_bills': sale_bills})
+    # Fetch all SaleBill objects with related SaleItems preloaded
+    sale_bills = SaleBill.objects.prefetch_related('salebillno').all().order_by('-time')  # Order by the most recent
+    paginator = Paginator(sale_bills, 10)  # Display 10 bills per page
+    page_number = request.GET.get('page', 1)  # Get the current page number from the query parameter
+    page_obj = paginator.get_page(page_number)  # Get the page object for the current page
+
+    # Context with paginated results and page details
+    context = {
+        'sale_bills': page_obj.object_list,  # Paginated sale bills for the current page
+        'page_obj': page_obj,               # Page object for navigation
+        'is_paginated': page_obj.has_other_pages(),  # Boolean to check if pagination is needed
+    }
+    return render(request, 'sales/transaction_log.html', context)

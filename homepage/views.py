@@ -27,94 +27,117 @@ def update_password(request):
     return render(request, 'update_password.html', {'form': form})
 
 def home_view(request):
-    # Get the current time for greeting
-    current_time = datetime.now().time()
-    greeting = "Good morning" if current_time < time(12, 0) else "Good afternoon" if current_time < time(18, 0) else "Good evening"
-
-    # Calculate the weekly sales data
+    filter_option = request.GET.get('filter', 'weekly')
     today = datetime.now().date()
-    start_of_week = today - timedelta(days=today.weekday())
-    end_of_week = start_of_week + timedelta(days=6)
-    dates = [start_of_week + timedelta(days=x) for x in range(7)]
 
-    # Fetch weekly sales data and populate the dictionary for each date
-    sales_data = SaleItem.objects.filter(billno__time__date__range=[start_of_week, end_of_week]).values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
+    # Determine start and end dates based on the selected filter
+    if filter_option == 'weekly':
+        start_date = today - timedelta(days=today.weekday())  # Start of the week
+        end_date = start_date + timedelta(days=6)  # End of the week
+    elif filter_option == 'monthly':
+        start_date = today.replace(day=1)  # Start of the month
+        next_month = start_date.replace(day=28) + timedelta(days=4)  # Move to the next month
+        end_date = next_month.replace(day=1) - timedelta(days=1)  # Last day of the current month
+    elif filter_option == 'yearly':
+        start_date = today.replace(month=1, day=1)  # Start of the year
+        end_date = today.replace(month=12, day=31)  # End of the year
+    else:
+        start_date, end_date = None, None  # Show all-time sales
+
+    # Fetch filtered sales data
+    if start_date and end_date:
+        sales_data = SaleItem.objects.filter(
+            billno__time__date__range=[start_date, end_date]
+        ).values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
+    else:
+        sales_data = SaleItem.objects.values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
+
+    # Prepare data for the chart
     sales_dict = {data['billno__time__date']: float(data['total_sales']) for data in sales_data}
-
-    sales_labels = [date.strftime('%A') for date in dates]
+    if start_date and end_date:
+        dates = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
+    else:
+        dates = list(sales_dict.keys())  # Use existing dates if no range is defined
+    sales_labels = [date.strftime('%Y-%m-%d') for date in dates]
     sales_values = [sales_dict.get(date, 0) for date in dates]
-    sales_max = max(sales_values) if sales_values else 0
+    sales_max = max(sales_values, default=100)
 
-    # Calculate inventory status, revenue, medicine availability, and shortage
+    # Other dashboard data
     total_revenue = SaleItem.objects.aggregate(total=Sum('totalprice')).get('total', 0) or 0
     medicines_available = Stock.objects.filter(is_deleted=False).count()
     medicine_shortage = Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False).count()
 
-    # Define inventory status based on medicine shortage
-    if medicine_shortage >= 5:
-        inventory_status = "Warning"
-    else:
-        inventory_status = "Good"
-
-    # Get products with low stock
+    inventory_status = "Warning" if medicine_shortage >= 5 else "Good"
     low_stock_products = Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False)
-
-    # Top 3 products sold today
-    # Top 3 products sold today
     top_products = SaleItem.objects.filter(
-    billno__time__date=today  # Filters SaleItems for today's date
-).values(
-    'product__generic_name'  # Includes the product's generic name
-).annotate(
-    total_quantity=Sum('quantity')  # Sums the total quantity sold for each product
-).order_by('-total_quantity')[:3]  # Orders by total quantity (desc) and limits to top 3
-
-
+        billno__time__date=today
+    ).values(
+        'product__generic_name'
+    ).annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:3]
 
     context = {
-        'greeting': greeting,
         'sales_data': sales_values,
         'sales_labels': sales_labels,
         'sales_max': sales_max,
-        'low_stock_products': low_stock_products,
-        'top_products': top_products,
         'overview_data': {
             'inventory_status': inventory_status,
             'revenue': total_revenue,
             'medicines_available': medicines_available,
             'medicine_shortage': medicine_shortage,
-        }
+        },
+        'low_stock_products': low_stock_products,
+        'top_products': top_products,
+        'selected_filter': filter_option,
     }
     return render(request, 'home.html', context)
 
 
+from django.http import JsonResponse
+from datetime import datetime, timedelta
 def get_sales_data(request):
-    start_date = request.GET.get('start_date')
-    end_date = request.GET.get('end_date')
+    # Get the filter option
+    filter_option = request.GET.get('filter', 'weekly')
+    today = datetime.now().date()
 
-    # Convert start_date and end_date to datetime objects
-    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
-    end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
+    # Calculate start_date and end_date based on the filter
+    if filter_option == 'weekly':
+        start_date = today - timedelta(days=today.weekday())  # Start of the week
+        end_date = start_date + timedelta(days=6)  # End of the week
+    elif filter_option == 'monthly':
+        start_date = today.replace(day=1)  # Start of the month
+        next_month = (start_date.replace(day=28) + timedelta(days=4)).replace(day=1)
+        end_date = next_month - timedelta(days=1)  # End of the current month
+    elif filter_option == 'yearly':
+        start_date = today.replace(month=1, day=1)  # Start of the year
+        end_date = today.replace(month=12, day=31)  # End of the year
+    else:
+        return JsonResponse({'error': 'Invalid filter option'}, status=400)
 
-    # Generate a list of dates for the selected date range
-    dates = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
-
+    # Fetch sales data within the specified range
     sales_data = SaleItem.objects.filter(
         billno__time__date__range=[start_date, end_date]
     ).values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
 
-    # Create a dictionary to store sales data for each date
-    sales_dict = {data['billno__time__date']: float(data['total_sales']) for data in sales_data}
+    # Fetch total revenue for the filtered range
+    total_revenue = SaleItem.objects.filter(
+        billno__time__date__range=[start_date, end_date]
+    ).aggregate(total=Sum('totalprice'))['total'] or 0
 
-    # Prepare data and labels for the line graph
+    # Prepare the response data
+    sales_dict = {data['billno__time__date']: float(data['total_sales']) for data in sales_data}
+    dates = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
     sales_labels = [date.strftime('%Y-%m-%d') for date in dates]
     sales_values = [sales_dict.get(date, 0) for date in dates]
 
-    data = {
+    # Return the data as JSON
+    return JsonResponse({
         'sales_labels': sales_labels,
         'sales_values': sales_values,
-    }
-    return JsonResponse(data)
+        'total_revenue': total_revenue,  # Include total revenue in the response
+    })
+
+
+
 
 @require_POST
 def generate_sales_report(request):

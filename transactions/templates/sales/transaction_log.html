@@ -38,23 +38,25 @@
                         <th>Sale ID</th>
                         <th>Date</th>
                         <th>Total Amount</th>
+                        <th>Handled By</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="transactionBody">
                     {% for bill in sale_bills %}
-                        <tr class="main-row">
+                        <tr class="main-row" data-billno="{{ bill.billno }}">
                             <td>{{ bill.billno }}</td>
                             <td>{{ bill.time|date:"Y-m-d H:i:s" }}</td>
                             <td>{{ bill.get_total_price }}</td>
+                            <td>{{ bill.salesperson.username }}</td>
                             <td>
                                 <button class="btn btn-sm btn-primary toggle-details" data-target="#details-{{ bill.billno }}">
                                     View Details
                                 </button>
                             </td>
                         </tr>
-                        <tr class="collapse-row">
-                            <td colspan="4" class="p-0">
+                        <tr class="collapse-row" data-billno="{{ bill.billno }}">
+                            <td colspan="5" class="p-0">
                                 <div id="details-{{ bill.billno }}" class="collapse bg-light p-3">
                                     <h6 class="text-primary">Sale Details</h6>
                                     <table class="table table-sm table-bordered">
@@ -137,37 +139,39 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Handle "View Details" and "Close" toggle
-    $(document).on("click", ".toggle-details", function () {
-        const target = $(this).data("target");
-        $(target).collapse("toggle");
-
-        // Update button text after the collapse event is completed
-        $(target).on('shown.bs.collapse', () => {
-            $(this).text("Close");
+    function attachToggleHandlers() {
+        $(".toggle-details").off("click").on("click", function () {
+            const target = $(this).data("target");
+            $(target).collapse("toggle");
         });
+    }
 
-        $(target).on('hidden.bs.collapse', () => {
-            $(this).text("View Details");
+    $(document).ready(function () {
+        attachToggleHandlers();
+
+        $("#sortFilter").on("change", function () {
+            const value = $(this).val();
+            const rows = $("#transactionTable tbody tr.main-row");
+            const sortedRows = [...rows].map(row => {
+                const billno = $(row).data("billno");
+                const detailsRow = $(`tr.collapse-row[data-billno='${billno}']`);
+                return { mainRow: row, detailsRow: detailsRow[0] };
+            }).sort((a, b) => {
+                const dateA = new Date($(a.mainRow).find("td:nth-child(2)").text().trim());
+                const dateB = new Date($(b.mainRow).find("td:nth-child(2)").text().trim());
+                const totalA = parseFloat($(a.mainRow).find("td:nth-child(3)").text().trim());
+                const totalB = parseFloat($(b.mainRow).find("td:nth-child(3)").text().trim());
+
+                if (value === "date_nearest") return dateB - dateA;
+                if (value === "total_highest") return totalB - totalA;
+                if (value === "total_lowest") return totalA - totalB;
+            });
+
+            const sortedHtml = sortedRows.map(pair => `${pair.mainRow.outerHTML}${pair.detailsRow.outerHTML}`).join("");
+            $("#transactionBody").html(sortedHtml);
+
+            attachToggleHandlers();
         });
-    });
-
-    // Sort filters
-    $("#sortFilter").on("change", function () {
-        const value = $(this).val();
-        const rows = $("#transactionTable tbody tr.main-row");
-        const sortedRows = [...rows].sort((rowA, rowB) => {
-            const dateA = new Date($(rowA).find("td:nth-child(2)").text().trim());
-            const dateB = new Date($(rowB).find("td:nth-child(2)").text().trim());
-            const totalA = parseFloat($(rowA).find("td:nth-child(3)").text().trim());
-            const totalB = parseFloat($(rowB).find("td:nth-child(3)").text().trim());
-
-            if (value === "date_nearest") return dateB - dateA;
-            if (value === "total_highest") return totalB - totalA;
-            if (value === "total_lowest") return totalA - totalB;
-        });
-
-        $("#transactionTable tbody").html(sortedRows);
     });
 </script>
 

@@ -4,6 +4,8 @@ from django.db.models import Sum
 from decimal import Decimal
 import json
 from inventory.models import PharmacologicCategory
+from django.contrib.auth.models import User
+
 # Purchase Models
 class PurchaseBill(models.Model):
     billno = models.AutoField(primary_key=True)
@@ -53,15 +55,19 @@ class PurchaseBillDetails(models.Model):
 
 
 # Sale Models
+from django.contrib.auth.models import User
+
 class SaleBill(models.Model):
     billno = models.AutoField(primary_key=True)
     time = models.DateTimeField(auto_now=True)
+    salesperson = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sale_bills')
 
     def __str__(self):
         return f"Bill no: {self.billno}"
 
     def get_total_price(self):
         return self.salebillno.aggregate(total=Sum('totalprice'))['total'] or Decimal(0)
+
 
 
 class SaleItem(models.Model):
