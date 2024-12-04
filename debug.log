@@ -15034,3 +15034,7 @@ DEBUG 2024-12-05 01:18:01,229 views Filtered Queryset Count: 18
 INFO 2024-12-05 01:21:33,961 autoreload C:\Users\NICK SENTERO\Downloads\SmartBotica\homepage\views.py changed, reloading.
 DEBUG 2024-12-05 01:21:33,963 proactor_events Using proactor: IocpProactor
 INFO 2024-12-05 01:21:34,464 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-05 01:24:59,182 views Search Query: 
+DEBUG 2024-12-05 01:24:59,184 views Filtered Queryset Count: 18
+DEBUG 2024-12-05 01:39:35,637 views Search Query: 
+DEBUG 2024-12-05 01:39:35,682 views Filtered Queryset Count: 18
