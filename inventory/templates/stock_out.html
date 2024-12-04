@@ -139,6 +139,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
+        // Enable/disable quantity input based on checkbox
         $('input[type="checkbox"]').change(function () {
             const row = $(this).closest('tr');
             const quantityInput = row.find('input[type="number"]');
@@ -149,10 +150,12 @@
             }
         });
 
+        // Enable disabled inputs before form submission
         $('form').on('submit', function () {
             $('input[type="number"]').prop('disabled', false);
         });
 
+        // Search suggestions for products
         $('#searchInput').on('input', function () {
             const query = $(this).val();
             if (query.length > 1) {
@@ -176,12 +179,22 @@
             }
         });
 
+        // Hide suggestions when clicking outside the search input
         $(document).click(function (e) {
             if (!$(e.target).closest('#searchInput').length) {
                 $('#suggestions').empty();
             }
         });
+
+        // Confirmation prompt on Confirm Stock Out
+        $('form').on('submit', function (event) {
+            const confirmation = confirm("Are you sure you want to stock out the selected medicines?");
+            if (!confirmation) {
+                event.preventDefault(); // Prevent form submission if not confirmed
+            }
+        });
     });
 </script>
+
 
 {% endblock content %}

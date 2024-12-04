@@ -757,9 +757,15 @@ def populate_dosage_forms(request):
             return redirect('populate-dosage-forms')
         messages.error(request, "Name cannot be empty.")
 
-    dosage_forms = DosageForm.objects.all()
-    return render(request, 'populate_dosage_forms.html', {'dosage_forms': dosage_forms})
+    # Paginate dosage forms
+    dosage_forms = DosageForm.objects.all().order_by('name')
+    paginator = Paginator(dosage_forms, 10)  # Show 10 items per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
+    return render(request, 'populate_dosage_forms.html', {
+        'page_obj': page_obj,  # Pass paginated data
+    })
 # Edit Dosage Form
 def edit_dosage_form(request, pk):
     dosage_form = get_object_or_404(DosageForm, pk=pk)
@@ -784,6 +790,8 @@ def delete_dosage_form(request, pk):
     return render(request, 'delete_dosage_form.html', {'dosage_form': dosage_form})
 
 
+from django.core.paginator import Paginator
+
 def populate_pharmacologic_categories(request):
     if request.method == 'POST':
         form = PharmacologicCategoryForm(request.POST)
@@ -794,10 +802,16 @@ def populate_pharmacologic_categories(request):
         else:
             messages.error(request, "Error adding the category. Please try again.")
 
-    pharmacologic_categories = PharmacologicCategory.objects.all()
+    # Paginate pharmacologic categories
+    pharmacologic_categories = PharmacologicCategory.objects.all().order_by('name')
+    paginator = Paginator(pharmacologic_categories, 10)  # Show 10 items per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(request, 'populate_pharmacologic_categories.html', {
-        'pharmacologic_categories': pharmacologic_categories,
+        'page_obj': page_obj,  # Pass paginated data
     })
+
 
 def edit_pharmacologic_category(request, pk):
     category = get_object_or_404(PharmacologicCategory, pk=pk)
@@ -849,3 +863,4 @@ def delete_medicine(request, pk):
         messages.success(request, f"'{medicine.generic_name}' deleted successfully.")
         return redirect('add-medicine-history')
     return render(request, 'delete_medicine.html', {'medicine': medicine})
+

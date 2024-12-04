@@ -55,4 +55,16 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Confirmation prompt for saving changes
+        const editMedicineForm = document.querySelector("form");
+        editMedicineForm.addEventListener("submit", function (event) {
+            const confirmation = confirm("Are you sure you want to save these changes?");
+            if (!confirmation) {
+                event.preventDefault(); // Prevent form submission if not confirmed
+            }
+        });
+    });
+</script>
 {% endblock content %}

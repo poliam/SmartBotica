@@ -91,54 +91,53 @@
             }
 
             $.ajax({
-    url: '/inventory/search-products/',
-    type: 'GET',
-    data: { q: query },
-    success: function (response) {
-        console.log("Response from server:", response); // Log response
-        const products = response.suggestions || [];
-        if (products.length > 0) {
-            $('#product-suggestions').empty().show();
-            products.forEach(product => {
-                const quantity = product.quantity ?? 'N/A'; // Fallback for undefined/null values
-                $('#product-suggestions').append(`
-                    <button type="button" class="list-group-item list-group-item-action"
-                        data-id="${product.pk}"
-                        data-name="${product.generic_name}"
-                        data-brand="${product.brand_name}"
-                        data-quantity="${quantity}">
-                        ${product.generic_name} (${product.brand_name}) - Available: ${quantity}
-                    </button>
-                `);
+                url: '/inventory/search-products/',
+                type: 'GET',
+                data: { q: query },
+                success: function (response) {
+                    console.log("Response from server:", response); // Log response
+                    const products = response.suggestions || [];
+                    if (products.length > 0) {
+                        $('#product-suggestions').empty().show();
+                        products.forEach(product => {
+                            const quantity = product.quantity ?? 'N/A'; // Fallback for undefined/null values
+                            $('#product-suggestions').append(`
+                                <button type="button" class="list-group-item list-group-item-action"
+                                    data-id="${product.pk}"
+                                    data-name="${product.generic_name}"
+                                    data-brand="${product.brand_name}"
+                                    data-quantity="${quantity}">
+                                    ${product.generic_name} (${product.brand_name}) - Available: ${quantity}
+                                </button>
+                            `);
+                        });
+                    } else {
+                        $('#product-suggestions').hide();
+                    }
+                },
+                error: function () {
+                    alert('Error fetching product suggestions. Please try again.');
+                },
             });
-        } else {
-            $('#product-suggestions').hide();
-        }
-    },
-    error: function () {
-        alert('Error fetching product suggestions. Please try again.');
-    },
-});
-
         });
 
         // Handle product selection
         $('#product-suggestions').on('click', '.list-group-item', function () {
-    const productId = $(this).data('id');
-    const productName = $(this).data('name');
-    availableQuantity = $(this).data('quantity'); // Capture available quantity
+            const productId = $(this).data('id');
+            const productName = $(this).data('name');
+            availableQuantity = $(this).data('quantity'); // Capture available quantity
 
-    if (availableQuantity === undefined || availableQuantity === null) {
-        alert('Product information could not be retrieved. Please try again.');
-        $('#available-quantity').text('N/A');
-        return;
-    }
+            if (availableQuantity === undefined || availableQuantity === null) {
+                alert('Product information could not be retrieved. Please try again.');
+                $('#available-quantity').text('N/A');
+                return;
+            }
 
-    $('#product-search').val(productName).data('id', productId);
-    $('#available-quantity').text(availableQuantity); // Update available quantity display
-    $('#product-suggestions').hide();
-});
-    
+            $('#product-search').val(productName).data('id', productId);
+            $('#available-quantity').text(availableQuantity); // Update available quantity display
+            $('#product-suggestions').hide();
+        });
+
         // Add product to the list
         $('#add-to-list').click(function () {
             const productId = $('#product-search').data('id');
@@ -210,18 +209,22 @@
             $('#selected-items').val(JSON.stringify(selectedItems));
         });
 
-        // Complete sale
+        // Complete sale with confirmation
         $('#complete-sale').click(function () {
             if (selectedItems.length === 0) {
                 alert('No products added. Please add products to complete the sale.');
                 return;
             }
 
-            $('#selected-items').val(JSON.stringify(selectedItems));
-            $('#sale-form').submit();
+            const confirmation = confirm('Are you sure you want to complete this sale?');
+            if (confirmation) {
+                $('#selected-items').val(JSON.stringify(selectedItems));
+                $('#sale-form').submit();
+            }
         });
     });
 </script>
+
 
 
 {% endblock content %}

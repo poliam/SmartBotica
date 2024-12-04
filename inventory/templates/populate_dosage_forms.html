@@ -49,8 +49,7 @@
     </div>
 </div>
 
-{% if dosage_forms %}
-<!-- List of Existing Dosage Forms -->
+{% if page_obj %}
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
         <div class="card shadow-sm">
@@ -67,9 +66,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for form in dosage_forms %}
+                        {% for form in page_obj %}
                         <tr>
-                            <td>{{ forloop.counter }}</td>
+                            <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
                             <td>{{ form.name }}</td>
                             <td>
                                 <a href="{% url 'edit-dosage-form' form.pk %}" class="btn btn-sm btn-warning">
@@ -95,9 +94,70 @@
         </div>
     </div>
 </div>
+
+<!-- Pagination Controls -->
+<div class="row justify-content-center mt-3">
+    <div class="col-auto">
+        <nav aria-label="Dosage Pagination">
+            <ul class="pagination pagination-sm">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        &laquo;&laquo;
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        &laquo;
+                    </a>
+                </li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        &raquo;
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                        &raquo;&raquo;
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
 {% endif %}
+
+
 </div>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Add confirmation prompt for Add Dosage button
+        const dosageForm = document.querySelector("form[action='{% url 'populate-dosage-forms' %}']");
+        dosageForm.addEventListener("submit", function (event) {
+            const confirmation = confirm("Are you sure you want to add this dosage form?");
+            if (!confirmation) {
+                event.preventDefault(); // Prevent form submission if not confirmed
+            }
+        });
+    });
+
+    // Confirmation prompt for delete action (existing functionality)
     function confirmDelete(dosageName) {
         return confirm(`Are you sure you want to delete the dosage form "${dosageName}"?`);
     }
