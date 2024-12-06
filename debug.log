@@ -15970,3 +15970,14 @@ DEBUG 2024-12-06 09:30:41,388 views Selected items on GET: []
 DEBUG 2024-12-06 09:30:43,217 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 98}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}]
 DEBUG 2024-12-06 09:30:43,359 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 98}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}]
 DEBUG 2024-12-06 09:30:43,456 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 98}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}]
+INFO 2024-12-06 09:32:47,216 autoreload D:\4th Year College\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-06 09:32:47,268 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:32:48,465 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:32:50,008 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:32:50,014 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:32:50,016 __init__ interactive is False
+DEBUG 2024-12-06 09:32:50,017 __init__ platform is win32
+DEBUG 2024-12-06 09:32:50,083 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:32:50,086 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 09:36:02,643 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 09:36:02,926 proactor_events Using proactor: IocpProactor
