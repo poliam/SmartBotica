@@ -6,7 +6,8 @@ from .views import (
     edit_pharmacologic_category,
     delete_pharmacologic_category,
     edit_medicine,
-    add_new_stock_view
+    add_new_stock_view,
+    data_analytics
 )
 from .views import add_medicine, AddMedicineHistoryView
 from . import views
@@ -48,5 +49,7 @@ urlpatterns = [
     path('edit-medicine/<int:pk>/', edit_medicine, name='edit-medicine'),
     path('pharmacologic-categories/edit/<int:pk>/', views.edit_pharmacologic_category, name='edit-pharmacologic-category'),
     path('demand-predictions/', views.demand_predictions, name='demand-predictions'),
+    path('data-analytics/', data_analytics, name='data-analytics'),  # Add the data-analytics path
+    
 
 ]

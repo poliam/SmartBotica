@@ -30,6 +30,10 @@ from statsmodels.tsa.api import SARIMAX
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import io
+import urllib
+import base64
 from transactions.models import SaleItem, SaleBill  # Import from transactions
 from inventory.models import Stock  # Import
 
@@ -952,3 +956,28 @@ def demand_predictions(request):
         "top_30_products": top_30_products,
     }
     return render(request, "demand_predictions.html", context)
+
+from django.shortcuts import render
+from django.db.models import Sum
+from transactions.models import SaleItem
+
+def data_analytics(request):
+    # Fetch sales data grouped by product
+    sales_data = (
+        SaleItem.objects.values('product__generic_name')  # Query for the generic name
+        .annotate(total_sales=Sum('quantity'))
+        .order_by('-total_sales')
+    )
+
+    # Transform the keys to match the template expectation
+    sales_data_list = [
+        {"product": item["product__generic_name"], "total_sales": item["total_sales"]}
+        for item in sales_data
+    ]
+
+    # Debugging: Print sales data in the console
+    print("Transformed Sales Data:", sales_data_list)
+
+    # Pass data to the template
+    return render(request, "data_analytics.html", {"sales_data": sales_data_list})
+

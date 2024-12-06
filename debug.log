@@ -15038,3 +15038,916 @@ DEBUG 2024-12-05 01:24:59,182 views Search Query:
 DEBUG 2024-12-05 01:24:59,184 views Filtered Queryset Count: 18
 DEBUG 2024-12-05 01:39:35,637 views Search Query: 
 DEBUG 2024-12-05 01:39:35,682 views Filtered Queryset Count: 18
+INFO 2024-12-06 00:01:40,128 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 00:02:17,489 views Selected items on GET: []
+DEBUG 2024-12-06 00:02:18,828 views Search Query: 
+DEBUG 2024-12-06 00:02:18,833 views Filtered Queryset Count: 18
+ERROR 2024-12-06 00:13:50,476 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotica\inventory\views.py", line 954, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'data-analytics' not found. 'data-analytics' is not a valid view function or pattern name.
+ERROR 2024-12-06 00:13:53,170 log Internal Server Error: /inventory/add-medicine-history/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'data-analytics' not found. 'data-analytics' is not a valid view function or pattern name.
+DEBUG 2024-12-06 00:14:00,620 views Search Query: 
+DEBUG 2024-12-06 00:14:00,621 views Filtered Queryset Count: 18
+ERROR 2024-12-06 00:14:00,704 log Internal Server Error: /inventory/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'data-analytics' not found. 'data-analytics' is not a valid view function or pattern name.
+DEBUG 2024-12-06 00:14:36,628 views Search Query: 
+DEBUG 2024-12-06 00:14:36,630 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 00:22:05,754 views Search Query: 
+DEBUG 2024-12-06 00:22:05,757 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 00:24:06,002 views Selected items on GET: []
+ERROR 2024-12-06 00:49:22,110 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotica\inventory\views.py", line 954, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'data-analytics' not found. 'data-analytics' is not a valid view function or pattern name.
+ERROR 2024-12-06 00:49:28,083 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotica\inventory\views.py", line 954, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'data-analytics' not found. 'data-analytics' is not a valid view function or pattern name.
+ERROR 2024-12-06 00:50:09,755 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotica\inventory\views.py", line 954, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'data-analytics' not found. 'data-analytics' is not a valid view function or pattern name.
+ERROR 2024-12-06 00:55:02,989 log Internal Server Error: /inventory/demand-predictions/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotica\inventory\views.py", line 954, in demand_predictions
+    return render(request, "demand_predictions.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 936, in render
+    bit = node.render_annotated(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 903, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'data-analytics' not found. 'data-analytics' is not a valid view function or pattern name.
+INFO 2024-12-06 00:56:55,779 autoreload D:\4th Year College\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-06 00:56:55,781 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 00:56:56,862 autoreload Watching for file changes with StatReloader
+INFO 2024-12-06 00:59:53,457 autoreload D:\4th Year College\SmartBotica\homepage\urls.py changed, reloading.
+DEBUG 2024-12-06 00:59:53,458 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 00:59:54,825 autoreload Watching for file changes with StatReloader
+INFO 2024-12-06 01:09:30,267 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:17:25,980 views Selected items on GET: []
+INFO 2024-12-06 01:28:56,994 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:28:56,995 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:28:58,554 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:34:58,876 views Search Query: 
+DEBUG 2024-12-06 01:34:58,880 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 01:34:59,963 views Search Query: 
+DEBUG 2024-12-06 01:34:59,966 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 01:35:11,192 views Search Query: 
+DEBUG 2024-12-06 01:35:11,194 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 01:35:13,569 views Search Query: 
+DEBUG 2024-12-06 01:35:13,572 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 01:35:14,889 views Selected items on GET: []
+INFO 2024-12-06 01:36:54,383 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:36:54,384 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:36:55,405 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:36:57,544 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:36:57,564 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:36:57,567 __init__ interactive is False
+DEBUG 2024-12-06 01:36:57,567 __init__ platform is win32
+DEBUG 2024-12-06 01:36:57,648 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:36:57,660 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 01:38:11,088 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:38:11,089 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:38:12,767 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:38:14,850 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:38:14,855 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:38:14,857 __init__ interactive is False
+DEBUG 2024-12-06 01:38:14,857 __init__ platform is win32
+DEBUG 2024-12-06 01:38:14,924 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:38:14,928 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 01:42:00,667 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:42:00,674 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:42:04,118 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:42:09,073 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:42:09,080 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:42:09,082 __init__ interactive is False
+DEBUG 2024-12-06 01:42:09,083 __init__ platform is win32
+DEBUG 2024-12-06 01:42:09,207 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:42:09,210 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 01:43:44,562 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 01:43:44,995 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:44:52,799 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:45:03,603 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:45:03,629 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:45:03,635 __init__ interactive is False
+DEBUG 2024-12-06 01:45:03,636 __init__ platform is win32
+DEBUG 2024-12-06 01:45:03,738 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:45:03,751 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 01:45:28,221 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:45:28,222 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:45:29,175 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:45:31,136 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:45:31,141 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:45:31,143 __init__ interactive is False
+DEBUG 2024-12-06 01:45:31,143 __init__ platform is win32
+DEBUG 2024-12-06 01:45:31,208 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:45:31,211 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 01:45:43,150 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:45:43,151 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:45:46,018 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:45:47,858 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:45:47,863 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:45:47,865 __init__ interactive is False
+DEBUG 2024-12-06 01:45:47,865 __init__ platform is win32
+DEBUG 2024-12-06 01:45:47,931 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:45:47,934 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 01:50:47,441 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:50:47,442 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:50:48,357 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:50:50,106 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:50:50,111 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:50:50,113 __init__ interactive is False
+DEBUG 2024-12-06 01:50:50,114 __init__ platform is win32
+DEBUG 2024-12-06 01:50:50,178 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:50:50,181 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 01:59:35,196 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 01:59:35,199 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 01:59:37,654 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 01:59:40,559 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 01:59:40,584 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:59:40,598 __init__ interactive is False
+DEBUG 2024-12-06 01:59:40,599 __init__ platform is win32
+DEBUG 2024-12-06 01:59:40,741 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 01:59:40,746 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 02:02:15,820 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 02:02:15,821 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 02:02:16,902 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 02:02:18,443 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 02:02:18,451 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 02:02:18,454 __init__ interactive is False
+DEBUG 2024-12-06 02:02:18,454 __init__ platform is win32
+DEBUG 2024-12-06 02:02:18,540 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 02:02:18,544 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 02:03:59,377 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 02:03:59,378 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 02:04:00,299 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 02:04:01,967 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 02:04:01,972 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 02:04:01,974 __init__ interactive is False
+DEBUG 2024-12-06 02:04:01,975 __init__ platform is win32
+DEBUG 2024-12-06 02:04:02,041 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 02:04:02,044 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 02:13:18,477 views Search Query: 
+DEBUG 2024-12-06 02:13:18,478 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 02:13:33,536 views Search Query: 
+DEBUG 2024-12-06 02:13:33,538 views Filtered Queryset Count: 18
+INFO 2024-12-06 07:11:44,499 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 07:11:50,452 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 07:11:50,465 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:11:50,469 __init__ interactive is False
+DEBUG 2024-12-06 07:11:50,470 __init__ platform is win32
+DEBUG 2024-12-06 07:11:50,625 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:11:50,632 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 07:12:00,079 views Search Query: 
+DEBUG 2024-12-06 07:12:00,121 views Filtered Queryset Count: 18
+WARNING 2024-12-06 07:12:01,995 log Not Found: /favicon.ico
+INFO 2024-12-06 07:27:19,246 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 07:27:19,247 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 07:27:21,235 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 07:27:23,704 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 07:27:23,711 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:27:23,713 __init__ interactive is False
+DEBUG 2024-12-06 07:27:23,714 __init__ platform is win32
+DEBUG 2024-12-06 07:27:23,801 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:27:23,807 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 07:28:05,593 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 07:28:05,594 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 07:28:06,834 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 07:28:09,074 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 07:28:09,080 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:28:09,084 __init__ interactive is False
+DEBUG 2024-12-06 07:28:09,084 __init__ platform is win32
+DEBUG 2024-12-06 07:28:09,172 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:28:09,180 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 07:28:13,580 views Search Query: 
+DEBUG 2024-12-06 07:28:13,583 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 07:28:47,034 views Search Query: 
+DEBUG 2024-12-06 07:28:47,037 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 07:29:00,548 views Search Query: 
+DEBUG 2024-12-06 07:29:00,551 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 07:43:36,946 views Search Query: 
+DEBUG 2024-12-06 07:43:36,950 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 07:43:39,514 views Search Query: 
+DEBUG 2024-12-06 07:43:39,517 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 07:44:17,780 views Stock updated successfully: Amoxicillin (Hibiotic)
+DEBUG 2024-12-06 07:44:17,786 views StockHistory created for stock: Amoxicillin (Hibiotic)
+DEBUG 2024-12-06 07:44:23,491 views Search Query: 
+DEBUG 2024-12-06 07:44:23,494 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 07:44:38,094 views Selected items on GET: []
+INFO 2024-12-06 07:46:30,937 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 07:46:30,938 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 07:46:32,352 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 07:46:34,929 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 07:46:34,934 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:46:34,936 __init__ interactive is False
+DEBUG 2024-12-06 07:46:34,937 __init__ platform is win32
+DEBUG 2024-12-06 07:46:35,012 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:46:35,016 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 07:56:56,273 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 07:56:56,274 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 07:56:57,580 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 07:56:59,555 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 07:56:59,560 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:56:59,563 __init__ interactive is False
+DEBUG 2024-12-06 07:56:59,563 __init__ platform is win32
+DEBUG 2024-12-06 07:56:59,634 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 07:56:59,638 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 08:00:58,634 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 08:00:58,641 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:00:59,868 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:01:02,080 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:01:02,086 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:01:02,088 __init__ interactive is False
+DEBUG 2024-12-06 08:01:02,088 __init__ platform is win32
+DEBUG 2024-12-06 08:01:02,176 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:01:02,180 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 08:05:31,012 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 08:05:31,312 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:06:42,076 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:06:44,257 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:06:44,264 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:06:44,267 __init__ interactive is False
+DEBUG 2024-12-06 08:06:44,267 __init__ platform is win32
+DEBUG 2024-12-06 08:06:44,343 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:06:44,349 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 08:07:01,673 views Search Query: 
+DEBUG 2024-12-06 08:07:01,677 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 08:07:05,267 views Search Query: 
+DEBUG 2024-12-06 08:07:05,272 views Filtered Queryset Count: 18
+INFO 2024-12-06 08:13:43,800 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 08:13:43,801 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:13:46,480 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:13:49,411 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:13:49,417 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:13:49,420 __init__ interactive is False
+DEBUG 2024-12-06 08:13:49,421 __init__ platform is win32
+DEBUG 2024-12-06 08:13:49,501 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:13:49,505 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 08:16:25,219 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 08:16:25,477 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:19:37,198 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:19:39,447 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:19:39,455 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:19:39,457 __init__ interactive is False
+DEBUG 2024-12-06 08:19:39,457 __init__ platform is win32
+DEBUG 2024-12-06 08:19:39,534 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:19:39,539 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 08:29:05,021 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:29:13,508 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:29:13,547 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:29:13,550 __init__ interactive is False
+DEBUG 2024-12-06 08:29:13,551 __init__ platform is win32
+DEBUG 2024-12-06 08:29:13,646 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:29:13,660 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 08:31:18,920 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 08:31:18,921 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:31:20,378 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:31:22,118 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:31:22,123 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:31:22,125 __init__ interactive is False
+DEBUG 2024-12-06 08:31:22,126 __init__ platform is win32
+DEBUG 2024-12-06 08:31:22,191 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:31:22,196 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 08:32:39,862 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 08:32:40,128 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 08:33:54,573 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:36:31,485 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:36:33,312 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:36:33,317 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:36:33,319 __init__ interactive is False
+DEBUG 2024-12-06 08:36:33,319 __init__ platform is win32
+DEBUG 2024-12-06 08:36:33,391 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:36:33,395 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+ERROR 2024-12-06 08:46:43,461 log Internal Server Error: /data-analytics/
+Traceback (most recent call last):
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\4th Year College\SmartBotica\homepage\views.py", line 181, in data_analytics
+    return render(request, 'data_analytics.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 477, in parse
+    raise self.error(token, e)
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 475, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 477, in parse
+    raise self.error(token, e)
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 475, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 482, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\template\base.py", line 543, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+INFO 2024-12-06 08:50:40,196 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 08:50:40,197 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:50:41,729 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:50:44,146 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:50:44,153 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:50:44,155 __init__ interactive is False
+DEBUG 2024-12-06 08:50:44,156 __init__ platform is win32
+DEBUG 2024-12-06 08:50:44,237 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:50:44,240 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 08:53:48,002 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 08:53:48,007 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 08:53:49,608 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 08:53:51,372 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 08:53:51,377 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:53:51,380 __init__ interactive is False
+DEBUG 2024-12-06 08:53:51,381 __init__ platform is win32
+DEBUG 2024-12-06 08:53:51,456 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 08:53:51,459 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 08:54:39,521 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 08:54:39,841 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 08:54:50,737 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 08:59:11,726 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:11:01,072 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:11:02,834 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:11:02,839 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:11:02,841 __init__ interactive is False
+DEBUG 2024-12-06 09:11:02,842 __init__ platform is win32
+DEBUG 2024-12-06 09:11:02,911 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:11:02,915 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 09:11:12,788 views Search Query: 
+DEBUG 2024-12-06 09:11:12,790 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 09:11:14,535 views Selected items on GET: []
+INFO 2024-12-06 09:12:03,317 autoreload D:\4th Year College\SmartBotica\inventory\urls.py changed, reloading.
+DEBUG 2024-12-06 09:12:03,318 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:12:04,293 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:12:06,415 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:12:06,421 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:12:06,423 __init__ interactive is False
+DEBUG 2024-12-06 09:12:06,423 __init__ platform is win32
+DEBUG 2024-12-06 09:12:06,486 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:12:06,490 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 09:13:29,902 autoreload D:\4th Year College\SmartBotica\inventory\urls.py changed, reloading.
+DEBUG 2024-12-06 09:13:29,903 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:13:31,288 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:13:33,369 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:13:33,388 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:13:33,392 __init__ interactive is False
+DEBUG 2024-12-06 09:13:33,392 __init__ platform is win32
+DEBUG 2024-12-06 09:13:33,462 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:13:33,465 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 09:13:48,452 autoreload D:\4th Year College\SmartBotica\inventory\urls.py changed, reloading.
+DEBUG 2024-12-06 09:13:48,453 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:13:49,606 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:13:51,821 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:13:51,828 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:13:51,830 __init__ interactive is False
+DEBUG 2024-12-06 09:13:51,831 __init__ platform is win32
+DEBUG 2024-12-06 09:13:51,907 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:13:51,910 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 09:18:11,368 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 09:18:11,376 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:18:12,717 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:18:14,360 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:18:14,370 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:18:14,372 __init__ interactive is False
+DEBUG 2024-12-06 09:18:14,373 __init__ platform is win32
+DEBUG 2024-12-06 09:18:14,441 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:18:14,446 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 09:18:25,871 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 09:18:25,871 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:18:26,806 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:18:28,562 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:18:28,568 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:18:28,570 __init__ interactive is False
+DEBUG 2024-12-06 09:18:28,570 __init__ platform is win32
+DEBUG 2024-12-06 09:18:28,632 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:18:28,635 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 09:18:59,316 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 09:18:59,615 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 09:19:30,734 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 09:21:31,803 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 09:21:33,429 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 09:21:33,434 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:21:33,436 __init__ interactive is False
+DEBUG 2024-12-06 09:21:33,437 __init__ platform is win32
+DEBUG 2024-12-06 09:21:33,511 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 09:21:33,515 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json

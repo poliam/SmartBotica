@@ -165,3 +165,18 @@ def generate_sales_report(request):
 
 class AboutView(TemplateView):
     template_name = "about.html"
+
+def demand_predictions(request):
+    # Logic for the Demand Predictions page
+    context = {
+        'title': 'Demand Predictions',
+    }
+    return render(request, 'demand_predictions.html', context)
+
+def data_analytics(request):
+    # Logic for the Data Analytics page
+    context = {
+        'title': 'Data Analytics',
+    }
+    return render(request, 'data_analytics.html', context)
+
