@@ -20628,3 +20628,5 @@ DEBUG 2024-12-06 22:49:36,440 __init__ interactive is False
 DEBUG 2024-12-06 22:49:36,441 __init__ platform is win32
 DEBUG 2024-12-06 22:49:36,508 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
 DEBUG 2024-12-06 22:49:36,511 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 22:50:21,595 views Selected items on GET: []
+DEBUG 2024-12-06 22:50:24,202 views Selected items on GET: []
