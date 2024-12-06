@@ -105,53 +105,49 @@
             </div>
         </div>
 
-        <!-- Top Sales Products -->
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header bg-light">
-                    <h5 class="fw-bold text-dark mb-0">Top Sales Products</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row g-3">
-                        {% for product in top_products %}
-                            <div class="col-md-12">
-                                <div class="card text-center border-0 shadow-sm">
-                                    <div class="card-body">
-                                        <h6 class="fw-bold text-primary">{{ product.product__generic_name }}</h6>
-                                        <p class="text-muted mb-0">Qty Sold: {{ product.total_quantity }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        {% empty %}
-                            <div class="alert alert-info text-center m-0" role="alert">
-                                No sales data available.
-                            </div>
-                        {% endfor %}
+            <!-- Top Sales Products -->
+<div class="col-md-6">
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="fw-bold text-dark mb-0">Top Sales Products</h5>
+        </div>
+        <div class="card-body">
+            <ul id="topSalesProducts" class="list-group list-group-flush">
+                {% for product in top_products %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>{{ product.product__generic_name }}</strong>
+                        <span class="badge bg-primary">Qty: {{ product.total_quantity }}</span>
+                    </li>
+                {% empty %}
+                    <div class="alert alert-info text-center m-0" role="alert">
+                        No sales data available.
                     </div>
-                </div>
-            </div>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    $(function () {
+    $(document).ready(function () {
         // Initialize the Chart.js Line Graph
         var lineCtx = document.getElementById('line-graph').getContext('2d');
-        var lineConfig = {
+        var lineGraphConfig = {
             type: 'line',
             data: {
+                labels: {{ sales_labels|safe }},
                 datasets: [{
                     label: 'Sales',
                     backgroundColor: 'rgba(52, 58, 64, 0.8)',
                     borderColor: 'rgba(52, 58, 64, 0.8)',
                     data: {{ sales_data|safe }},
                     fill: false
-                }],
-                labels: {{ sales_labels|safe }}
+                }]
             },
             options: {
                 responsive: true,
@@ -176,31 +172,53 @@
                 }
             }
         };
+        var lineGraph = new Chart(lineCtx, lineGraphConfig);
 
-        // Create the chart and assign to a global variable
-        window.LineGraph = new Chart(lineCtx, lineConfig);
-
-        // Update Chart on Filter Change
+        // Handle filter change and update data dynamically
         $('#salesFilter').on('change', function () {
-            const filter = $(this).val();
+            const filterValue = $(this).val();
+
             $.ajax({
                 url: '{% url "get_sales_data" %}',
-                data: { filter: filter },
-                success: function (data) {
-                    // Update chart data
-                    window.LineGraph.data.labels = data.sales_labels;
-                    window.LineGraph.data.datasets[0].data = data.sales_values;
-                    window.LineGraph.update();
+                data: { filter: filterValue },
+                method: 'GET',
+                success: function (response) {
+                    // Update Chart Data
+                    lineGraph.data.labels = response.sales_labels;
+                    lineGraph.data.datasets[0].data = response.sales_values;
+                    lineGraph.update();
 
-                    // Update revenue card
-                    $('#revenueCard').text(`₱ ${data.total_revenue}`);
+                    // Update Revenue Card
+                    $('#revenueCard').text(`₱ ${response.total_revenue}`);
+
+                    // Update Top Sales Products
+                    const topSalesProductsContainer = $('#topSalesProducts');
+                    topSalesProductsContainer.empty();
+
+                    if (response.top_products.length > 0) {
+                        response.top_products.forEach(product => {
+                            topSalesProductsContainer.append(`
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>${product.name}</strong>
+                                    <span class="badge bg-primary">Qty: ${product.quantity}</span>
+                                </li>
+                            `);
+                        });
+                    } else {
+                        topSalesProductsContainer.html(`
+                            <div class="alert alert-info text-center m-0" role="alert">
+                                No sales data available.
+                            </div>
+                        `);
+                    }
                 },
                 error: function () {
-                    alert('Failed to fetch sales data.');
-                },
+                    alert('Failed to fetch sales data. Please try again.');
+                }
             });
         });
     });
 </script>
+
 
 {% endblock content %}
