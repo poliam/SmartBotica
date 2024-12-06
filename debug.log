@@ -20601,3 +20601,30 @@ DEBUG 2024-12-06 22:40:10,704 __init__ CACHEDIR=C:\Users\USER\.matplotlib
 DEBUG 2024-12-06 22:40:10,708 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
 INFO 2024-12-06 22:47:54,925 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotika\SmartBotica\transactions\urls.py changed, reloading.
 DEBUG 2024-12-06 22:47:54,926 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 22:47:19,586 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 22:47:22,397 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 22:47:22,404 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 22:47:22,406 __init__ interactive is False
+DEBUG 2024-12-06 22:47:22,407 __init__ platform is win32
+DEBUG 2024-12-06 22:47:22,522 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 22:47:22,527 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 22:48:23,158 views Selected items on GET: []
+DEBUG 2024-12-06 22:48:24,159 views Selected items on GET: []
+INFO 2024-12-06 22:49:08,088 autoreload C:\Users\Orlando\Downloads\backup\SmartBotica\transactions\urls.py changed, reloading.
+DEBUG 2024-12-06 22:49:08,089 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 22:49:12,360 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 22:49:15,067 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 22:49:15,079 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 22:49:15,083 __init__ interactive is False
+DEBUG 2024-12-06 22:49:15,084 __init__ platform is win32
+DEBUG 2024-12-06 22:49:15,266 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 22:49:15,274 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+INFO 2024-12-06 22:49:33,903 autoreload C:\Users\Orlando\Downloads\backup\SmartBotica\transactions\views.py changed, reloading.
+DEBUG 2024-12-06 22:49:33,903 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 22:49:34,915 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 22:49:36,432 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 22:49:36,438 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 22:49:36,440 __init__ interactive is False
+DEBUG 2024-12-06 22:49:36,441 __init__ platform is win32
+DEBUG 2024-12-06 22:49:36,508 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 22:49:36,511 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json

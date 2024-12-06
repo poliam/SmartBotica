@@ -139,7 +139,6 @@ class SaleCreateView(View):
             return redirect('new-sale')
 
 
-
 def transaction_log(request):
     # Fetch all SaleBill objects with related SaleItems preloaded
     sale_bills = SaleBill.objects.prefetch_related('salebillno').all().order_by('-time')  # Order by the most recent
@@ -154,3 +153,53 @@ def transaction_log(request):
         'is_paginated': page_obj.has_other_pages(),  # Boolean to check if pagination is needed
     }
     return render(request, 'sales/transaction_log.html', context)
+
+import csv
+from django.http import HttpResponse
+from django.db.models import Max
+from django.db.models import Sum
+
+def export_monthly_sales(request):
+    # Get the specific month from the query parameter, if provided
+    month = request.GET.get('month', None)
+
+    if not month:
+        # Determine the latest month from the data
+        latest_sale = SaleBill.objects.aggregate(latest_time=Max('time'))
+        if latest_sale['latest_time']:
+            month = latest_sale['latest_time'].strftime('%Y-%m')  # Extract the year and month
+        else:
+            # If no sales data exists, return an error response
+            response = HttpResponse(content_type='text/plain')
+            response.write("No sales data available.")
+            return response
+
+    # Filter transactions for the specific or latest month
+    sales = SaleBill.objects.filter(time__startswith=month).order_by('time')  # Filter by month
+    
+    if not sales.exists():
+        # If no sales exist for the month, return an empty CSV
+        response = HttpResponse(content_type='text/plain')
+        response.write(f"No sales records found for the month: {month}.")
+        return response
+
+    # Create the HTTP response for CSV download
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="sales_{month}.csv"'
+
+    # Write data to CSV
+    writer = csv.writer(response)
+    writer.writerow(['Month', 'Sale ID', 'Date', 'Total Amount', 'Handled By'])  # CSV header
+
+    # Populate CSV rows with sales data
+    for sale in sales:
+        writer.writerow([
+            sale.time.strftime('%Y-%m'),  # Month
+            sale.pk,                      # Sale ID
+            sale.time.strftime('%Y-%m-%d %H:%M:%S'),  # Date and time
+            sale.get_total_price(),       # Total amount
+            sale.salesperson.username     # Handled by
+        ])
+
+    return response
+

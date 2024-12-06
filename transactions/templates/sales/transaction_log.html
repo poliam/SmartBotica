@@ -13,8 +13,11 @@
             </h1>
         </div>
         <div class="col-md-6 text-right">
-            <a class="btn btn-outline-success" href="{% url 'new-sale' %}">
+            <a class="btn btn-outline-success mx-2" href="{% url 'new-sale' %}">
                 <i class="fas fa-plus mr-2"></i>New Sale
+            </a>
+            <a class="btn btn-outline-primary mx-2" href="{% url 'export-monthly-sales' %}?month=2024-12">
+                <i class="fas fa-file-excel mr-2"></i>Export Monthly Sales
             </a>
         </div>
     </div>
