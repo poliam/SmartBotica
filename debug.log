@@ -16032,3 +16032,48 @@ DEBUG 2024-12-06 21:13:04,579 __init__ interactive is False
 DEBUG 2024-12-06 21:13:04,579 __init__ platform is win32
 DEBUG 2024-12-06 21:13:04,678 __init__ CACHEDIR=C:\Users\USER\.matplotlib
 DEBUG 2024-12-06 21:13:04,682 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 21:19:47,940 views Selected items on GET: []
+DEBUG 2024-12-06 21:19:51,647 views Selected items on GET: []
+DEBUG 2024-12-06 21:19:55,917 views Selected items on GET: []
+DEBUG 2024-12-06 21:19:59,975 views Selected items on GET: []
+DEBUG 2024-12-06 21:22:40,271 views Search Query: 
+DEBUG 2024-12-06 21:22:40,272 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:23:14,641 views Search Query: 
+DEBUG 2024-12-06 21:23:14,644 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:25:52,929 views Search Query: 
+DEBUG 2024-12-06 21:25:52,932 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:34:00,127 views Search Query: 
+DEBUG 2024-12-06 21:34:00,130 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:48:55,459 views Selected items on GET: []
+DEBUG 2024-12-06 21:49:01,097 views Selected items on GET: []
+DEBUG 2024-12-06 21:49:20,386 views Selected items on GET: []
+DEBUG 2024-12-06 21:49:47,129 views Selected items on GET: []
+DEBUG 2024-12-06 21:50:02,575 views Selected items on GET: []
+DEBUG 2024-12-06 21:50:53,391 views Selected items on GET: []
+DEBUG 2024-12-06 21:50:55,549 views Search Query: 
+DEBUG 2024-12-06 21:50:55,550 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:51:08,579 views Search Query: 
+DEBUG 2024-12-06 21:51:08,582 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:51:15,252 views Search Query: 
+DEBUG 2024-12-06 21:51:15,254 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:51:28,717 views Search Query: 
+DEBUG 2024-12-06 21:51:28,720 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:51:31,594 views Search Query: 
+DEBUG 2024-12-06 21:51:31,596 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:55:12,928 views Search Query: 
+DEBUG 2024-12-06 21:55:12,931 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:59:52,606 views Search Query: 
+DEBUG 2024-12-06 21:59:52,610 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 21:59:57,683 views Selected items on GET: []
+DEBUG 2024-12-06 22:00:06,463 views Search Query: 
+DEBUG 2024-12-06 22:00:06,465 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 22:01:09,067 views Search Query: 
+DEBUG 2024-12-06 22:01:09,069 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 22:04:31,409 views Search Query: 
+DEBUG 2024-12-06 22:04:31,411 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 22:04:55,108 views Search Query: 
+DEBUG 2024-12-06 22:04:55,109 views Filtered Queryset Count: 18
+DEBUG 2024-12-06 22:04:56,157 views Selected items on GET: []
+DEBUG 2024-12-06 22:04:58,006 views Selected items on GET: []
+DEBUG 2024-12-06 22:05:42,469 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 22:05:42,778 proactor_events Using proactor: IocpProactor
