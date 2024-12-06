@@ -59,35 +59,18 @@
     </div>
 
     <!-- Filter Section -->
-<div class="row mb-4">
-    <div class="col-md-4">
-        <label for="salesFilter" class="form-label fw-bold">Filter Sales By:</label>
-        <select id="salesFilter" class="form-select">
-            <option value="weekly" {% if selected_filter == 'weekly' %}selected{% endif %}>Weekly</option>
-            <option value="monthly" {% if selected_filter == 'monthly' %}selected{% endif %}>Monthly</option>
-            <option value="yearly" {% if selected_filter == 'yearly' %}selected{% endif %}>Yearly</option>
-        </select>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <label for="salesFilter" class="form-label fw-bold">Filter Sales By:</label>
+            <select id="salesFilter" class="form-select">
+                <option value="overall" {% if selected_filter == 'overall' %}selected{% endif %}>Overall</option>
+                <option value="daily" {% if selected_filter == 'daily' %}selected{% endif %}>Daily</option>
+                <option value="weekly" {% if selected_filter == 'weekly' %}selected{% endif %}>Weekly</option>
+                <option value="monthly" {% if selected_filter == 'monthly' %}selected{% endif %}>Monthly</option>
+                <option value="yearly" {% if selected_filter == 'yearly' %}selected{% endif %}>Yearly</option>
+            </select>
+        </div>
     </div>
-</div>
-
-<script>
-    $('#salesFilter').on('change', function () {
-        const filter = $(this).val();
-        $.ajax({
-            url: '{% url "get_sales_data" %}',
-            data: { filter: filter },
-            success: function (data) {
-                window.LineGraph.data.labels = data.sales_labels;
-                window.LineGraph.data.datasets[0].data = data.sales_values;
-                window.LineGraph.update();
-            },
-            error: function () {
-                alert('Failed to fetch sales data.');
-            },
-        });
-    });
-</script>
-
 
     <!-- Sales Overview Graph -->
     <h5 class="fw-bold mt-4">Sales Overview</h5>
@@ -109,9 +92,7 @@
                             {% for product in low_stock_products %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <strong>{{ product.generic_name }}</strong>
-                                    <span class="badge bg-warning text-dark">
-                                        Qty: {{ product.quantity }}
-                                    </span>
+                                    <span class="badge bg-warning text-dark">Qty: {{ product.quantity }}</span>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -158,6 +139,8 @@
 
 <script>
     $(function () {
+        // Initialize the Chart.js Line Graph
+        var lineCtx = document.getElementById('line-graph').getContext('2d');
         var lineConfig = {
             type: 'line',
             data: {
@@ -194,10 +177,10 @@
             }
         };
 
-        var lineCtx = document.getElementById('line-graph').getContext('2d');
-        var lineGraph = new Chart(lineCtx, lineConfig);
+        // Create the chart and assign to a global variable
+        window.LineGraph = new Chart(lineCtx, lineConfig);
 
-        // Handle filter change
+        // Update Chart on Filter Change
         $('#salesFilter').on('change', function () {
             const filter = $(this).val();
             $.ajax({
@@ -205,9 +188,9 @@
                 data: { filter: filter },
                 success: function (data) {
                     // Update chart data
-                    lineGraph.data.labels = data.sales_labels;
-                    lineGraph.data.datasets[0].data = data.sales_values;
-                    lineGraph.update();
+                    window.LineGraph.data.labels = data.sales_labels;
+                    window.LineGraph.data.datasets[0].data = data.sales_values;
+                    window.LineGraph.update();
 
                     // Update revenue card
                     $('#revenueCard').text(`₱ ${data.total_revenue}`);

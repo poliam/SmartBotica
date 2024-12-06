@@ -16015,3 +16015,20 @@ DEBUG 2024-12-06 11:03:46,199 views Selected items on GET: []
 DEBUG 2024-12-06 11:10:09,433 views Selected items on GET: []
 DEBUG 2024-12-06 11:18:54,766 proactor_events Using proactor: IocpProactor
 DEBUG 2024-12-06 11:18:55,052 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 21:02:23,892 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 21:02:25,596 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 21:02:25,601 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-06 21:02:25,603 __init__ interactive is False
+DEBUG 2024-12-06 21:02:25,603 __init__ platform is win32
+DEBUG 2024-12-06 21:02:25,705 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-06 21:02:25,708 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+WARNING 2024-12-06 21:12:41,233 log Bad Request: /get-sales-data/
+INFO 2024-12-06 21:13:01,881 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotika\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-06 21:13:01,881 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 21:13:02,906 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 21:13:04,572 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 21:13:04,577 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-06 21:13:04,579 __init__ interactive is False
+DEBUG 2024-12-06 21:13:04,579 __init__ platform is win32
+DEBUG 2024-12-06 21:13:04,678 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-06 21:13:04,682 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json

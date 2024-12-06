@@ -31,25 +31,30 @@ def home_view(request):
     today = datetime.now().date()
 
     # Determine start and end dates based on the selected filter
-    if filter_option == 'weekly':
-        start_date = today - timedelta(days=today.weekday())  # Start of the week
-        end_date = start_date + timedelta(days=6)  # End of the week
+    if filter_option == 'daily':
+        start_date = today
+        end_date = today
+    elif filter_option == 'weekly':
+        start_date = today - timedelta(days=today.weekday())
+        end_date = start_date + timedelta(days=6)
     elif filter_option == 'monthly':
-        start_date = today.replace(day=1)  # Start of the month
-        next_month = start_date.replace(day=28) + timedelta(days=4)  # Move to the next month
-        end_date = next_month.replace(day=1) - timedelta(days=1)  # Last day of the current month
+        start_date = today.replace(day=1)
+        next_month = start_date.replace(day=28) + timedelta(days=4)
+        end_date = next_month.replace(day=1) - timedelta(days=1)
     elif filter_option == 'yearly':
-        start_date = today.replace(month=1, day=1)  # Start of the year
-        end_date = today.replace(month=12, day=31)  # End of the year
+        start_date = today.replace(month=1, day=1)
+        end_date = today.replace(month=12, day=31)
+    elif filter_option == 'overall':  # New overall filter
+        start_date, end_date = None, None  # Fetch all-time data
     else:
-        start_date, end_date = None, None  # Show all-time sales
+        start_date, end_date = None, None  # Default fallback for invalid filter
 
     # Fetch filtered sales data
     if start_date and end_date:
         sales_data = SaleItem.objects.filter(
             billno__time__date__range=[start_date, end_date]
         ).values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
-    else:
+    else:  # Overall sales
         sales_data = SaleItem.objects.values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
 
     # Prepare data for the chart
@@ -57,13 +62,19 @@ def home_view(request):
     if start_date and end_date:
         dates = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
     else:
-        dates = list(sales_dict.keys())  # Use existing dates if no range is defined
+        dates = list(sales_dict.keys())  # Use existing dates for overall data
     sales_labels = [date.strftime('%Y-%m-%d') for date in dates]
     sales_values = [sales_dict.get(date, 0) for date in dates]
     sales_max = max(sales_values, default=100)
 
     # Other dashboard data
-    total_revenue = SaleItem.objects.aggregate(total=Sum('totalprice')).get('total', 0) or 0
+    if start_date and end_date:
+        total_revenue = SaleItem.objects.filter(
+            billno__time__date__range=[start_date, end_date]
+        ).aggregate(total=Sum('totalprice')).get('total', 0) or 0
+    else:  # Overall revenue
+        total_revenue = SaleItem.objects.aggregate(total=Sum('totalprice')).get('total', 0) or 0
+
     medicines_available = Stock.objects.filter(is_deleted=False).count()
     medicine_shortage = Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False).count()
 
@@ -92,40 +103,51 @@ def home_view(request):
     return render(request, 'home.html', context)
 
 
+
+
 from django.http import JsonResponse
 from datetime import datetime, timedelta
 def get_sales_data(request):
-    # Get the filter option
     filter_option = request.GET.get('filter', 'weekly')
     today = datetime.now().date()
 
     # Calculate start_date and end_date based on the filter
-    if filter_option == 'weekly':
-        start_date = today - timedelta(days=today.weekday())  # Start of the week
-        end_date = start_date + timedelta(days=6)  # End of the week
+    if filter_option == 'daily':
+        start_date = today
+        end_date = today
+    elif filter_option == 'weekly':
+        start_date = today - timedelta(days=today.weekday())
+        end_date = start_date + timedelta(days=6)
     elif filter_option == 'monthly':
-        start_date = today.replace(day=1)  # Start of the month
+        start_date = today.replace(day=1)
         next_month = (start_date.replace(day=28) + timedelta(days=4)).replace(day=1)
-        end_date = next_month - timedelta(days=1)  # End of the current month
+        end_date = next_month - timedelta(days=1)
     elif filter_option == 'yearly':
-        start_date = today.replace(month=1, day=1)  # Start of the year
-        end_date = today.replace(month=12, day=31)  # End of the year
+        start_date = today.replace(month=1, day=1)
+        end_date = today.replace(month=12, day=31)
+    elif filter_option == 'overall':  # New overall filter
+        start_date, end_date = None, None
     else:
         return JsonResponse({'error': 'Invalid filter option'}, status=400)
 
     # Fetch sales data within the specified range
-    sales_data = SaleItem.objects.filter(
-        billno__time__date__range=[start_date, end_date]
-    ).values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
-
-    # Fetch total revenue for the filtered range
-    total_revenue = SaleItem.objects.filter(
-        billno__time__date__range=[start_date, end_date]
-    ).aggregate(total=Sum('totalprice'))['total'] or 0
+    if start_date and end_date:
+        sales_data = SaleItem.objects.filter(
+            billno__time__date__range=[start_date, end_date]
+        ).values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
+        total_revenue = SaleItem.objects.filter(
+            billno__time__date__range=[start_date, end_date]
+        ).aggregate(total=Sum('totalprice'))['total'] or 0
+    else:
+        sales_data = SaleItem.objects.values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
+        total_revenue = SaleItem.objects.aggregate(total=Sum('totalprice'))['total'] or 0
 
     # Prepare the response data
     sales_dict = {data['billno__time__date']: float(data['total_sales']) for data in sales_data}
-    dates = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
+    if start_date and end_date:
+        dates = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
+    else:
+        dates = list(sales_dict.keys())
     sales_labels = [date.strftime('%Y-%m-%d') for date in dates]
     sales_values = [sales_dict.get(date, 0) for date in dates]
 
@@ -133,9 +155,8 @@ def get_sales_data(request):
     return JsonResponse({
         'sales_labels': sales_labels,
         'sales_values': sales_values,
-        'total_revenue': total_revenue,  # Include total revenue in the response
+        'total_revenue': total_revenue,
     })
-
 
 
 
