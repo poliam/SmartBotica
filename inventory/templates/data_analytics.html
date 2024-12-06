@@ -9,8 +9,16 @@ Top Medicine Sales
     <h1 class="text-center mb-4">Top Medicine Sales</h1>
     <p class="text-center">Analyze the best-selling medicines in the inventory.</p>
 
+    <!-- Monthly Top Sales Chart -->
+    <h2 class="mt-5">Monthly Medicine Demand</h2>
+    <canvas id="monthlySalesChart" style="max-height: 500px;"></canvas>
+
+    <!-- Top Medicine Demand -->
+    <h2 class="mt-5">Top Medicine Demand</h2>
+    <canvas id="salesChart" style="max-height: 400px;"></canvas>
+
     <!-- Top Medicines Table -->
-    <h2>Top Medicines Table</h2>
+    <h2 class="mt-5">Top Medicines Table</h2>
     {% if sales_data %}
     <table id="salesTable" class="table table-striped table-bordered">
         <thead>
@@ -31,10 +39,6 @@ Top Medicine Sales
     {% else %}
     <p>No sales data available.</p>
     {% endif %}
-
-    <!-- Top Medicine Sales Chart -->
-    <h2 class="mt-5">Top Medicine Demand</h2>
-    <canvas id="salesChart" style="max-height: 400px;"></canvas>
 </div>
 
 <!-- Scripts -->
@@ -48,12 +52,77 @@ Top Medicine Sales
         $('#salesTable').DataTable();
     });
 
-    // Prepare data for Chart.js
+    // Prepare data for Monthly Top Sales Chart
+    const monthlySales = {% if monthly_sales %}{{ monthly_sales|safe }}{% else %}{} {% endif %};
+    const months = Object.keys(monthlySales);
+    const datasets = [];
+
+    const productData = {};
+    months.forEach(month => {
+        monthlySales[month].forEach(item => {
+            if (!productData[item.product]) {
+                productData[item.product] = [];
+            }
+            productData[item.product].push({ month: month, sales: item.total_sales });
+        });
+    });
+
+    for (const [product, data] of Object.entries(productData)) {
+        datasets.push({
+            label: product,
+            data: months.map(month => {
+                const record = data.find(item => item.month === month);
+                return record ? record.sales : 0;
+            }),
+            borderWidth: 1,
+            fill: false,
+            tension: 0.4
+        });
+    }
+
+    // Render the Monthly Top Sales Chart
+    const ctxMonthly = document.getElementById('monthlySalesChart').getContext('2d');
+    new Chart(ctxMonthly, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Top Sales by Month'
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Total Sales'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Prepare data for Top Medicine Demand Chart
     const salesData = {% if sales_data %}{{ sales_data|safe }}{% else %}[] {% endif %};
     const labels = salesData.map(s => s.product);
     const sales = salesData.map(s => s.total_sales);
 
-    // Render the Chart.js bar chart
+    // Render the Top Medicine Demand Chart
     const ctx = document.getElementById('salesChart').getContext('2d');
     new Chart(ctx, {
         type: 'bar',

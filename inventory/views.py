@@ -960,9 +960,10 @@ def demand_predictions(request):
 from django.shortcuts import render
 from django.db.models import Sum
 from transactions.models import SaleItem
+from django.db.models.functions import TruncMonth
 
 def data_analytics(request):
-    # Fetch sales data grouped by product
+    # Fetch total sales data grouped by product
     sales_data = (
         SaleItem.objects.values('product__generic_name')  # Query for the generic name
         .annotate(total_sales=Sum('quantity'))
@@ -975,9 +976,31 @@ def data_analytics(request):
         for item in sales_data
     ]
 
-    # Debugging: Print sales data in the console
-    print("Transformed Sales Data:", sales_data_list)
+    # Fetch monthly sales data grouped by product
+    monthly_sales_data = (
+        SaleItem.objects.annotate(month=TruncMonth('billno__time'))
+        .values('month', 'product__generic_name')
+        .annotate(total_sales=Sum('quantity'))
+        .order_by('month', '-total_sales')
+    )
+
+    # Organize data by month for the chart
+    monthly_sales = {}
+    for record in monthly_sales_data:
+        month = record['month'].strftime('%Y-%m')  # Format as "YYYY-MM"
+        product = record['product__generic_name']
+        total_sales = record['total_sales']
+
+        if month not in monthly_sales:
+            monthly_sales[month] = []
+        monthly_sales[month].append({'product': product, 'total_sales': total_sales})
 
     # Pass data to the template
-    return render(request, "data_analytics.html", {"sales_data": sales_data_list})
-
+    return render(
+        request,
+        "data_analytics.html",
+        {
+            "sales_data": sales_data_list,
+            "monthly_sales": monthly_sales,  # Add monthly sales data
+        },
+    )

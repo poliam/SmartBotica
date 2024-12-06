@@ -6,7 +6,10 @@
 <div class="container my-4">
     <h1 class="text-center mb-4">Demand Predictions</h1>
 
-    <h2>ADF Test Results</h2>
+    <h2 class="mt-5">Demand Prediction Chart</h2>
+    <canvas id="predictionChart" style="max-height: 400px;"></canvas>
+
+    <h2 class="mt-5">ADF Test Results</h2>
     {% if adf_results %}
     <table id="adfTable" class="table table-striped table-bordered">
         <thead>
@@ -53,9 +56,6 @@
     {% else %}
     <p>No predictions available due to insufficient data.</p>
     {% endif %}
-
-    <h2 class="mt-5">Demand Prediction Chart</h2>
-    <canvas id="predictionChart" style="max-height: 400px;"></canvas>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

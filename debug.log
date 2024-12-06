@@ -15990,3 +15990,28 @@ DEBUG 2024-12-06 09:41:14,621 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
 DEBUG 2024-12-06 09:41:14,624 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
 DEBUG 2024-12-06 10:12:10,913 proactor_events Using proactor: IocpProactor
 DEBUG 2024-12-06 10:12:11,191 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 10:57:21,478 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 10:57:28,095 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 10:57:28,110 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 10:57:28,114 __init__ interactive is False
+DEBUG 2024-12-06 10:57:28,115 __init__ platform is win32
+DEBUG 2024-12-06 10:57:28,320 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 10:57:28,329 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+WARNING 2024-12-06 10:57:31,524 log Not Found: /favicon.ico
+INFO 2024-12-06 11:03:08,777 autoreload D:\4th Year College\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-06 11:03:08,779 proactor_events Using proactor: IocpProactor
+INFO 2024-12-06 11:03:10,754 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-06 11:03:14,111 __init__ matplotlib data path: C:\Users\Orlando\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-06 11:03:14,119 __init__ CONFIGDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 11:03:14,121 __init__ interactive is False
+DEBUG 2024-12-06 11:03:14,122 __init__ platform is win32
+DEBUG 2024-12-06 11:03:14,205 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
+DEBUG 2024-12-06 11:03:14,208 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-06 11:03:31,452 views Selected items on GET: []
+DEBUG 2024-12-06 11:03:35,346 views Suggestions sent: [{'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 43}, {'pk': 13, 'generic_name': 'Ascorbic Acid', 'brand_name': 'Ceelin', 'dosage_strength': '100mg', 'form__name': 'Syrup', 'quantity': 3}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 2}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 93}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}]
+DEBUG 2024-12-06 11:03:35,464 views Suggestions sent: [{'pk': 12, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '500mg', 'form__name': 'Capsule', 'quantity': 43}, {'pk': 20, 'generic_name': 'Vitamin B Complex', 'brand_name': 'Neurobion', 'dosage_strength': None, 'form__name': 'Injection', 'quantity': 2}, {'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 10}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 93}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}, {'pk': 54, 'generic_name': 'Amoxicillin', 'brand_name': 'Hibiotic', 'dosage_strength': '250mg', 'form__name': 'Capsule', 'quantity': 200}]
+ERROR 2024-12-06 11:03:46,114 views Error processing product 54: Not enough stock available for Amoxicillin
+DEBUG 2024-12-06 11:03:46,199 views Selected items on GET: []
+DEBUG 2024-12-06 11:10:09,433 views Selected items on GET: []
+DEBUG 2024-12-06 11:18:54,766 proactor_events Using proactor: IocpProactor
+DEBUG 2024-12-06 11:18:55,052 proactor_events Using proactor: IocpProactor
