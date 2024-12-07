@@ -989,13 +989,20 @@ def demand_predictions(request):
             print(f"SARIMA model failed for {product}: {e}")
             continue
 
+    # Add filter logic for selected product
+    selected_product = request.GET.get('product_filter', None)
+    if selected_product:
+        predictions = [p for p in predictions if p['product'] == selected_product]
+
     # Pass results to template
     context = {
         "adf_results": adf_results,
         "predictions": predictions,
         "top_30_products": top_30_products,
+        "selected_product": selected_product,  # Pass selected product for filter retention
     }
     return render(request, "demand_predictions.html", context)
+
 
 from django.shortcuts import render
 from django.db.models import Sum

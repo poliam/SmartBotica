@@ -6,6 +6,19 @@
 <div class="container my-4">
     <h1 class="text-center mb-4">Demand Predictions</h1>
 
+    <!-- Filter Section -->
+    <div class="row mb-4">
+        <label for="medicineFilter" class="col-form-label col-auto">Filter by Medicine:</label>
+        <div class="col-auto">
+            <select id="medicineFilter" class="form-select">
+                <option value="">-- All Medicines --</option>
+                {% for product in top_30_products %}
+                <option value="{{ product }}" {% if selected_product == product %}selected{% endif %}>{{ product }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
     <!-- Chart Section -->
     <div class="card shadow mb-4">
         <div class="card-header bg-primary text-white">
@@ -17,101 +30,116 @@
     </div>
 
     <!-- Collapsible Section for ADF Test Results -->
-    <div class="accordion mt-5" id="accordionADF">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="adfHeader">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adfResults" aria-expanded="false" aria-controls="adfResults">
-                    ADF Test Results
-                </button>
-            </h2>
-            <div id="adfResults" class="accordion-collapse collapse" aria-labelledby="adfHeader" data-bs-parent="#accordionADF">
-                <div class="accordion-body">
-                    {% if adf_results %}
-                    <table id="adfTable" class="table table-striped table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Product</th>
-                                <th>ADF Statistic</th>
-                                <th>p-value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for result in adf_results %}
-                            <tr>
-                                <td>{{ result.product }}</td>
-                                <td>{{ result.adf_statistic }}</td>
-                                <td>{{ result.p_value }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    {% else %}
-                    <p>No ADF test results available due to insufficient data.</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Collapsible Section for Predictions -->
-    <div class="accordion mt-5" id="accordionPredictions">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="predictionsHeader">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#predictions" aria-expanded="false" aria-controls="predictions">
-                    Predictions
-                </button>
-            </h2>
-            <div id="predictions" class="accordion-collapse collapse" aria-labelledby="predictionsHeader" data-bs-parent="#accordionPredictions">
-                <div class="accordion-body">
-                    {% if predictions %}
-                    <table id="predictionsTable" class="table table-striped table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Product</th>
-                                <th>Actual</th>
-                                <th>Predicted</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for prediction in predictions %}
-                            <tr>
-                                <td>{{ prediction.product }}</td>
-                                <td>{{ prediction.actual|join:", " }}</td>
-                                <td>{{ prediction.predicted|join:", " }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    {% else %}
-                    <p>No predictions available due to insufficient data.</p>
-                    {% endif %}
-                </div>
+<div class="accordion mt-5" id="accordionADF">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="adfHeader">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adfResults" aria-expanded="false" aria-controls="adfResults">
+                ADF Test Results
+            </button>
+        </h2>
+        <div id="adfResults" class="accordion-collapse collapse" aria-labelledby="adfHeader" data-bs-parent="#accordionADF">
+            <div class="accordion-body table-responsive">
+                {% if adf_results %}
+                <table id="adfTable" class="table table-striped table-bordered table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Product</th>
+                            <th>ADF Statistic</th>
+                            <th>p-value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in adf_results %}
+                        <tr>
+                            <td>{{ result.product }}</td>
+                            <td>{{ result.adf_statistic }}</td>
+                            <td>{{ result.p_value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No ADF test results available due to insufficient data.</p>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-<!-- JavaScript and CSS for Chart.js and DataTables -->
+<!-- Collapsible Section for Predictions -->
+<div class="accordion mt-5" id="accordionPredictions">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="predictionsHeader">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#predictions" aria-expanded="false" aria-controls="predictions">
+                Predictions
+            </button>
+        </h2>
+        <div id="predictions" class="accordion-collapse collapse" aria-labelledby="predictionsHeader" data-bs-parent="#accordionPredictions">
+            <div class="accordion-body table-responsive">
+                {% if predictions %}
+                <table id="predictionsTable" class="table table-striped table-bordered table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Product</th>
+                            <th>Actual</th>
+                            <th>Predicted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prediction in predictions %}
+                        <tr data-product="{{ prediction.product }}">
+                            <td>{{ prediction.product }}</td>
+                            <td>{{ prediction.actual|join:", " }}</td>
+                            <td>{{ prediction.predicted|join:", " }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No predictions available due to insufficient data.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- JavaScript for Chart.js and DataTables -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     // Initialize DataTables
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#adfTable').DataTable();
         $('#predictionsTable').DataTable();
     });
 
     // Prepare data for Chart.js
     const predictions = {% if predictions %}{{ predictions|safe }}{% else %}[]{% endif %};
+    let filteredPredictions = predictions; // Filtered data for chart and table
     const labels = predictions.map(p => p.product);
     const actualData = predictions.map(p => p.actual.reduce((a, b) => a + b, 0)); // Sum of actual
     const predictedData = predictions.map(p => p.predicted.reduce((a, b) => a + b, 0)); // Sum of predicted
 
+    // Function to update the chart with filtered data
+    function updateChart(filteredData) {
+        const filteredLabels = filteredData.map(p => p.product);
+        const filteredActualData = filteredData.map(p => p.actual.reduce((a, b) => a + b, 0));
+        const filteredPredictedData = filteredData.map(p => p.predicted.reduce((a, b) => a + b, 0));
+
+        chart.data.labels = filteredLabels;
+        chart.data.datasets[0].data = filteredActualData;
+        chart.data.datasets[1].data = filteredPredictedData;
+        chart.update();
+    }
+
     // Render Chart.js
     const ctx = document.getElementById('predictionChart').getContext('2d');
-    new Chart(ctx, {
+    const chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
@@ -137,5 +165,73 @@
             }
         }
     });
+
+    // Apply the default "All Medicines" filter on page load
+    document.addEventListener('DOMContentLoaded', function () {
+        const filter = document.getElementById('medicineFilter');
+
+        // Set the dropdown to the default "All Medicines"
+        filter.value = ''; // Ensure the dropdown shows "-- All Medicines --"
+
+        // Apply the filter to show all data
+        applyFilter('');
+    });
+
+    // Filter Functionality
+    document.getElementById('medicineFilter').addEventListener('change', function () {
+        const selectedMedicine = this.value.toLowerCase();
+
+        // Update table rows
+        const rows = document.querySelectorAll('#predictionsTable tbody tr');
+        rows.forEach(row => {
+            const product = row.getAttribute('data-product').toLowerCase();
+            if (!selectedMedicine || product.includes(selectedMedicine)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // Update filtered data for chart
+        if (selectedMedicine) {
+            filteredPredictions = predictions.filter(p =>
+                p.product.toLowerCase() === selectedMedicine
+            );
+        } else {
+            filteredPredictions = predictions; // Reset to all data
+        }
+
+        // Update the chart with the filtered data
+        updateChart(filteredPredictions);
+    });
+
+    // Helper function to apply the filter
+    function applyFilter(selectedMedicine) {
+        const rows = document.querySelectorAll('#predictionsTable tbody tr');
+        rows.forEach(row => {
+            const product = row.getAttribute('data-product').toLowerCase();
+            if (!selectedMedicine || product.includes(selectedMedicine)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // Filter predictions for chart
+        if (selectedMedicine) {
+            filteredPredictions = predictions.filter(p =>
+                p.product.toLowerCase() === selectedMedicine
+            );
+        } else {
+            filteredPredictions = predictions; // Reset to all data
+        }
+
+        // Update the chart with filtered data
+        updateChart(filteredPredictions);
+    }
 </script>
+
+
+
+
 {% endblock content %}
