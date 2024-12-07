@@ -26,6 +26,8 @@ def update_password(request):
 
     return render(request, 'update_password.html', {'form': form})
 
+from datetime import timedelta
+
 def home_view(request):
     filter_option = request.GET.get('filter', 'weekly')
     today = datetime.now().date()
@@ -88,7 +90,13 @@ def home_view(request):
     medicine_shortage = Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False).count()
 
     inventory_status = "Warning" if medicine_shortage >= 5 else "Good"
-    low_stock_products = Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False)
+
+    # Fetch medicines nearing expiry (e.g., within the next 30 days)
+    near_expiry_products = Stock.objects.filter(
+        expiry_date__lte=today + timedelta(days=30),  # Expiring within 30 days
+        expiry_date__gte=today,                      # Not expired yet
+        is_deleted=False
+    ).order_by('expiry_date')
 
     context = {
         'sales_data': sales_values,
@@ -100,7 +108,7 @@ def home_view(request):
             'medicines_available': medicines_available,
             'medicine_shortage': medicine_shortage,
         },
-        'low_stock_products': low_stock_products,
+        'near_expiry_products': near_expiry_products,  # Pass near-expiry products to the template
         'top_products': top_products,
         'selected_filter': filter_option,
     }
@@ -109,6 +117,7 @@ def home_view(request):
 
 from django.http import JsonResponse
 from datetime import datetime, timedelta
+
 def get_sales_data(request):
     filter_option = request.GET.get('filter', 'weekly')
     today = datetime.now().date()

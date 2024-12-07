@@ -552,21 +552,61 @@ def edit_pharmacologic_category(request, pk):
         form = PharmacologicCategoryForm(instance=category)
     return render(request, 'edit_categories.html', {'form': form, 'category': category})
 
-def add_new_stock_view(request):
-    low_stock_products = list(Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False))
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from .models import Stock, StockHistory
+from .forms import AddStockForm
 
-    # Debugging the data passed to the template
-    print("Low Stock Products in View:")
-    for product in low_stock_products:
-        print(f"Product: {product.generic_name}, Quantity: {product.quantity}, Threshold: {product.threshold}")
+def add_new_stock_view(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        quantity_added = request.POST.get('quantity_added')
+        expiry_date = request.POST.get('expiry_date')
+
+        # Validation checks
+        if not product_id or not quantity_added or not expiry_date:
+            messages.error(request, "All fields are required.")
+            return redirect('new-stock')
+
+        try:
+            stock = get_object_or_404(Stock, pk=product_id)
+            quantity_added = int(quantity_added)
+
+            if quantity_added <= 0:
+                messages.error(request, "Quantity to add must be greater than zero.")
+                return redirect('new-stock')
+
+            # Update stock quantity and expiry date
+            stock.quantity += quantity_added
+            stock.expiry_date = expiry_date
+            stock.save()
+
+            # Log the update in StockHistory
+            StockHistory.objects.create(
+                stock=stock,
+                quantity_added=quantity_added,
+                total_quantity=stock.quantity,
+                updated_by=request.user if request.user.is_authenticated else None,
+                expiry_date=expiry_date,
+            )
+
+            messages.success(request, f"Stock updated successfully for {stock.generic_name}.")
+            return redirect('new-stock')
+        except Exception as e:
+            messages.error(request, f"An error occurred: {e}")
+            return redirect('new-stock')
+
+    # On GET request, fetch low stock products
+    low_stock_products = Stock.objects.filter(
+        quantity__lt=F('threshold'),
+        is_deleted=False
+    ).order_by('quantity')
 
     context = {
-        'low_stock_products': low_stock_products,  # Convert to list to avoid lazy evaluation issues
+        'low_stock_products': low_stock_products,
         'form': AddStockForm(),
     }
-    return render(request, 'add_new_stock.html', context)
-
-
+    return render(request, 'new_stock.html', context)
 
 def add_medicine(request):
     if request.method == 'POST':

@@ -11,6 +11,7 @@ from .views import (
 )
 from .views import add_medicine, AddMedicineHistoryView
 from . import views
+from .views import add_new_stock_view
 
 
 urlpatterns = [
@@ -50,6 +51,7 @@ urlpatterns = [
     path('pharmacologic-categories/edit/<int:pk>/', views.edit_pharmacologic_category, name='edit-pharmacologic-category'),
     path('demand-predictions/', views.demand_predictions, name='demand-predictions'),
     path('data-analytics/', data_analytics, name='data-analytics'),  # Add the data-analytics path
-    
+    path('new-stock/', add_new_stock_view, name='new-stock'),
+
 
 ]

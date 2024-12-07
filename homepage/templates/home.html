@@ -80,25 +80,28 @@
 
     <!-- Alerts and Top Sales Products -->
     <div class="row mt-4">
-        <!-- Alerts -->
+        
+        <!-- Alerts Section -->
         <div class="col-md-6">
             <div class="card shadow-sm">
                 <div class="card-header bg-light">
-                    <h5 class="fw-bold text-dark mb-0">Alerts</h5>
+                    <h5 class="fw-bold text-dark mb-0">Alerts: Near Expiry Medicines</h5>
                 </div>
                 <div class="card-body">
-                    {% if low_stock_products %}
+                    {% if near_expiry_products %}
                         <ul class="list-group list-group-flush">
-                            {% for product in low_stock_products %}
+                            {% for product in near_expiry_products %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <strong>{{ product.generic_name }}</strong>
-                                    <span class="badge bg-warning text-dark">Qty: {{ product.quantity }}</span>
+                                    <span class="badge bg-warning text-dark">
+                                        Exp: {{ product.expiry_date|date:"M d, Y" }}
+                                    </span>
                                 </li>
                             {% endfor %}
                         </ul>
                     {% else %}
                         <div class="alert alert-info text-center m-0" role="alert">
-                            No products are running out of stock.
+                            No products nearing expiry.
                         </div>
                     {% endif %}
                 </div>

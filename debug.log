@@ -20630,3 +20630,339 @@ DEBUG 2024-12-06 22:49:36,508 __init__ CACHEDIR=C:\Users\Orlando\.matplotlib
 DEBUG 2024-12-06 22:49:36,511 font_manager Using fontManager instance from C:\Users\Orlando\.matplotlib\fontlist-v390.json
 DEBUG 2024-12-06 22:50:21,595 views Selected items on GET: []
 DEBUG 2024-12-06 22:50:24,202 views Selected items on GET: []
+INFO 2024-12-07 20:50:56,195 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 20:50:57,803 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 20:50:57,809 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 20:50:57,811 __init__ interactive is False
+DEBUG 2024-12-07 20:50:57,811 __init__ platform is win32
+DEBUG 2024-12-07 20:50:57,909 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 20:50:57,913 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-07 20:51:05,004 views Search Query: 
+DEBUG 2024-12-07 20:51:05,006 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:53:08,698 views Selected items on GET: []
+DEBUG 2024-12-07 20:53:11,041 views Selected items on GET: []
+DEBUG 2024-12-07 20:53:13,418 views Selected items on GET: []
+DEBUG 2024-12-07 20:53:29,410 views Search Query: 
+DEBUG 2024-12-07 20:53:29,414 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:53:32,250 views Suggestions sent: []
+DEBUG 2024-12-07 20:53:32,280 views Suggestions sent: []
+DEBUG 2024-12-07 20:54:50,633 views Search Query: 
+DEBUG 2024-12-07 20:54:50,635 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:55:07,573 views Search Query: 
+DEBUG 2024-12-07 20:55:07,575 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:57:16,409 views Search Query: 
+DEBUG 2024-12-07 20:57:16,412 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:58:13,389 views Search Query: 
+DEBUG 2024-12-07 20:58:13,391 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:58:20,668 views Search Query: 
+DEBUG 2024-12-07 20:58:20,671 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:58:48,430 views Selected items on GET: []
+DEBUG 2024-12-07 20:58:52,682 views Search Query: 
+DEBUG 2024-12-07 20:58:52,684 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:58:59,242 views Search Query: 
+DEBUG 2024-12-07 20:58:59,244 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:59:07,584 views Search Query: 
+DEBUG 2024-12-07 20:59:07,586 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 20:59:57,984 views Search Query: 
+DEBUG 2024-12-07 20:59:57,987 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:00:44,409 views Search Query: 
+DEBUG 2024-12-07 21:00:44,412 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:02:14,457 views Search Query: 
+DEBUG 2024-12-07 21:02:14,459 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:02:32,290 views Search Query: 
+DEBUG 2024-12-07 21:02:32,291 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:02:40,767 views Search Query: 
+DEBUG 2024-12-07 21:02:40,769 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:02:49,649 views Search Query: 
+DEBUG 2024-12-07 21:02:49,651 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:02:51,584 views Suggestions sent: [{'pk': 23, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 45}, {'pk': 24, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 88}, {'pk': 53, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500mg', 'form__name': 'Tablet', 'quantity': 100}]
+DEBUG 2024-12-07 21:03:50,406 views Search Query: 
+DEBUG 2024-12-07 21:03:50,409 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:03:52,046 views Search Query: 
+DEBUG 2024-12-07 21:03:52,048 views Filtered Queryset Count: 18
+DEBUG 2024-12-07 21:05:00,030 views Search Query: 
+DEBUG 2024-12-07 21:05:00,032 views Filtered Queryset Count: 0
+DEBUG 2024-12-07 21:14:51,828 views Search Query: 
+DEBUG 2024-12-07 21:14:51,831 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:14:52,907 views Search Query: 
+DEBUG 2024-12-07 21:14:52,908 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:15:11,694 views Search Query: 
+DEBUG 2024-12-07 21:15:11,696 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:15:13,453 views Selected items on GET: []
+DEBUG 2024-12-07 21:15:17,630 views Search Query: 
+DEBUG 2024-12-07 21:15:17,633 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:15:22,223 views Search Query: 
+DEBUG 2024-12-07 21:15:22,225 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:15:36,702 views Search Query: 
+DEBUG 2024-12-07 21:15:36,704 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:15:37,747 views Search Query: 
+DEBUG 2024-12-07 21:15:37,750 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:15:40,116 views Search Query: 
+DEBUG 2024-12-07 21:15:40,118 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:15:57,869 views Search Query: 
+DEBUG 2024-12-07 21:15:57,871 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:16:03,642 views Search Query: 
+DEBUG 2024-12-07 21:16:03,645 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:16:45,646 views Search Query: 
+DEBUG 2024-12-07 21:16:45,648 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:16:48,194 views Search Query: 
+DEBUG 2024-12-07 21:16:48,196 views Filtered Queryset Count: 20
+INFO 2024-12-07 21:27:34,557 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:27:34,557 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:27:35,510 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:27:37,024 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:27:37,029 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:27:37,031 __init__ interactive is False
+DEBUG 2024-12-07 21:27:37,031 __init__ platform is win32
+DEBUG 2024-12-07 21:27:37,123 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:27:37,127 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:28:18,188 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:28:18,189 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:28:19,089 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:28:20,513 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:28:20,513 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:28:20,522 __init__ interactive is False
+DEBUG 2024-12-07 21:28:20,522 __init__ platform is win32
+DEBUG 2024-12-07 21:28:20,619 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:28:20,624 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:28:22,964 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:28:22,965 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:28:23,821 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:28:25,232 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:28:25,237 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:28:25,239 __init__ interactive is False
+DEBUG 2024-12-07 21:28:25,239 __init__ platform is win32
+DEBUG 2024-12-07 21:28:25,362 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:28:25,367 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+WARNING 2024-12-07 21:30:16,689 log Not Found: /favicon.ico
+DEBUG 2024-12-07 21:30:24,765 views Search Query: 
+DEBUG 2024-12-07 21:30:24,768 views Filtered Queryset Count: 20
+INFO 2024-12-07 21:33:25,335 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:33:25,336 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:33:26,361 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:33:27,877 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:33:27,883 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:33:27,884 __init__ interactive is False
+DEBUG 2024-12-07 21:33:27,885 __init__ platform is win32
+DEBUG 2024-12-07 21:33:27,977 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:33:27,981 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:37:05,112 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:37:05,113 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:37:06,021 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:37:07,540 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:37:07,546 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:37:07,548 __init__ interactive is False
+DEBUG 2024-12-07 21:37:07,549 __init__ platform is win32
+DEBUG 2024-12-07 21:37:07,647 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:37:07,652 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:37:38,117 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\urls.py changed, reloading.
+DEBUG 2024-12-07 21:37:38,118 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:37:39,063 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:37:40,541 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:37:40,541 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:37:40,541 __init__ interactive is False
+DEBUG 2024-12-07 21:37:40,553 __init__ platform is win32
+DEBUG 2024-12-07 21:37:40,645 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:37:40,652 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:41:19,910 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:41:19,910 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:41:20,903 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:41:22,511 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:41:22,527 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:41:22,531 __init__ interactive is False
+DEBUG 2024-12-07 21:41:22,531 __init__ platform is win32
+DEBUG 2024-12-07 21:41:22,640 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:41:22,645 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:41:26,245 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:41:26,246 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:41:27,130 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:41:28,571 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:41:28,571 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:41:28,580 __init__ interactive is False
+DEBUG 2024-12-07 21:41:28,581 __init__ platform is win32
+DEBUG 2024-12-07 21:41:28,672 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:41:28,680 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:44:56,677 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:44:56,677 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:44:57,780 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:44:59,312 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:44:59,317 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:44:59,319 __init__ interactive is False
+DEBUG 2024-12-07 21:44:59,319 __init__ platform is win32
+DEBUG 2024-12-07 21:44:59,417 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:44:59,420 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:45:34,749 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:45:34,750 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:45:35,731 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:45:37,287 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:45:37,292 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:45:37,294 __init__ interactive is False
+DEBUG 2024-12-07 21:45:37,295 __init__ platform is win32
+DEBUG 2024-12-07 21:45:37,410 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:45:37,414 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 21:52:37,638 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:52:37,638 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:52:38,581 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:52:40,022 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:52:40,037 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:52:40,037 __init__ interactive is False
+DEBUG 2024-12-07 21:52:40,041 __init__ platform is win32
+DEBUG 2024-12-07 21:52:40,128 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:52:40,136 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-07 21:53:51,490 views Search Query: 
+DEBUG 2024-12-07 21:53:51,493 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:53:59,608 views Search Query: 
+DEBUG 2024-12-07 21:53:59,610 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:01,152 views Search Query: 
+DEBUG 2024-12-07 21:54:01,154 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:01,709 views Search Query: 
+DEBUG 2024-12-07 21:54:01,712 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:17,586 views Search Query: 
+DEBUG 2024-12-07 21:54:17,587 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:20,247 views Search Query: 
+DEBUG 2024-12-07 21:54:20,249 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:22,747 views Search Query: 
+DEBUG 2024-12-07 21:54:22,749 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:24,891 views Search Query: 
+DEBUG 2024-12-07 21:54:24,893 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:47,916 views Search Query: 
+DEBUG 2024-12-07 21:54:47,918 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:53,073 views Search Query: 
+DEBUG 2024-12-07 21:54:53,075 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:56,318 views Search Query: 
+DEBUG 2024-12-07 21:54:56,321 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 21:54:59,620 views Search Query: 
+DEBUG 2024-12-07 21:54:59,623 views Filtered Queryset Count: 20
+INFO 2024-12-07 21:58:31,055 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\inventory\views.py changed, reloading.
+DEBUG 2024-12-07 21:58:31,056 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 21:58:32,072 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 21:58:33,567 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 21:58:33,572 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:58:33,574 __init__ interactive is False
+DEBUG 2024-12-07 21:58:33,574 __init__ platform is win32
+DEBUG 2024-12-07 21:58:33,665 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 21:58:33,665 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-07 22:00:16,243 views Search Query: 
+DEBUG 2024-12-07 22:00:16,246 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:00:18,335 views Search Query: 
+DEBUG 2024-12-07 22:00:18,337 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:00:22,561 views Search Query: 
+DEBUG 2024-12-07 22:00:22,562 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:00:44,115 views Search Query: 
+DEBUG 2024-12-07 22:00:44,116 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:00:48,047 views Search Query: 
+DEBUG 2024-12-07 22:00:48,048 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:00:54,538 views Search Query: 
+DEBUG 2024-12-07 22:00:54,540 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:00:56,556 views Search Query: 
+DEBUG 2024-12-07 22:00:56,558 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:01:00,157 views Search Query: 
+DEBUG 2024-12-07 22:01:00,159 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:01:04,484 views Search Query: 
+DEBUG 2024-12-07 22:01:04,486 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:01:17,977 views Search Query: 
+DEBUG 2024-12-07 22:01:17,979 views Filtered Queryset Count: 20
+INFO 2024-12-07 22:09:51,360 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-07 22:09:51,361 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 22:09:52,292 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 22:09:53,778 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 22:09:53,778 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 22:09:53,778 __init__ interactive is False
+DEBUG 2024-12-07 22:09:53,778 __init__ platform is win32
+DEBUG 2024-12-07 22:09:53,873 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 22:09:53,873 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+DEBUG 2024-12-07 22:10:12,768 views Selected items on GET: []
+DEBUG 2024-12-07 22:10:13,817 views Search Query: 
+DEBUG 2024-12-07 22:10:13,820 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:10:18,148 views Search Query: 
+DEBUG 2024-12-07 22:10:18,150 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:10:33,992 views Search Query: 
+DEBUG 2024-12-07 22:10:33,995 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:10:37,370 views Search Query: 
+DEBUG 2024-12-07 22:10:37,373 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:10:43,086 views Search Query: 
+DEBUG 2024-12-07 22:10:43,088 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:10:45,791 views Search Query: 
+DEBUG 2024-12-07 22:10:45,793 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:10:56,653 views Search Query: 
+DEBUG 2024-12-07 22:10:56,656 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:11:23,490 views Search Query: 
+DEBUG 2024-12-07 22:11:23,492 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:12:10,754 views Search Query: 
+DEBUG 2024-12-07 22:12:10,757 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:12:41,270 views Search Query: 
+DEBUG 2024-12-07 22:12:41,273 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:12:51,575 views Search Query: 
+DEBUG 2024-12-07 22:12:51,577 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:12:57,533 views Search Query: 
+DEBUG 2024-12-07 22:12:57,534 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:13:12,907 views Search Query: 
+DEBUG 2024-12-07 22:13:12,909 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:13:15,821 views Search Query: 
+DEBUG 2024-12-07 22:13:15,823 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:13:21,295 views Search Query: 
+DEBUG 2024-12-07 22:13:21,297 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:13:44,051 views Search Query: 
+DEBUG 2024-12-07 22:13:44,054 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:13:54,976 views Search Query: 
+DEBUG 2024-12-07 22:13:54,979 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:13:56,821 views Selected items on GET: []
+DEBUG 2024-12-07 22:13:58,152 views Search Query: 
+DEBUG 2024-12-07 22:13:58,154 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:14:45,178 views Search Query: 
+DEBUG 2024-12-07 22:14:45,181 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:14:48,411 views Search Query: 
+DEBUG 2024-12-07 22:14:48,413 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:15:20,889 views Search Query: 
+DEBUG 2024-12-07 22:15:20,891 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:16:35,692 views Search Query: 
+DEBUG 2024-12-07 22:16:35,694 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:16:53,132 views Search Query: 
+DEBUG 2024-12-07 22:16:53,134 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:20:02,244 views Selected items on GET: []
+DEBUG 2024-12-07 22:20:14,000 views Search Query: 
+DEBUG 2024-12-07 22:20:14,003 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:21:41,221 views Search Query: 
+DEBUG 2024-12-07 22:21:41,222 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:21:45,763 views Selected items on GET: []
+DEBUG 2024-12-07 22:21:57,539 views Search Query: 
+DEBUG 2024-12-07 22:21:57,542 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:22:21,844 views Search Query: 
+DEBUG 2024-12-07 22:22:21,846 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:23:48,805 views Search Query: 
+DEBUG 2024-12-07 22:23:48,807 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:23:57,269 views Search Query: 
+DEBUG 2024-12-07 22:23:57,271 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:23:59,290 views Selected items on GET: []
+DEBUG 2024-12-07 22:24:02,791 views Suggestions sent: [{'pk': 1, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500 mg', 'form__name': 'Tablet', 'quantity': 115}]
+DEBUG 2024-12-07 22:24:02,927 views Suggestions sent: [{'pk': 1, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500 mg', 'form__name': 'Tablet', 'quantity': 115}]
+DEBUG 2024-12-07 22:24:03,045 views Suggestions sent: [{'pk': 1, 'generic_name': 'Paracetamol', 'brand_name': 'Biogesic', 'dosage_strength': '500 mg', 'form__name': 'Tablet', 'quantity': 115}]
+DEBUG 2024-12-07 22:24:14,110 views Search Query: 
+DEBUG 2024-12-07 22:24:14,112 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 22:24:27,277 views Search Query: 
+DEBUG 2024-12-07 22:24:27,279 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 23:03:10,699 views Search Query: 
+DEBUG 2024-12-07 23:03:10,702 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 23:11:50,434 views Search Query: 
+DEBUG 2024-12-07 23:11:50,437 views Filtered Queryset Count: 20
+DEBUG 2024-12-07 23:11:52,211 views Selected items on GET: []
+DEBUG 2024-12-07 23:12:03,393 views Search Query: 
+DEBUG 2024-12-07 23:12:03,395 views Filtered Queryset Count: 20
+INFO 2024-12-07 23:30:03,171 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-07 23:30:03,173 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 23:30:10,481 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 23:30:28,329 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 23:30:28,349 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 23:30:28,351 __init__ interactive is False
+DEBUG 2024-12-07 23:30:28,352 __init__ platform is win32
+DEBUG 2024-12-07 23:30:28,632 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 23:30:28,643 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
+INFO 2024-12-07 23:31:18,782 autoreload C:\Users\USER\Documents\Capstone SmartBotika\SmartBotica\homepage\views.py changed, reloading.
+DEBUG 2024-12-07 23:31:18,783 proactor_events Using proactor: IocpProactor
+INFO 2024-12-07 23:31:20,158 autoreload Watching for file changes with StatReloader
+DEBUG 2024-12-07 23:31:22,438 __init__ matplotlib data path: C:\Users\USER\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\matplotlib\mpl-data
+DEBUG 2024-12-07 23:31:22,451 __init__ CONFIGDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 23:31:22,455 __init__ interactive is False
+DEBUG 2024-12-07 23:31:22,456 __init__ platform is win32
+DEBUG 2024-12-07 23:31:22,600 __init__ CACHEDIR=C:\Users\USER\.matplotlib
+DEBUG 2024-12-07 23:31:22,610 font_manager Using fontManager instance from C:\Users\USER\.matplotlib\fontlist-v390.json
