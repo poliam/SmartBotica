@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% block title %}New Sale{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-primary">Log New Sale</h2>
+
+    <form method="post" action="{% url 'new-sale' %}" id="sale-form">
+        {% csrf_token %}
+        
+        <!-- Add Product Section -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Add Product</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="product-search" class="form-label">Search Product</label>
+                        <input type="text" id="product-search" class="form-control" placeholder="Search by name or brand" autocomplete="off">
+                        <div id="product-suggestions" class="list-group mt-2" style="display: none;"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="id_quantity" class="form-label">Quantity</label>
+                        <input type="number" id="id_quantity" name="quantity" class="form-control" placeholder="Enter quantity" min="1">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="id_perprice" class="form-label">Price per Unit</label>
+                        <input type="number" id="id_perprice" name="perprice" class="form-control" placeholder="Enter price" step="0.01" min="0">
+                    </div>
+                </div>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6">
+                        <p><strong>Available Quantity:</strong> <span id="available-quantity">-</span></p>
+                    </div>
+                </div>
+                <div class="mt-4 text-end">
+                    <button type="button" id="add-to-list" class="btn btn-primary">Add to List</button>
+                    <button type="button" id="clear-list" class="btn btn-secondary">Clear List</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selected Products Section -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-warning text-white">
+                <h5 class="mb-0">Selected Products</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="selected-products">
+                        <tr>
+                            <td colspan="5" class="text-center">No products added yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Hidden input for selected items -->
+        <input type="hidden" id="selected-items" name="selected_items" value="[]">
+
+        <!-- Complete Sale Button -->
+        <div class="text-end">
+            <button type="button" class="btn btn-success btn-lg" id="complete-sale">Complete Sale</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        let selectedItems = [];
+        let availableQuantity = 0;
+
+        // Fetch product suggestions dynamically
+        $('#product-search').on('input', function () {
+            const query = $(this).val().trim();
+            if (query.length < 2) {
+                $('#product-suggestions').hide();
+                return;
+            }
+
+            $.ajax({
+                url: '/inventory/search-products/',
+                type: 'GET',
+                data: { q: query },
+                success: function (response) {
+                    console.log("Response from server:", response); // Log response
+                    const products = response.suggestions || [];
+                    if (products.length > 0) {
+                        $('#product-suggestions').empty().show();
+                        products.forEach(product => {
+                            const quantity = product.quantity ?? 'N/A'; // Fallback for undefined/null values
+                            $('#product-suggestions').append(`
+                                <button type="button" class="list-group-item list-group-item-action"
+                                    data-id="${product.pk}"
+                                    data-name="${product.generic_name}"
+                                    data-brand="${product.brand_name}"
+                                    data-quantity="${quantity}">
+                                    ${product.generic_name} (${product.brand_name}) - Available: ${quantity}
+                                </button>
+                            `);
+                        });
+                    } else {
+                        $('#product-suggestions').hide();
+                    }
+                },
+                error: function () {
+                    alert('Error fetching product suggestions. Please try again.');
+                },
+            });
+        });
+
+        // Handle product selection
+        $('#product-suggestions').on('click', '.list-group-item', function () {
+            const productId = $(this).data('id');
+            const productName = $(this).data('name');
+            availableQuantity = $(this).data('quantity'); // Capture available quantity
+
+            if (availableQuantity === undefined || availableQuantity === null) {
+                alert('Product information could not be retrieved. Please try again.');
+                $('#available-quantity').text('N/A');
+                return;
+            }
+
+            $('#product-search').val(productName).data('id', productId);
+            $('#available-quantity').text(availableQuantity); // Update available quantity display
+            $('#product-suggestions').hide();
+        });
+
+        // Add product to the list
+        $('#add-to-list').click(function () {
+            const productId = $('#product-search').data('id');
+            const productName = $('#product-search').val();
+            const quantity = parseInt($('#id_quantity').val());
+            const price = parseFloat($('#id_perprice').val());
+            const total = quantity * price;
+
+            if (!productId || !productName || isNaN(quantity) || isNaN(price) || quantity <= 0 || price <= 0) {
+                alert('Please fill out all fields correctly.');
+                return;
+            }
+
+            if (quantity > availableQuantity) {
+                alert(`Insufficient stock available. Only ${availableQuantity} items are in stock.`);
+                return;
+            }
+
+            const item = {
+                product_id: productId,
+                product_name: productName,
+                quantity,
+                price,
+                total: total.toFixed(2),
+            };
+
+            selectedItems.push(item);
+
+            if (selectedItems.length === 1) {
+                $('#selected-products').empty();
+            }
+
+            $('#selected-products').append(`
+                <tr>
+                    <td>${item.product_name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price.toFixed(2)}</td>
+                    <td>${item.total}</td>
+                    <td><button class="btn btn-danger btn-sm remove-item">Remove</button></td>
+                </tr>
+            `);
+
+            $('#selected-items').val(JSON.stringify(selectedItems));
+
+            // Reset fields
+            $('#product-search').val('').data('id', '');
+            $('#id_quantity').val('');
+            $('#id_perprice').val('');
+            $('#available-quantity').text('-');
+        });
+
+        // Remove product from the list
+        $('#selected-products').on('click', '.remove-item', function () {
+            const rowIndex = $(this).closest('tr').index();
+            selectedItems.splice(rowIndex, 1);
+            $(this).closest('tr').remove();
+
+            if (selectedItems.length === 0) {
+                $('#selected-products').html('<tr><td colspan="5" class="text-center">No products added yet.</td></tr>');
+            }
+
+            $('#selected-items').val(JSON.stringify(selectedItems));
+        });
+
+        // Clear all products from the list
+        $('#clear-list').click(function () {
+            selectedItems = [];
+            $('#selected-products').html('<tr><td colspan="5" class="text-center">No products added yet.</td></tr>');
+            $('#selected-items').val(JSON.stringify(selectedItems));
+        });
+
+        // Complete sale with confirmation
+        $('#complete-sale').click(function () {
+            if (selectedItems.length === 0) {
+                alert('No products added. Please add products to complete the sale.');
+                return;
+            }
+
+            const confirmation = confirm('Are you sure you want to complete this sale?');
+            if (confirmation) {
+                $('#selected-items').val(JSON.stringify(selectedItems));
+                $('#sale-form').submit();
+            }
+        });
+    });
+</script>
+
+
+
+{% endblock content %}

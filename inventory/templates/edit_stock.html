@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Edit Product Details{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f2f6fc;
+        color: #333333;
+    }
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        border: none;
+    }
+    .card-header {
+        padding: 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        text-align: center;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .form-group label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333333;
+        margin-bottom: 5px;
+    }
+    .form-control {
+        border-radius: 8px;
+        padding: 10px;
+        border: 1px solid #cad1d7;
+        background-color: #f9fafc;
+    }
+    .btn-primary {
+        background-color: #28a745;
+        border-color: #28a745;
+        font-weight: 600;
+        padding: 10px 25px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Edit Product Details</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <!-- Left Column -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.category.id_for_label }}">Category</label>
+                                    {{ form.category|add_class:"form-control" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.brand.id_for_label }}">Brand</label>
+                                    {{ form.brand|add_class:"form-control" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.product.id_for_label }}">Product Name</label>
+                                    {{ form.product|add_class:"form-control" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.code.id_for_label }}">Product Code</label>
+                                    {{ form.code|add_class:"form-control" }}
+                                </div>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.price.id_for_label }}">Price</label>
+                                    {{ form.price|add_class:"form-control" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.quantity.id_for_label }}">Quantity</label>
+                                    {{ form.quantity|add_class:"form-control" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.threshold.id_for_label }}">Threshold</label>
+                                    {{ form.threshold|add_class:"form-control" }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right mt-4">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,285 @@
+    {% extends "base.html" %}
+    {% load widget_tweaks %}
+    {% load static %}
+
+    {% block title %}Add New Medicine{% endblock title %}
+
+    {% block content %}
+    <style>
+        body {
+            background-color: #f2f6fc;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            background-color: #ffffff;
+            border: none;
+        }
+        .card-header {
+            padding: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #e0e6ed;
+            background-color: #f9fafc;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+
+        /* Modal Styles */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .custom-modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .custom-modal h5 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .custom-modal button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-confirm {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-cancel {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+    </style>
+
+    <div class="container my-5">
+        <!-- Title and Back Button -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4 class="text-primary mb-0">
+                    <i class="fas fa-plus-circle mr-2"></i>Add New Medicine
+                </h4>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-outline-secondary" href="{% url 'add-medicine-history' %}">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Add Medicine History
+                </a>
+            </div>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
+                <strong>
+                    {% if message.tags == 'error' %}Error:{% endif %}
+                </strong>
+                {{ message|safe }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+        
+        
+        <!-- Add Medicine Form -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">Add New Medicine</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="addMedicineForm" method="post" action="{% url 'add-medicine' %}">
+                            {% csrf_token %}
+
+                            <!-- Generic Name -->
+                            <div class="form-group">
+                                <label for="generic_name">Generic Name</label>
+                                {{ form.generic_name|add_class:"form-control" }}
+                                <span class="error-message"></span>
+                            </div>
+
+                            <!-- Brand Name -->
+                            <div class="form-group">
+                                <label for="brand_name">Brand Name</label>
+                                {{ form.brand_name|add_class:"form-control" }}
+                                <span class="error-message"></span>
+                            </div>
+
+                            <!-- Dosage Strength -->
+                            <div class="form-group">
+                                <label for="dosage_strength">Dosage Strength</label>
+                                {{ form.dosage_strength|add_class:"form-control" }}
+                                <span class="error-message"></span>
+                            </div>
+                                <!-- Threshold -->
+                                <div class="form-group">
+                                    <label for="threshold">Threshold Quantity</label>
+                                    <input 
+                                        type="number" 
+                                        id="threshold" 
+                                        name="threshold" 
+                                        class="form-control" 
+                                        min="0" 
+                                        value="{{ request.POST.threshold|default:0 }}" 
+                                        required>
+                                    <span class="error-message"></span>
+                                </div>
+                            <!-- Dosage Form -->
+                            <div class="form-group">
+                                <label for="form">Dosage Form</label>
+                                <select id="form" name="form" class="form-control" required>
+                                    <option value="">-- Select Dosage Form --</option>
+                                    {% for form in dosage_forms %}
+                                        <option value="{{ form.id }}" {% if form.id == request.POST.form %}selected{% endif %}>
+                                            {{ form.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <!-- Pharmacologic Category -->
+                            <div class="form-group">
+                                <label for="pharmacologic_category">Pharmacologic Category</label>
+                                <select id="pharmacologic_category" name="pharmacologic_category" class="form-control" required>
+                                    <option value="">-- Select Pharmacologic Category --</option>
+                                    {% for category in pharmacologic_categories %}
+                                        <option value="{{ category.id }}" {% if category.id == request.POST.pharmacologic_category %}selected{% endif %}>
+                                            {{ category.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <!-- Classification -->
+                            <div class="form-group">
+                                <label for="classification">Classification</label>
+                                {{ form.classification|add_class:"form-control" }}
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="text-right mt-4">
+                                <button type="button" id="openModal" class="btn btn-primary">Add Medicine</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Confirmation Modal -->
+    <div class="custom-modal" id="confirmationModal">
+        <div class="custom-modal-content">
+            <h5>Are you sure you want to add this medicine?</h5>
+            <button class="btn-confirm" id="confirmSubmit">Yes</button>
+            <button class="btn-cancel" id="cancelSubmit">No</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("confirmationModal");
+            const openModalButton = document.getElementById("openModal");
+            const confirmSubmitButton = document.getElementById("confirmSubmit");
+            const cancelSubmitButton = document.getElementById("cancelSubmit");
+            const form = document.getElementById("addMedicineForm");
+
+            // Function to validate the form and show error messages
+            function validateForm() {
+                let isValid = true;
+                const inputs = form.querySelectorAll("input, select, textarea");
+                
+                inputs.forEach((input) => {
+                    const errorElement = input.nextElementSibling; // Get the next sibling (error span)
+
+                    // Clear previous error message
+                    if (errorElement && errorElement.classList.contains("error-message")) {
+                        errorElement.innerText = "";
+                    }
+
+                    // Validate required fields
+                    if (input.hasAttribute("required") && !input.value.trim()) {
+                        isValid = false;
+                        // Display an error message below the field
+                        if (errorElement && errorElement.classList.contains("error-message")) {
+                            errorElement.innerText = "This field is required.";
+                        }
+                    }
+                });
+
+                return isValid;
+            }
+
+            // Show modal only if form is valid
+            openModalButton.addEventListener("click", function () {
+                if (validateForm()) {
+                    modal.style.display = "flex";
+                }
+            });
+
+            // Submit form when Yes is clicked
+            confirmSubmitButton.addEventListener("click", function () {
+                modal.style.display = "none";
+                form.submit();
+            });
+
+            // Close modal when No is clicked
+            cancelSubmitButton.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+        });
+    </script>
+
+    {% endblock content %}

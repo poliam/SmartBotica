@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Edit Medicine{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center text-primary">
+                <i class="fas fa-edit mr-2"></i>
+                Edit Medicine
+            </h1>
+            <hr>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_generic_name">Generic Name</label>
+                    {{ form.generic_name|attr:"class:form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="id_brand_name">Brand Name</label>
+                    {{ form.brand_name|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="id_dosage_strength">Dosage Strength</label>
+                    {{ form.dosage_strength|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="id_form">Dosage Form</label>
+                    {{ form.form|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="id_classification">Classification</label>
+                    {{ form.classification|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="id_pharmacologic_category">Pharmacologic Category</label>
+                    {{ form.pharmacologic_category|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="id_threshold">Threshold (Minimum Stock Level)</label>
+                    {{ form.threshold|add_class:"form-control" }}
+                </div>
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="fas fa-save mr-2"></i> Save Changes
+                    </button>
+                    <a href="{% url 'add-medicine-history' %}" class="btn btn-secondary px-4">
+                        <i class="fas fa-times mr-2"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Confirmation prompt for saving changes
+        const editMedicineForm = document.querySelector("form");
+        editMedicineForm.addEventListener("submit", function (event) {
+            const confirmation = confirm("Are you sure you want to save these changes?");
+            if (!confirmation) {
+                event.preventDefault(); // Prevent form submission if not confirmed
+            }
+        });
+    });
+</script>
+{% endblock content %}

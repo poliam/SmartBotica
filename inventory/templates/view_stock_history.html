@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}View Product Stock History{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f2f6fc;
+        color: #333333;
+    }
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        border: none;
+    }
+    .card-header {
+        padding: 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        text-align: center;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .product-details {
+        font-size: 14px;
+        border: 1px solid #e0e6ed;
+        border-radius: 10px;
+        margin: 20px auto;
+        background-color: #f9fafc;
+        padding: 15px;
+        width: 80%;
+    }
+    .product-details th, .product-details td {
+        padding: 10px;
+        text-align: left;
+    }
+    .product-details th {
+        width: 30%;
+        font-weight: 600;
+        color: #555555;
+    }
+    .table {
+        font-size: 14px;
+    }
+    .table th {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Product Stock History - {{ stock.generic_name }} ({{ stock.brand_name }})</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="text-center">Product Details</h5>
+                    <table class="product-details">
+                        <tr>
+                            <th>Generic Name:</th>
+                            <td>{{ stock.generic_name }}</td>
+                            <th>Brand Name:</th>
+                            <td>{{ stock.brand_name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Dosage Strength:</th>
+                            <td>{{ stock.dosage_strength }}</td>
+                            <th>Form:</th>
+                            <td>{{ stock.form.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pharmacologic Category:</th>
+                            <td>{{ stock.pharmacologic_category.name }}</td>
+                            <th>Current Quantity:</th>
+                            <td>{{ stock.quantity }}</td>
+                        </tr>
+                        <tr>
+                            <th>Expiry Date:</th>
+                            <td>{% if stock.expiry_date %}{{ stock.expiry_date|date:"Y-m-d" }}{% else %}N/A{% endif %}</td>
+                            <th>Last Updated:</th>
+                            <td>{{ stock.last_updated|date:"Y-m-d H:i" }}</td>
+                        </tr>
+                    </table>
+
+                    <h5 class="mt-4">Stock History</h5>
+                    <table class="table table-hover table-bordered text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Date Added</th>
+                                <th>Quantity Added</th>
+                                <th>Total Stock</th>
+                                <th>Expiry Date</th>
+                                <th>Updated By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in stock_history %}
+                            <tr>
+                                <td>{{ record.date|date:"Y-m-d H:i" }}</td>
+                                <td>{{ record.quantity_added }}</td>
+                                <td>{{ record.total_quantity }}</td>
+                                <td>{% if record.expiry_date %}{{ record.expiry_date|date:"Y-m-d" }}{% else %}N/A{% endif %}</td>
+                                <td>{% if record.updated_by %}{{ record.updated_by.username }}{% else %}System{% endif %}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5">No history available for this product.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+<div class="row mt-4">
+    <div class="col-md-12 d-flex justify-content-center">
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-sm">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">&laquo;&laquo;</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">&laquo;</a>
+                </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">&raquo;&raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</div>
+
+                    <div class="text-right mt-4">
+                        <a href="{% url 'inventory' %}" class="btn btn-secondary">Back to Inventory List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

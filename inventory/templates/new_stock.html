@@ -1,0 +1,254 @@
+    {% extends "base.html" %}
+    {% load widget_tweaks %}
+    {% load static %}
+
+    {% block title %}Add New Stock{% endblock title %}
+
+    {% block content %}
+    <style>
+        body {
+            background-color: #f2f6fc;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            background-color: #ffffff;
+            border: none;
+        }
+        .card-header {
+            padding: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #e0e6ed;
+            background-color: #f9fafc;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+        .low-stock-container {
+            height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+
+    <div class="container my-5">
+        <div class="row">
+            <!-- Low Stock Products -->
+<div class="col-md-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h5 class="fw-bold mb-0">Low Stock Products</h5>
+        </div>
+        <div class="card-body">
+            {% if low_stock_products %}
+                <ul class="list-group list-group-flush">
+                    {% for product in low_stock_products %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>{{ product.generic_name }}</strong>
+                            <span class="badge bg-warning text-dark">Qty: {{ product.quantity }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-info text-center m-0" role="alert">
+                    No products are running out of stock.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+            
+
+            <!-- Add New Stock Form -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">Add New Stock</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{% url 'new-stock' %}">
+                            {% csrf_token %}
+
+                            <!-- Product Search -->
+                            <div class="form-group position-relative">
+                                <label for="product_search">Search Product</label>
+                                <input
+                                    type="text"
+                                    id="product_search"
+                                    class="form-control"
+                                    placeholder="Type product name or brand to search"
+                                    autocomplete="off"
+                                />
+                                <div id="product_suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+                                <input type="hidden" id="product_id" name="product_id" />
+                            </div>
+
+                            <div class="row">
+                                <!-- Left Column -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Generic Name</label>
+                                        <input type="text" id="generic_name" class="form-control" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Brand Name</label>
+                                        <input type="text" id="brand_name" class="form-control" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Dosage Strength</label>
+                                        <input type="text" id="dosage_strength" class="form-control" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Form</label>
+                                        <input type="text" id="form" class="form-control" readonly />
+                                    </div>
+                                </div>
+
+                                <!-- Right Column -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Available Quantity</label>
+                                        <input type="text" id="quantity" class="form-control" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="{{ form.quantity_added.id_for_label }}">Quantity to Add</label>
+                                        {{ form.quantity_added|add_class:"form-control" }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="expiry_date">Expiration Date</label>
+                                        <input
+                                            type="date"
+                                            id="expiry_date"
+                                            name="expiry_date"
+                                            class="form-control"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-right mt-4">
+                                <button type="submit" class="btn btn-primary" id="add-to-inventory-button">Add to Inventory</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Handle product search input
+            $("#product_search").on("input", function () {
+                const query = $(this).val();
+                if (query.length > 1) {
+                    $.ajax({
+                        url: "{% url 'stock-suggestions' %}", // Replace with your search suggestions endpoint
+                        data: { q: query },
+                        success: function (data) {
+                            $("#product_suggestions").empty();
+                            if (data.suggestions.length > 0) {
+                                data.suggestions.forEach(function (item) {
+                                    const suggestionText = `
+                                        ${item.generic_name} (${item.brand_name}) - ${
+                                        item.dosage_strength || "N/A"
+                                    } [${item.form__name || "N/A"}]
+                                    `;
+                                    const suggestionItem = `<a href="#" class="list-group-item list-group-item-action" data-id="${item.pk}">
+                                        ${suggestionText}
+                                    </a>`;
+                                    $("#product_suggestions").append(suggestionItem);
+                                });
+                            } else {
+                                $("#product_suggestions").append(
+                                    '<p class="list-group-item">No matches found</p>'
+                                );
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Search error:", error);
+                        },
+                    });
+                } else {
+                    $("#product_suggestions").empty();
+                }
+            });
+
+            // Handle product selection from suggestions
+            $("#product_suggestions").on("click", ".list-group-item", function (e) {
+                e.preventDefault();
+                const productId = $(this).data("id");
+                $("#product_id").val(productId);
+                $("#product_suggestions").empty();
+
+                // Fetch product details
+                if (productId) {
+                    $.ajax({
+                        url: "{% url 'fetch-product-details' 0 %}".replace("0", productId),
+                        success: function (data) {
+                            if (!data.error) {
+                                $("#generic_name").val(data.generic_name);
+                                $("#brand_name").val(data.brand_name);
+                                $("#dosage_strength").val(data.dosage_strength);
+                                $("#form").val(data.form);
+                                $("#quantity").val(data.quantity);
+                            } else {
+                                console.error("Error:", data.error);
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("AJAX error:", status, error);
+                        },
+                    });
+                }
+            });
+
+            // Hide suggestions when clicking outside
+            $(document).click(function (e) {
+                if (!$(e.target).closest("#product_search").length) {
+                    $("#product_suggestions").empty();
+                }
+            });
+
+            // Confirmation prompt on Add to Inventory
+            $("#add-to-inventory-button").on("click", function (event) {
+                event.preventDefault(); // Prevent form submission
+                const confirmation = confirm("Are you sure you want to add this stock to the inventory?");
+                if (confirmation) {
+                    // If confirmed, submit the form
+                    $(this).closest("form").submit();
+                }
+            });
+        });
+    </script>
+    {% endblock content %}
+
