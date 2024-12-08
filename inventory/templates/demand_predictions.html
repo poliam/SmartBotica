@@ -51,25 +51,7 @@
 </div>
 {% endblock content %}
 
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Handle search input
-        $('#medicineSearch').on('input', function () {
-            const searchTerm = $(this).val().toLowerCase();
-            
-            $('.prediction-card').each(function () {
-                const productName = $(this).data('product');
-                if (productName.includes(searchTerm)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
-        });
-    });
-</script>
+
 
 
 <!-- JavaScript for Chart.js and DataTables -->

@@ -5,7 +5,9 @@
 
 {% block content %}
 <div class="container my-5">
-    <h1 class="text-center text-danger">Manage Stock Out</h1>
+    <div class="d-flex justify-content-center align-items-center mb-4">
+        <h1 class="text-danger text-center">Manage Stock Out</h1>
+    </div>
 
     <!-- Filter and Search -->
     <form method="get" action="{% url 'general-stock-out' %}">
@@ -90,9 +92,18 @@
             </tbody>
         </table>
 
-        <div class="text-right mt-4">
-            <button type="submit" class="btn btn-danger">Confirm Stock Out</button>
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <!-- Back to Inventory Button -->
+            <div class="align-self-start">
+                <a href="{% url 'inventory' %}" class="btn btn-secondary">Back to Inventory</a>
+            </div>
+        
+            <!-- Confirm Stock Out Button -->
+            <div class="align-self-end">
+                <button type="submit" class="btn btn-danger">Confirm Stock Out</button>
+            </div>
         </div>
+        
     </form>
 
     <!-- Pagination -->
@@ -127,7 +138,7 @@
                         <a class="page-link" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}" aria-label="Next">&raquo;</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}" aria-label="Last">&raquo;&raquo;</a>
+                        <a class="page-link" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}" aria-label="Last">&raquo;</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -136,6 +147,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {

@@ -156,25 +156,32 @@ def search_suggestions(request):
 
 
 def form_valid(self, form):
-    stock = form.save(commit=False)
-    quantity_added = form.cleaned_data['quantity']  # Ensure this is mapped correctly
-    expiry_date = form.cleaned_data.get('expiry_date')  # Match the field name in the model
+    try:
+        stock = form.save(commit=False)
+        quantity_added = form.cleaned_data['quantity_added']
+        expiry_date = form.cleaned_data.get('expiry_date')
 
-    # Update stock quantity and expiry date
-    stock.quantity += quantity_added
-    stock.expiry_date = expiry_date
-    stock.save()
+        # Update stock's quantity and expiry date
+        stock.quantity += quantity_added
+        stock.expiry_date = expiry_date
+        stock.save()
 
-    # Add to Stock History
-    StockHistory.objects.create(
-        stock=stock,
-        quantity_added=quantity_added,
-        total_quantity=stock.quantity,
-        updated_by=self.request.user,
-        expiry_date=expiry_date
-    )
+        # Log the stock update in StockHistory
+        StockHistory.objects.create(
+            stock=stock,
+            quantity_added=quantity_added,
+            total_quantity=stock.quantity,  # Use the updated quantity
+            updated_by=self.request.user if self.request.user.is_authenticated else None,
+            expiry_date=expiry_date,
+        )
 
-    return redirect(reverse('view-stock-history', kwargs={'pk': stock.pk}))
+        messages.success(self.request, "Stock updated successfully.")
+        return redirect('view-stock-history', pk=stock.pk)
+
+    except Exception as e:
+        messages.error(self.request, f"An error occurred while updating stock: {e}")
+        return redirect('new-stock')
+
 
 
 class StockUpdateView(SuccessMessageMixin, UpdateView):
@@ -340,12 +347,13 @@ class StockOutView(View):
 
                 # Log stock out in history
                 StockHistory.objects.create(
-                    stock=stock,
-                    quantity_added=-quantity_to_stock_out,
-                    total_quantity=stock.quantity,
-                    updated_by=request.user if request.user.is_authenticated else None,
-                    expiry_date=expiry_date,
-                )
+                stock=stock,
+                quantity_added=-quantity_to_stock_out,
+                total_quantity=stock.quantity,  # Match current quantity
+                updated_by=request.user if request.user.is_authenticated else None,
+                expiry_date=expiry_date,
+            )
+
 
                 success.append(f"Successfully processed stock out for {stock.generic_name}.")
             except Exception as e:
@@ -361,8 +369,80 @@ class StockOutView(View):
 
 
 
+from django.db.models import Q, Min
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
+from django.contrib import messages
+from .models import Stock, PharmacologicCategory, StockHistory
+from django.core.paginator import Paginator
+from datetime import datetime, timedelta
+
+from django.db.models import Q, Min
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
+from django.contrib import messages
+from .models import Stock, PharmacologicCategory, StockHistory
+from django.core.paginator import Paginator
+from datetime import datetime, timedelta
+
 class GeneralStockOutView(View):
     template_name = "stock_out.html"
+
+    def get(self, request):
+        # Fetch pharmacologic categories for the dropdown
+        pharmacologic_categories = PharmacologicCategory.objects.all()
+
+        # Retrieve filter parameters
+        search_query = request.GET.get('search', '').strip()
+        selected_category = request.GET.get('category', '')
+        expiring_soon = request.GET.get('expiring_soon', '')
+
+        # Base queryset: active stock with non-zero quantity
+        products_queryset = Stock.objects.filter(is_deleted=False, quantity__gt=0)
+
+        # Apply category filter
+        if selected_category:
+            products_queryset = products_queryset.filter(pharmacologic_category_id=selected_category)
+
+        # Apply search filter
+        if search_query:
+            products_queryset = products_queryset.filter(
+                Q(generic_name__icontains=search_query) |
+                Q(brand_name__icontains=search_query) |
+                Q(dosage_strength__icontains=search_query) |
+                Q(form__name__icontains=search_query) |
+                Q(pharmacologic_category__name__icontains=search_query)
+            )
+
+        # Filter for expiring soon if checkbox is checked
+        if expiring_soon:
+            today = datetime.now().date()
+            soon_threshold = today + timedelta(days=30)  # Define "expiring soon" as within 30 days
+            products_queryset = products_queryset.annotate(
+                nearest_expiry_date=Min(
+                    'history__expiry_date', filter=Q(history__quantity_added__gt=0)
+                )
+            ).filter(nearest_expiry_date__isnull=False, nearest_expiry_date__lte=soon_threshold)
+
+        # Annotate nearest expiry date for display
+        products_queryset = products_queryset.annotate(
+            nearest_expiry_date=Min(
+                'history__expiry_date', filter=Q(history__quantity_added__gt=0)
+            )
+        )
+
+        # Add pagination
+        paginator = Paginator(products_queryset, 10)  # 10 products per page
+        page_number = request.GET.get('page')
+        products = paginator.get_page(page_number)
+
+        return render(request, self.template_name, {
+            'pharmacologic_categories': pharmacologic_categories,
+            'products': products,
+            'search_query': search_query,
+            'selected_category': selected_category,
+            'expiring_soon_checked': expiring_soon,
+        })
 
     def post(self, request):
         selected_products = request.POST.getlist('selected_products')
@@ -375,48 +455,28 @@ class GeneralStockOutView(View):
 
         for product_data in selected_products:
             try:
-                # Split the product_data string into item_no and expiry_date
-                if '-' not in product_data:
-                    errors.append(f"Invalid product data format: {product_data}. Expected 'item_no-expiry_date'.")
-                    continue
-
-                stock_id, expiry_date = product_data.split('-', 1)
-
-                # Validate stock_id
-                if not stock_id.isdigit():
-                    errors.append(f"Invalid stock ID: {stock_id}. Must be numeric.")
-                    continue
-
-                stock_id = int(stock_id)
-
-                # Validate and format expiry_date
-                if expiry_date.strip().lower() != "n/a":
-                    try:
-                        # Parse and reformat expiry_date to "YYYY-MM-DD"
-                        expiry_date_obj = datetime.strptime(expiry_date, "%Y-%m-%d")
-                        expiry_date = expiry_date_obj.strftime("%Y-%m-%d")
-                    except ValueError:
-                        errors.append(f"Invalid expiry date format for product ID {stock_id}: {expiry_date}.")
-                        continue
-                else:
-                    expiry_date = None
-
-                # Fetch the stock item is missing.
-                stock = get_object_or_404(Stock, item_no=stock_id)
+                # Extract stock ID and expiry date
+                stock_id, expiry_date = product_data.split('-')
+                expiry_date = (
+                    datetime.strptime(expiry_date, "%Y-%m-%d").date()
+                    if expiry_date != "N/A"
+                    else None
+                )
 
                 # Fetch the quantity to stock out
                 quantity_to_stock_out = int(request.POST.get(f'stock_out_quantity_{stock_id}', 0))
+                stock = get_object_or_404(Stock, pk=stock_id)
 
-                # Validation: Ensure sufficient stock
+                # Validate stock out quantity
                 if quantity_to_stock_out <= 0 or quantity_to_stock_out > stock.quantity:
                     errors.append(f"Invalid stock out quantity for {stock.generic_name}.")
                     continue
 
-                # Reduce the stock quantity
+                # Update stock
                 stock.quantity -= quantity_to_stock_out
                 stock.save()
 
-                # Log the stock out in StockHistory
+                # Log stock out in StockHistory
                 StockHistory.objects.create(
                     stock=stock,
                     quantity_added=-quantity_to_stock_out,
@@ -427,9 +487,9 @@ class GeneralStockOutView(View):
 
                 success.append(f"Successfully processed stock out for {stock.generic_name}.")
             except Exception as e:
-                errors.append(f"Error processing stock out for {product_data}: {str(e)}")
+                errors.append(f"Error processing stock out: {e}")
 
-        # Add messages for success and errors
+        # Add success and error messages
         if success:
             messages.success(request, " | ".join(success))
         if errors:

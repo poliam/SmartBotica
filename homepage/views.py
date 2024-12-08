@@ -89,6 +89,7 @@ def home_view(request):
     medicines_available = Stock.objects.filter(is_deleted=False).count()
     medicine_shortage = Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False).count()
 
+    # Dynamically determine inventory status
     inventory_status = "Warning" if medicine_shortage >= 5 else "Good"
 
     # Fetch medicines nearing expiry (e.g., within the next 30 days)
@@ -113,7 +114,6 @@ def home_view(request):
         'selected_filter': filter_option,
     }
     return render(request, 'home.html', context)
-
 
 from django.http import JsonResponse
 from datetime import datetime, timedelta

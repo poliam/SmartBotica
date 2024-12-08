@@ -103,20 +103,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for record in stock_history %}
-                            <tr>
-                                <td>{{ record.date|date:"Y-m-d H:i" }}</td>
-                                <td>{{ record.quantity_added }}</td>
-                                <td>{{ record.total_quantity }}</td>
-                                <td>{% if record.expiry_date %}{{ record.expiry_date|date:"Y-m-d" }}{% else %}N/A{% endif %}</td>
-                                <td>{% if record.updated_by %}{{ record.updated_by.username }}{% else %}System{% endif %}</td>
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <td colspan="5">No history available for this product.</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
+                            <tbody>
+                                {% for record in stock_history %}
+                                <tr>
+                                    <td>{{ record.date|date:"Y-m-d H:i" }}</td>
+                                    <td>{{ record.quantity_added }}</td>
+                                    <td>{{ record.total_quantity }}</td> <!-- Reflects the current stock -->
+                                    <td>{% if record.expiry_date %}{{ record.expiry_date|date:"Y-m-d" }}{% else %}N/A{% endif %}</td>
+                                    <td>{% if record.updated_by %}{{ record.updated_by.username }}{% else %}System{% endif %}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5">No history available for this product.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody> 
                     </table>
 
                     <!-- Pagination -->
