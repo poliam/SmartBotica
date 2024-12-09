@@ -987,6 +987,19 @@ from django.shortcuts import render
 from django.db.models import Sum
 from transactions.models import SaleItem
 
+from django.shortcuts import render
+from django.db.models import Sum
+import pandas as pd
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+import matplotlib.pyplot as plt
+import io
+import base64
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 def demand_predictions(request):
     # Fetch sales data and group by product and sale date
     sales_data = (
@@ -998,6 +1011,7 @@ def demand_predictions(request):
     # Convert to DataFrame
     df = pd.DataFrame(sales_data)
     if df.empty:
+        logger.warning("No sales data available.")
         return render(request, "inventory/no_data.html", {"message": "No sales data available."})
 
     df['billno__time'] = pd.to_datetime(df['billno__time'])
@@ -1012,62 +1026,43 @@ def demand_predictions(request):
         product_data = df[df["ProductName"] == product]["QuantitySold"].resample("W-MON").sum().fillna(0)
 
         # Skip products with insufficient or constant data
-        if len(product_data) < 16 or product_data.nunique() <= 1:
+        if len(product_data) < 12 or product_data.nunique() <= 1:  # Ensure sufficient historical data
+            logger.debug(f"Skipping product {product} due to insufficient or constant data.")
             continue
 
         try:
             # Split data into training and testing
-            train_data = product_data[:-16]
-            test_data = product_data[-16:]
+            train_data = product_data[:-9]
+            test_data = product_data[-9:]
 
             # Fit SARIMA model
-            model = SARIMAX(train_data, order=(1, 1, 1), seasonal_order=(0, 1, 1, 52), enforce_stationarity=False, enforce_invertibility=False)
+            model = SARIMAX(
+                train_data, 
+                order=(1, 1, 1), 
+                seasonal_order=(0, 1, 1, 52), 
+                enforce_stationarity=False, 
+                enforce_invertibility=False
+            )
             result = model.fit(disp=False)
 
-            # Predict next 16 weeks
-            forecast = result.forecast(steps=16)
-
-            # Generate the Neptune-style time-series plot
-            plt.figure(figsize=(10, 6))
-            plt.plot(product_data.index, product_data, label="Actual Sales", color="blue", linewidth=2)
-            plt.plot(pd.date_range(product_data.index[-1], periods=16, freq="W-MON"), forecast, label="Predicted Sales", color="orange", linestyle="--", linewidth=2)
-            plt.title(f"Demand Forecast for {product}", fontsize=14)
-            plt.xlabel("Date", fontsize=12)
-            plt.ylabel("Sales Quantity", fontsize=12)
-            plt.legend(fontsize=10)
-            plt.grid(visible=True, which='major', linestyle='--', linewidth=0.5)
-            plt.tight_layout()
-
-            # Save the plot to a string buffer
-            buffer = io.BytesIO()
-            plt.savefig(buffer, format="png")
-            buffer.seek(0)
-            image_base64 = base64.b64encode(buffer.read()).decode("utf-8")
-            buffer.close()
-            plt.close()
+            # Predict next 9 weeks
+            forecast = result.forecast(steps=9)
 
             # Append the product's prediction data
             predictions.append({
                 "product": product,
-                "image_base64": image_base64,
-                "actual": test_data.tolist() if len(test_data) > 0 else [],
+                "actual": test_data.tolist(),
                 "predicted": forecast.tolist(),
             })
 
         except Exception as e:
-            print(f"Failed to process product {product}: {e}")
+            logger.error(f"Failed to process product {product}: {e}")
             continue
 
-    # Filter predictions by selected product (if any)
-    selected_product = request.GET.get('product_filter', None)
-    if selected_product:
-        predictions = [p for p in predictions if p['product'] == selected_product]
-
-    # Add this to your `demand_predictions` view
+    # Apply filter for selected product
     selected_product = request.GET.get('product_filter', '').lower()
     if selected_product:
         predictions = [p for p in predictions if selected_product in p['product'].lower()]
-
 
     context = {
         "predictions": predictions,
@@ -1075,6 +1070,8 @@ def demand_predictions(request):
         "selected_product": selected_product,
     }
     return render(request, "demand_predictions.html", context)
+
+
 
 
 from django.shortcuts import render
