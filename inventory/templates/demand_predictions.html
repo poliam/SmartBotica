@@ -10,175 +10,36 @@
     <div class="row mb-4">
         <label for="medicineFilter" class="col-form-label col-auto">Filter by Medicine:</label>
         <div class="col-auto">
-            <select id="medicineFilter" class="form-select">
-                <option value="">-- All Medicines --</option>
-                {% for product in top_30_products %}
-                <option value="{{ product }}" {% if selected_product == product %}selected{% endif %}>{{ product }}</option>
-                {% endfor %}
-            </select>
+            <form method="get" action="">
+                <select id="medicineFilter" name="product_filter" class="form-select" onchange="this.form.submit()">
+                    <option value="">-- Select a Medicine --</option>
+                    {% for product in top_30_products %}
+                    <option value="{{ product }}" {% if selected_product == product %}selected{% endif %}>
+                        {{ product }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
         </div>
     </div>
 
-    <!-- Collapsible Section for Predictions -->
-    <div class="accordion mt-5" id="accordionPredictions">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="predictionsHeader">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#predictions" aria-expanded="false" aria-controls="predictions">
-                    Predictions
-                </button>
-            </h2>
-            <div id="predictions" class="accordion-collapse collapse" aria-labelledby="predictionsHeader" data-bs-parent="#accordionPredictions">
-                <div class="accordion-body">
-                    {% if predictions %}
-                    <!-- Loop through predictions to display each product's line chart -->
-                    {% for prediction in predictions %}
-                    <div class="card shadow mb-4 mt-4">
-                        <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">{{ prediction.product }}</h5>
-                        </div>
-                        <div class="card-body text-center">
-                            <img src="data:image/png;base64,{{ prediction.image_base64 }}" alt="Demand Forecast for {{ prediction.product }}" class="img-fluid">
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% else %}
-                    <p>No predictions available due to insufficient data.</p>
-                    {% endif %}
-                </div>
+    <!-- Predictions Section -->
+    <div id="predictionsContent">
+        {% if predictions %}
+        <!-- Loop through predictions to display each product's pre-rendered graph -->
+        {% for prediction in predictions %}
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">{{ prediction.product }}</h5>
+            </div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ prediction.image_base64 }}" alt="Demand Forecast for {{ prediction.product }}" class="img-fluid">
             </div>
         </div>
+        {% endfor %}
+        {% else %}
+        <p>No predictions available due to insufficient data.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
-
-
-
-
-<!-- JavaScript for Chart.js and DataTables -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-    // Initialize DataTables
-    $(document).ready(function () {
-        $('#adfTable').DataTable();
-        $('#predictionsTable').DataTable();
-    });
-
-    // Prepare data for Chart.js
-const predictions = {% if predictions %}{{ predictions|safe }}{% else %}[]{% endif %};
-let filteredPredictions = predictions; // Filtered data for chart and table
-
-// Extract product labels and data
-const labels = predictions.flatMap(p => Array(16).fill(p.product)); // 16 weeks forecast
-const actualData = predictions.flatMap(p => p.actual.slice(-16)); // Last 16 weeks actual
-const predictedData = predictions.flatMap(p => p.predicted); // 16 weeks predicted
-
-// Function to update the chart with filtered data
-function updateChart(filteredData) {
-    const filteredLabels = filteredData.flatMap(p => Array(16).fill(p.product));
-    const filteredActualData = filteredData.flatMap(p => p.actual.slice(-16));
-    const filteredPredictedData = filteredData.flatMap(p => p.predicted);
-
-    chart.data.labels = filteredLabels;
-    chart.data.datasets[0].data = filteredActualData;
-    chart.data.datasets[1].data = filteredPredictedData;
-    chart.update();
-}
-
-
-    // Render Chart.js
-    const ctx = document.getElementById('predictionChart').getContext('2d');
-    const chart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Actual Sales',
-                    data: actualData,
-                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                },
-                {
-                    label: 'Predicted Sales',
-                    data: predictedData,
-                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-            }
-        }
-    });
-
-    // Apply the default "All Medicines" filter on page load
-    document.addEventListener('DOMContentLoaded', function () {
-        const filter = document.getElementById('medicineFilter');
-
-        // Set the dropdown to the default "All Medicines"
-        filter.value = ''; // Ensure the dropdown shows "-- All Medicines --"
-
-        // Apply the filter to show all data
-        applyFilter('');
-    });
-
-    // Filter Functionality
-    document.getElementById('medicineFilter').addEventListener('change', function () {
-        const selectedMedicine = this.value.toLowerCase();
-
-        // Update table rows
-        const rows = document.querySelectorAll('#predictionsTable tbody tr');
-        rows.forEach(row => {
-            const product = row.getAttribute('data-product').toLowerCase();
-            if (!selectedMedicine || product.includes(selectedMedicine)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-
-        // Update filtered data for chart
-        if (selectedMedicine) {
-            filteredPredictions = predictions.filter(p =>
-                p.product.toLowerCase() === selectedMedicine
-            );
-        } else {
-            filteredPredictions = predictions; // Reset to all data
-        }
-
-        // Update the chart with the filtered data
-        updateChart(filteredPredictions);
-    });
-
-    // Helper function to apply the filter
-    function applyFilter(selectedMedicine) {
-        const rows = document.querySelectorAll('#predictionsTable tbody tr');
-        rows.forEach(row => {
-            const product = row.getAttribute('data-product').toLowerCase();
-            if (!selectedMedicine || product.includes(selectedMedicine)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-
-        // Filter predictions for chart
-        if (selectedMedicine) {
-            filteredPredictions = predictions.filter(p =>
-                p.product.toLowerCase() === selectedMedicine
-            );
-        } else {
-            filteredPredictions = predictions; // Reset to all data
-        }
-
-        // Update the chart with filtered data
-        updateChart(filteredPredictions);
-    }
-</script>

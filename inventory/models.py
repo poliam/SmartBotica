@@ -10,8 +10,6 @@ class DosageForm(models.Model):
 
     def __str__(self):
         return self.name
-
-
 class PharmacologicCategory(models.Model):
     """
     Represents pharmacological categories (e.g., Antibiotics, Analgesics).

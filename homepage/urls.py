@@ -1,5 +1,4 @@
 from django.urls import path, re_path
-from django.conf.urls import url
 from . import views
 from .views import (home_view, AboutView, get_sales_data, generate_sales_report, update_password,demand_predictions,data_analytics,)
 

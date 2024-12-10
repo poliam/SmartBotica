@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}
-Top Medicine Sales
-{% endblock title %}
+{% block title %}Top Medicine Sales{% endblock title %}
 
 {% block content %}
 <div class="container my-4">
@@ -46,6 +44,8 @@ Top Medicine Sales
 <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> <!-- Add this for data labels -->
+
 <script>
     // Initialize DataTables
     $(document).ready(function () {
@@ -142,6 +142,16 @@ Top Medicine Sales
                 legend: {
                     position: 'top',
                 },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    formatter: (value) => value,
+                    font: {
+                        size: 12,
+                        weight: 'bold',
+                    },
+                    color: 'black',
+                },
             },
             scales: {
                 x: {
@@ -151,8 +161,16 @@ Top Medicine Sales
                         minRotation: 0,
                     },
                 },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Total Sales',
+                    },
+                    beginAtZero: true,
+                },
             },
-        }
+        },
+        plugins: [ChartDataLabels], // Enable the datalabels plugin
     });
 </script>
 
