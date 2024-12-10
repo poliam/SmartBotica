@@ -16,11 +16,49 @@
             <a class="btn btn-outline-success mx-2" href="{% url 'new-sale' %}">
                 <i class="fas fa-plus mr-2"></i>New Sale
             </a>
-            <a class="btn btn-outline-primary mx-2" href="{% url 'export-monthly-sales' %}?month=2024-12">
+            <!-- Button to open the export modal -->
+            <button class="btn btn-outline-primary mx-2" data-toggle="modal" data-target="#exportModal">
                 <i class="fas fa-file-excel mr-2"></i>Export Monthly Sales
-            </a>
+            </button>
         </div>
     </div>
+
+    <!-- Modal for Export Options -->
+    <div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="exportModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="GET" action="{% url 'export-monthly-sales' %}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exportModalLabel">Export Monthly Sales</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="month">Select Month</label>
+                            <input type="month" id="month" name="month" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Columns to Export</label>
+                            <div>
+                                <input type="checkbox" name="columns" value="sale_id" checked> Sale ID<br>
+                                <input type="checkbox" name="columns" value="date" checked> Date<br>
+                                <input type="checkbox" name="columns" value="total_amount" checked> Total Amount<br>
+                                <input type="checkbox" name="columns" value="handled_by" checked> Handled By<br>
+                                <input type="checkbox" name="columns" value="product_details" checked> Product Details
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Export</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Filters -->
     <div class="row mb-3">
@@ -142,7 +180,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
 <script>
-    
     function attachToggleHandlers() {
         $(".toggle-details").off("click").on("click", function () {
             const target = $(this).data("target");

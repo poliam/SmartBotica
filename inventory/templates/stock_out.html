@@ -19,19 +19,6 @@
                        placeholder="Search by name or brand" value="{{ search_query }}">
                 <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
             </div>
-            <!-- Other filters -->
-            <div class="col-md-3 mb-2">
-                <label for="categorySelect" class="form-label">Category</label>
-                <select name="category" id="categorySelect" class="form-control">
-                    <option value="">All Categories</option>
-                    {% for category in pharmacologic_categories %}
-                        <option value="{{ category.id }}" {% if selected_category|default:'' == category.id|stringformat:"s" %}selected{% endif %}>
-                            {{ category.name }}
-                        </option>
-                    {% endfor %}
-                </select>
-                
-            </div>
             <div class="col-md-2 mb-2">
                 <label>
                     <input type="checkbox" name="expiring_soon" {% if expiring_soon_checked %}checked{% endif %}>
