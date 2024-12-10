@@ -83,9 +83,14 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'postgresql://postgres:OXaCVHrNJkmxTnZliWNefrsCNIvkHNRj@autorack.proxy.rlwy.net:25754/railway')
+        default=os.getenv(
+            'DATABASE_URL',
+            'postgresql://username:password@localhost:5432/your_database'
+        )
     )
 }
+
+DATABASES['default']['OPTIONS'] = {'driver': 'pg8000'}  # Use pg8000
 
 
 
