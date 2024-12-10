@@ -1,4 +1,5 @@
 [phases]
-setup = "rm -rf /opt/venv && python -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt"
+setup = "pip install -r requirements.txt"
 build = "python manage.py collectstatic --noinput"
 start = "gunicorn core.wsgi:application --bind 0.0.0.0:$PORT"
+    
