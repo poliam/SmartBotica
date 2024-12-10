@@ -85,7 +85,7 @@ DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv(
             'DATABASE_URL',
-            'postgresql://username:password@localhost:5432/your_database'
+            'postgresql+pg8000://postgres:OXaCVHrNJkmxTnZliWNefrsCNIvkHNRj@autorack.proxy.rlwy.net:25754/railway'
         )
     )
 }
