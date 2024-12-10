@@ -157,25 +157,23 @@ from django.db.models import Max
 from django.db.models import Sum
 
 def export_monthly_sales(request):
-    # Get the specific month from the query parameter, if provided
-    month = request.GET.get('month', None)
+    # Get the specific month and selected columns from the request
+    month = request.GET.get('month')
+    selected_columns = request.GET.getlist('columns')
 
     if not month:
-        # Determine the latest month from the data
         latest_sale = SaleBill.objects.aggregate(latest_time=Max('time'))
         if latest_sale['latest_time']:
-            month = latest_sale['latest_time'].strftime('%Y-%m')  # Extract the year and month
+            month = latest_sale['latest_time'].strftime('%Y-%m')  # Extract year and month
         else:
-            # If no sales data exists, return an error response
             response = HttpResponse(content_type='text/plain')
             response.write("No sales data available.")
             return response
 
     # Filter transactions for the specific or latest month
-    sales = SaleBill.objects.filter(time__startswith=month).order_by('time')  # Filter by month
-    
+    sales = SaleBill.objects.prefetch_related('salebillno__product').filter(time__startswith=month).order_by('time')
+
     if not sales.exists():
-        # If no sales exist for the month, return an empty CSV
         response = HttpResponse(content_type='text/plain')
         response.write(f"No sales records found for the month: {month}.")
         return response
@@ -184,19 +182,38 @@ def export_monthly_sales(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = f'attachment; filename="sales_{month}.csv"'
 
-    # Write data to CSV
-    writer = csv.writer(response)
-    writer.writerow(['Month', 'Sale ID', 'Date', 'Total Amount', 'Handled By'])  # CSV header
+    # Define column headers based on selected columns
+    column_headers = {
+        'sale_id': 'Sale ID',
+        'date': 'Date',
+        'total_amount': 'Total Amount',
+        'handled_by': 'Handled By',
+        'product_details': 'Product Details',
+    }
 
-    # Populate CSV rows with sales data
+    # Filter headers based on selected columns
+    headers = [column_headers[col] for col in selected_columns]
+    writer = csv.writer(response)
+    writer.writerow(headers)  # Write the header row
+
+    # Write rows based on selected columns
     for sale in sales:
-        writer.writerow([
-            sale.time.strftime('%Y-%m'),  # Month
-            sale.pk,                      # Sale ID
-            sale.time.strftime('%Y-%m-%d %H:%M:%S'),  # Date and time
-            sale.get_total_price(),       # Total amount
-            sale.salesperson.username     # Handled by
-        ])
+        row = []
+        if 'sale_id' in selected_columns:
+            row.append(sale.pk)  # Sale ID
+        if 'date' in selected_columns:
+            row.append(sale.time.strftime('%Y-%m-%d %H:%M:%S'))  # Date
+        if 'total_amount' in selected_columns:
+            row.append(sale.get_total_price())  # Total Amount
+        if 'handled_by' in selected_columns:
+            row.append(sale.salesperson.username)  # Handled By
+        if 'product_details' in selected_columns:
+            product_details = " | ".join(
+                f"{item.product.generic_name} ({item.product.brand_name}), Qty: {item.quantity}, Unit Price: {item.perprice}, Total: {item.totalprice}"
+                for item in sale.salebillno.all()
+            )
+            row.append(product_details)  # Product Details
+        writer.writerow(row)
 
     return response
 
