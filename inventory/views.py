@@ -1034,6 +1034,8 @@ import io
 import base64
 from django.shortcuts import render
 from django.db.models import Sum
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
 from transactions.models import SaleItem
 
 def demand_predictions(request):
@@ -1076,7 +1078,11 @@ def demand_predictions(request):
             # Predict next 16 weeks
             forecast = result.forecast(steps=16)
 
-            # Generate the Neptune-style time-series plot
+            # Calculate metrics and round off values
+            mae = round(mean_absolute_error(test_data, forecast), 2)
+            rmse = round(mean_squared_error(test_data, forecast, squared=False), 2)
+
+            # Generate the time-series plot
             plt.figure(figsize=(10, 6))
             plt.plot(product_data.index, product_data, label="Actual Sales", color="blue", linewidth=2)
             plt.plot(pd.date_range(product_data.index[-1], periods=16, freq="W-MON"), forecast, label="Predicted Sales", color="orange", linestyle="--", linewidth=2)
@@ -1101,6 +1107,8 @@ def demand_predictions(request):
                 "image_base64": image_base64,
                 "actual": test_data.tolist() if len(test_data) > 0 else [],
                 "predicted": forecast.tolist(),
+                "mae": mae,
+                "rmse": rmse,
             })
 
         except Exception as e:
@@ -1111,12 +1119,6 @@ def demand_predictions(request):
     selected_product = request.GET.get('product_filter', None)
     if selected_product:
         predictions = [p for p in predictions if p['product'] == selected_product]
-
-    # Add this to your `demand_predictions` view
-    selected_product = request.GET.get('product_filter', '').lower()
-    if selected_product:
-        predictions = [p for p in predictions if selected_product in p['product'].lower()]
-
 
     context = {
         "predictions": predictions,
