@@ -85,7 +85,7 @@ class StockListView(FilterView):
         queryset = Stock.objects.filter(is_deleted=False)
         search_query = self.request.GET.get('search', '')  # Fetch the search query
         logging.debug(f"Search Query: {search_query}")  # Log for debugging
-        
+
         if search_query:
             queryset = queryset.filter(
                 Q(generic_name__icontains=search_query) |
@@ -94,13 +94,21 @@ class StockListView(FilterView):
                 Q(form__name__icontains=search_query) |
                 Q(pharmacologic_category__name__icontains=search_query)
             )
+
         logging.debug(f"Filtered Queryset Count: {queryset.count()}")
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['search_query'] = self.request.GET.get('search', '')
+        # If a search query exists, bypass pagination
+        search_query = self.request.GET.get('search', '')
+        if search_query:
+            context['is_paginated'] = False  # Disable pagination when searching
+            context['object_list'] = self.get_queryset()
+        else:
+            context['search_query'] = search_query
         return context
+
 
 
 
@@ -114,7 +122,7 @@ def fetch_product_details(request, product_id):
             'generic_name': stock.generic_name,
             'brand_name': stock.brand_name,
             'dosage_strength': stock.dosage_strength,
-            'form': stock.form.name if stock.form else None,  # Corrected to use `form`
+            'form': stock.form.name if stock.form else None,  # Corrected to use form
             'quantity': stock.quantity,
             'expiry_date': stock.expiry_date.strftime('%Y-%m-%d') if stock.expiry_date else None,
         }
@@ -138,7 +146,7 @@ def search_suggestions(request):
             quantity__gt=0     # Only include stocks with available quantity
         ).distinct()
 
-        # Include `quantity` in the response
+        # Include quantity in the response
         suggestions = list(
             matching_stocks.values(
                 'pk',           # Product ID
@@ -207,8 +215,6 @@ from django.db.models import Q
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Configure the logger to output debug information
-logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)  # Ensure the log level is set to DEBUG
 class StockCreateView(SuccessMessageMixin, CreateView):
     model = Stock
@@ -907,7 +913,17 @@ class AddMedicineHistoryView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return Stock.objects.filter(is_deleted=False).order_by('-last_updated')
+        queryset = Stock.objects.filter(is_deleted=False).order_by('-last_updated')
+        search_query = self.request.GET.get('search', '')
+        if search_query:
+            queryset = queryset.filter(
+                Q(generic_name__icontains=search_query) |
+                Q(brand_name__icontains=search_query) |
+                Q(dosage_strength__icontains=search_query) |
+                Q(form__name__icontains=search_query)
+            )
+        return queryset
+
 
 def populate_dosage_forms(request):
     if request.method == 'POST':
@@ -1034,6 +1050,8 @@ import io
 import base64
 from django.shortcuts import render
 from django.db.models import Sum
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
 from transactions.models import SaleItem
 
 def demand_predictions(request):
@@ -1076,7 +1094,11 @@ def demand_predictions(request):
             # Predict next 16 weeks
             forecast = result.forecast(steps=16)
 
-            # Generate the Neptune-style time-series plot
+            # Calculate metrics and round off values
+            mae = round(mean_absolute_error(test_data, forecast), 2)
+            rmse = round(mean_squared_error(test_data, forecast, squared=False), 2)
+
+            # Generate the time-series plot
             plt.figure(figsize=(10, 6))
             plt.plot(product_data.index, product_data, label="Actual Sales", color="blue", linewidth=2)
             plt.plot(pd.date_range(product_data.index[-1], periods=16, freq="W-MON"), forecast, label="Predicted Sales", color="orange", linestyle="--", linewidth=2)
@@ -1101,6 +1123,8 @@ def demand_predictions(request):
                 "image_base64": image_base64,
                 "actual": test_data.tolist() if len(test_data) > 0 else [],
                 "predicted": forecast.tolist(),
+                "mae": mae,
+                "rmse": rmse,
             })
 
         except Exception as e:
@@ -1111,12 +1135,6 @@ def demand_predictions(request):
     selected_product = request.GET.get('product_filter', None)
     if selected_product:
         predictions = [p for p in predictions if p['product'] == selected_product]
-
-    # Add this to your `demand_predictions` view
-    selected_product = request.GET.get('product_filter', '').lower()
-    if selected_product:
-        predictions = [p for p in predictions if selected_product in p['product'].lower()]
-
 
     context = {
         "predictions": predictions,

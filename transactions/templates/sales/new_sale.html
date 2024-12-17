@@ -71,9 +71,28 @@
 
         <!-- Complete Sale Button -->
         <div class="text-end">
-            <button type="button" class="btn btn-success btn-lg" id="complete-sale">Complete Sale</button>
+            <button type="button" class="btn btn-success btn-lg" id="complete-sale" data-bs-toggle="modal" data-bs-target="#confirmSaleModal">Complete Sale</button>
         </div>
     </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmSaleModal" tabindex="-1" aria-labelledby="confirmSaleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmSaleModalLabel">Confirm Sale</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to complete this sale?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="confirmCompleteSale">Yes, Complete Sale</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -209,22 +228,11 @@
             $('#selected-items').val(JSON.stringify(selectedItems));
         });
 
-        // Complete sale with confirmation
-        $('#complete-sale').click(function () {
-            if (selectedItems.length === 0) {
-                alert('No products added. Please add products to complete the sale.');
-                return;
-            }
-
-            const confirmation = confirm('Are you sure you want to complete this sale?');
-            if (confirmation) {
-                $('#selected-items').val(JSON.stringify(selectedItems));
-                $('#sale-form').submit();
-            }
+        // Handle confirmation modal submission
+        $('#confirmCompleteSale').click(function () {
+            $('#selected-items').val(JSON.stringify(selectedItems));
+            $('#sale-form').submit();
         });
     });
 </script>
-
-
-
 {% endblock content %}

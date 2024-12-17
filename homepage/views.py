@@ -11,14 +11,20 @@ from django.contrib import messages
 from django.views.decorators.http import require_POST
 from django.contrib.auth import login
 from .forms import UpdatePasswordForm
-from datetime import datetime
 
+# Function to update a user's password
 def update_password(request):
+    """
+    Handle user password update functionality.
+    - If the request method is POST, validate and save the new password.
+    - If the password is updated successfully, redirect to the login page.
+    - Otherwise, render the form for updating the password.
+    """
     if request.method == 'POST':
         form = UpdatePasswordForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login(request, user)  # Log the user in after password change
             messages.success(request, 'Your password has been updated successfully.')
             return redirect('login')
     else:
@@ -26,9 +32,14 @@ def update_password(request):
 
     return render(request, 'update_password.html', {'form': form})
 
-from datetime import timedelta
-
+# Function to render the home/dashboard page
 def home_view(request):
+    """
+    Render the dashboard with sales, inventory, and top product data.
+    - Sales data is filtered based on the selected time filter (daily, weekly, etc.).
+    - Compute top products and inventory status.
+    - Provide data for charts and statistics displayed on the dashboard.
+    """
     filter_option = request.GET.get('filter', 'weekly')
     today = datetime.now().date()
 
@@ -46,56 +57,50 @@ def home_view(request):
     elif filter_option == 'yearly':
         start_date = today.replace(month=1, day=1)
         end_date = today.replace(month=12, day=31)
-    elif filter_option == 'overall':  # New overall filter
-        start_date, end_date = None, None
+    elif filter_option == 'overall':
+        start_date, end_date = None, None  # No filter applied
     else:
-        start_date, end_date = None, None  # Default fallback for invalid filter
+        start_date, end_date = None, None  # Default for invalid filter
 
-    # Fetch filtered sales data
+    # Fetch sales data based on filter
     if start_date and end_date:
         sales_data = SaleItem.objects.filter(
             billno__time__date__range=[start_date, end_date]
         ).values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
-    else:  # Overall sales
+    else:
         sales_data = SaleItem.objects.values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
 
-    # Fetch top products based on the filter
+    # Fetch top products by sales quantity
     if start_date and end_date:
         top_products = SaleItem.objects.filter(
             billno__time__date__range=[start_date, end_date]
-        ).values(
-            'product__generic_name'
-        ).annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:3]
-    else:  # Overall top products
-        top_products = SaleItem.objects.values(
-            'product__generic_name'
-        ).annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:3]
+        ).values('product__generic_name').annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:3]
+    else:
+        top_products = SaleItem.objects.values('product__generic_name').annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:3]
 
-    # Prepare data for the chart
+    # Prepare data for sales chart
     sales_dict = {data['billno__time__date']: float(data['total_sales']) for data in sales_data}
     if start_date and end_date:
         dates = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
     else:
-        dates = list(sales_dict.keys())  # Use existing dates for overall data
+        dates = list(sales_dict.keys())
     sales_labels = [date.strftime('%Y-%m-%d') for date in dates]
     sales_values = [sales_dict.get(date, 0) for date in dates]
     sales_max = max(sales_values, default=100)
 
-    # Other dashboard data
+    # Compute other dashboard data
     total_revenue = SaleItem.objects.filter(
         billno__time__date__range=[start_date, end_date]
-    ).aggregate(total=Sum('totalprice')).get('total', 0) or 0 if start_date and end_date else SaleItem.objects.aggregate(total=Sum('totalprice')).get('total', 0) or 0
+    ).aggregate(total=Sum('totalprice')).get('total', 0) if start_date and end_date else SaleItem.objects.aggregate(total=Sum('totalprice')).get('total', 0)
 
     medicines_available = Stock.objects.filter(is_deleted=False).count()
     medicine_shortage = Stock.objects.filter(quantity__lt=F('threshold'), is_deleted=False).count()
 
-    # Dynamically determine inventory status
     inventory_status = "Warning" if medicine_shortage >= 5 else "Good"
 
-    # Fetch medicines nearing expiry (e.g., within the next 30 days)
     near_expiry_products = Stock.objects.filter(
-        expiry_date__lte=today + timedelta(days=30),  # Expiring within 30 days
-        expiry_date__gte=today,                      # Not expired yet
+        expiry_date__lte=today + timedelta(days=30),
+        expiry_date__gte=today,
         is_deleted=False
     ).order_by('expiry_date')
 
@@ -109,16 +114,19 @@ def home_view(request):
             'medicines_available': medicines_available,
             'medicine_shortage': medicine_shortage,
         },
-        'near_expiry_products': near_expiry_products,  # Pass near-expiry products to the template
+        'near_expiry_products': near_expiry_products,
         'top_products': top_products,
         'selected_filter': filter_option,
     }
     return render(request, 'home.html', context)
 
-from django.http import JsonResponse
-from datetime import datetime, timedelta
-
+# Function to provide sales data as JSON for AJAX calls
 def get_sales_data(request):
+    """
+    Provide sales data for a selected filter as JSON.
+    - Fetch sales data and top products based on the time filter.
+    - Format data for charts and return it as JSON response.
+    """
     filter_option = request.GET.get('filter', 'weekly')
     today = datetime.now().date()
 
@@ -139,7 +147,7 @@ def get_sales_data(request):
     else:
         return JsonResponse({'error': 'Invalid filter option'}, status=400)
 
-    # Fetch sales data and total revenue
+    # Fetch sales data and compute top products
     if start_date and end_date:
         sales_data = SaleItem.objects.filter(
             billno__time__date__range=[start_date, end_date]
@@ -149,26 +157,16 @@ def get_sales_data(request):
         ).aggregate(total=Sum('totalprice'))['total'] or 0
         top_products = SaleItem.objects.filter(
             billno__time__date__range=[start_date, end_date]
-        ).values('product__generic_name').annotate(
-            total_quantity=Sum('quantity')
-        ).order_by('-total_quantity')[:3]
+        ).values('product__generic_name').annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:3]
     else:
-        sales_data = SaleItem.objects.values('billno__time__date').annotate(
-            total_sales=Sum('totalprice')
-        ).order_by('billno__time__date')
+        sales_data = SaleItem.objects.values('billno__time__date').annotate(total_sales=Sum('totalprice')).order_by('billno__time__date')
         total_revenue = SaleItem.objects.aggregate(total=Sum('totalprice'))['total'] or 0
-        top_products = SaleItem.objects.values(
-            'product__generic_name'
-        ).annotate(
-            total_quantity=Sum('quantity')
-        ).order_by('-total_quantity')[:3]
+        top_products = SaleItem.objects.values('product__generic_name').annotate(total_quantity=Sum('quantity')).order_by('-total_quantity')[:3]
 
-    # Prepare chart data
     sales_dict = {str(data['billno__time__date']): float(data['total_sales']) for data in sales_data}
     sales_labels = list(sales_dict.keys())
     sales_values = list(sales_dict.values())
 
-    # Format top products
     formatted_top_products = [
         {'name': product['product__generic_name'], 'quantity': product['total_quantity']}
         for product in top_products
@@ -181,47 +179,51 @@ def get_sales_data(request):
         'top_products': formatted_top_products,
     })
 
-
-
-
+# Function to generate sales report as CSV
 @require_POST
 def generate_sales_report(request):
+    """
+    Generate a downloadable CSV report of sales data.
+    - Include sale date, product name, and quantity sold for each product.
+    """
     selected_date = request.POST.get('selected_date')
     sale_dates = SaleItem.objects.values_list('billno__time__date', flat=True).distinct()
 
-    # Create a response object with CSV content type
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="sales_report.csv"'
 
     writer = csv.writer(response)
     writer.writerow(['Date', 'Product', 'Quantity Sold'])
 
-    # Iterate over each sale date and generate report data
     for sale_date in sale_dates:
         products_sold = SaleItem.objects.filter(
             billno__time__date=sale_date
         ).values('product__product_name').annotate(total_quantity=Sum('quantity'))
-
-        # Write the data rows for each product sold on the current date
         for product in products_sold:
             writer.writerow([sale_date, product['product__product_name'], product['total_quantity']])
 
     return response
 
+# Class-based view for the "About" page
 class AboutView(TemplateView):
+    """
+    Render the About page.
+    """
     template_name = "about.html"
 
+# Function for Demand Predictions page
 def demand_predictions(request):
-    # Logic for the Demand Predictions page
-    context = {
-        'title': 'Demand Predictions',
-    }
+    """
+    Render the Demand Predictions page with a placeholder title.
+    """
+    context = {'title': 'Demand Predictions'}
     return render(request, 'demand_predictions.html', context)
 
+# Function for Data Analytics page
 def data_analytics(request):
-    # Logic for the Data Analytics page
-    context = {
-        'title': 'Data Analytics',
-    }
+    """
+    Render the Data Analytics page with a placeholder title.
+    """
+    context = {'title': 'Data Analytics'}
     return render(request, 'data_analytics.html', context)
 

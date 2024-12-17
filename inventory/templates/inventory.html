@@ -158,64 +158,91 @@
 
 <script>
     $(document).ready(function () {
-        // Initialize DataTable with hidden search and pagination
-        const table = $('#inventoryTable').DataTable({
-            paging: false, // Disable built-in pagination
-            info: false, // Disable "Showing X of Y entries"
-            order: [[0, "asc"]], // Default sort by the first column
-            searching: true, // Enable search
-            language: {
-                search: "Filter:" // Change search label
-            },
-            columnDefs: [
-                { orderable: false, targets: -1 } // Disable sorting for actions column
-            ]
-        });
-
-        // Live search functionality
-        $('#searchInput').on('input', function () {
-            const query = $(this).val().trim();
-            table.search(query).draw(); // Filter table rows in real time
-        });
-
-        // AJAX search suggestions
-        $('#searchInput').on('input', function () {
-            const query = $(this).val().trim();
-            if (query.length > 1) {
-                $.ajax({
-                    url: "{% url 'inventory-suggestions' %}",
-                    data: { q: query },
-                    success: function (data) {
-                        $('#suggestions').empty();
-                        if (data.suggestions.length > 0) {
-                            data.suggestions.forEach(item => {
-                                const suggestionText = `${item.generic_name} (${item.brand_name}) - ${item.dosage_strength || 'N/A'} [${item.form__name || 'N/A'}]`;
-                                const suggestionLink = "{% url 'view-stock-history' 0 %}".replace('0', item.pk);
-                                $('#suggestions').append(`
-                                    <a href="${suggestionLink}" class="list-group-item list-group-item-action suggestion-item">
-                                        ${suggestionText}
-                                    </a>
-                                `);
-                            });
-                        } else {
-                            $('#suggestions').append('<p class="list-group-item">No matches found</p>');
-                        }
-                    },
-                    error: function () {
-                        $('#suggestions').empty().append('<p class="list-group-item">Error fetching suggestions</p>');
-                    }
-                });
-            } else {
-                $('#suggestions').empty();
-            }
-        });
-
-        // Hide suggestions when clicking outside
-        $(document).click(function (e) {
-            if (!$(e.target).closest('#searchInput').length) {
-                $('#suggestions').empty();
-            }
-        });
+    // Initialize DataTable without pagination
+    const table = $('#inventoryTable').DataTable({
+        paging: false, // Disable built-in pagination
+        info: false, // Disable "Showing X of Y entries"
+        order: [[0, "asc"]], // Default sort by the first column
+        searching: true, // Enable search
+        columnDefs: [
+            { orderable: false, targets: -1 } // Disable sorting for actions column
+        ]
     });
+
+    // Handle live search functionality for the table
+    $('#searchInput').on('input', function () {
+        const query = $(this).val().trim();
+
+        if (query.length > 0) {
+            // Send AJAX request to perform the server-side search
+            $.ajax({
+                url: "{% url 'inventory' %}",
+                type: "GET",
+                data: { search: query },
+                success: function (response) {
+                    // Replace table body with the new search results
+                    $('#inventoryTable tbody').html($(response).find('#inventoryTable tbody').html());
+                },
+                error: function () {
+                    alert('Failed to fetch search results.');
+                }
+            });
+        } else {
+            table.search('').draw(); // Reset search filter
+        }
+    });
+
+    // AJAX search suggestions
+    $('#searchInput').on('input', function () {
+        const query = $(this).val().trim();
+        if (query.length > 1) {
+            $.ajax({
+                url: "{% url 'inventory-suggestions' %}",
+                data: { q: query },
+                success: function (data) {
+                    $('#suggestions').empty();
+                    if (data.suggestions.length > 0) {
+                        data.suggestions.forEach(item => {
+                            const suggestionText = `${item.generic_name} (${item.brand_name}) - ${item.dosage_strength || 'N/A'} [${item.form__name || 'N/A'}]`;
+                            const suggestionLink = "{% url 'view-stock-history' 0 %}".replace('0', item.pk);
+                            $('#suggestions').append(`
+                                <a href="${suggestionLink}" class="list-group-item list-group-item-action suggestion-item">
+                                    ${suggestionText}
+                                </a>
+                            `);
+                        });
+                    } else {
+                        $('#suggestions').append('<p class="list-group-item">No matches found</p>');
+                    }
+                },
+                error: function () {
+                    $('#suggestions').empty().append('<p class="list-group-item">Error fetching suggestions</p>');
+                }
+            });
+        } else {
+            $('#suggestions').empty();
+        }
+    });
+
+    // Hide suggestions when clicking outside
+    $(document).click(function (e) {
+        if (!$(e.target).closest('#searchInput').length) {
+            $('#suggestions').empty();
+        }
+    });
+
+    // Handle click on a suggestion to populate the search box
+    $(document).on('click', '.suggestion-item', function (e) {
+        e.preventDefault();
+        const text = $(this).text().trim();
+        $('#searchInput').val(text);
+        $('#suggestions').empty();
+
+        // Trigger table search after selecting suggestion
+        const query = text.split(' ')[0]; // Optional: Extract the first word
+        table.search(query).draw();
+    });
+});
+
 </script>
 {% endblock content %}

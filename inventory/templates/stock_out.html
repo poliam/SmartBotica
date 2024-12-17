@@ -20,10 +20,6 @@
                 <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
             </div>
             <div class="col-md-2 mb-2">
-                <label>
-                    <input type="checkbox" name="expiring_soon" {% if expiring_soon_checked %}checked{% endif %}>
-                    Expiring Soon
-                </label>
             </div>
             <div class="col-md-2 mb-2">
             </div>
@@ -33,7 +29,7 @@
     
 
     <!-- Stock Out Form -->
-    <form method="post" action="{% url 'general-stock-out' %}">
+    <form method="post" action="{% url 'general-stock-out' %}" id="stockOutForm">
         {% csrf_token %}
         <table class="table table-bordered table-hover text-center">
             <thead class="thead-dark">
@@ -90,7 +86,7 @@
         
             <!-- Confirm Stock Out Button -->
             <div class="align-self-end">
-                <button type="submit" class="btn btn-danger">Confirm Stock Out</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmStockOutModal">Confirm Stock Out</button>
             </div>
         </div>
         
@@ -138,76 +134,98 @@
     </div>
 </div>
 
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmStockOutModal" tabindex="-1" aria-labelledby="confirmStockOutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmStockOutModalLabel">Confirm Stock Out</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to stock out the selected items?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="confirmStockOut">Yes, Stock Out</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-    // Enable/disable quantity input based on checkbox
-    $('input[type="checkbox"]').change(function () {
-        const row = $(this).closest('tr');
-        const quantityInput = row.find('input[type="number"]');
-        if ($(this).is(':checked')) {
-            quantityInput.prop('disabled', false).prop('required', true);
-        } else {
-            quantityInput.prop('disabled', true).prop('required', false).val('');
-        }
-    });
+        // Enable/disable quantity input based on checkbox
+        $('input[type="checkbox"]').change(function () {
+            const row = $(this).closest('tr');
+            const quantityInput = row.find('input[type="number"]');
+            if ($(this).is(':checked')) {
+                quantityInput.prop('disabled', false).prop('required', true);
+            } else {
+                quantityInput.prop('disabled', true).prop('required', false).val('');
+            }
+        });
 
-    // Enable disabled inputs before form submission
-    $('form').on('submit', function () {
-        $('input[type="number"]').prop('disabled', false);
-    });
-
-    // Search suggestions for products
-    $('#searchInput').on('input', function () {
-        const query = $(this).val();
-        if (query.length > 1) {
-            $.ajax({
-                url: "{% url 'stock-suggestions' %}", // Ensure this URL is correct in your views
-                data: { q: query },
-                success: function (data) {
-                    $('#suggestions').empty();
-                    if (data.suggestions.length > 0) {
-                        data.suggestions.forEach(item => {
-                            const suggestionText = `${item.generic_name} (${item.brand_name}) - ${item.dosage_strength || 'N/A'} [${item.form__name || 'N/A'}]`;
-                            const suggestionLink = `{% url 'view-stock-out' 0 %}`.replace('0', item.pk);
-                            $('#suggestions').append(`
-                                <a href="${suggestionLink}" class="list-group-item list-group-item-action suggestion-item">
-                                    ${suggestionText}
-                                </a>
-                            `);
-                        });
-                    } else {
-                        $('#suggestions').append('<p class="list-group-item">No matches found</p>');
-                    }
-                },
-                error: function () {
-                    $('#suggestions').empty().append('<p class="list-group-item">Error fetching suggestions</p>');
+        // Handle confirmation modal submission
+        $('#confirmStockOut').click(function () {
+            // Enable disabled quantity inputs for form submission
+            $('input[type="number"]').each(function () {
+                if ($(this).is(':disabled')) {
+                    $(this).prop('disabled', false);
                 }
             });
-        } else {
-            $('#suggestions').empty();
-        }
+            $('#stockOutForm').submit();
+        });
+
+        // Search suggestions for products
+        $('#searchInput').on('input', function () {
+            const query = $(this).val();
+            if (query.length > 1) {
+                $.ajax({
+                    url: "{% url 'stock-suggestions' %}", // Ensure this URL is correct in your views
+                    data: { q: query },
+                    success: function (data) {
+                        $('#suggestions').empty();
+                        if (data.suggestions.length > 0) {
+                            data.suggestions.forEach(item => {
+                                const suggestionText = `${item.generic_name} (${item.brand_name}) - ${item.dosage_strength || 'N/A'} [${item.form__name || 'N/A'}]`;
+                                const suggestionLink = "{% url 'view-stock-out' 0 %}".replace('0', item.pk);
+                                $('#suggestions').append(
+                                    `<a href="${suggestionLink}" class="list-group-item list-group-item-action suggestion-item">
+                                        ${suggestionText}
+                                    </a>`
+                                );
+                            });
+                        } else {
+                            $('#suggestions').append('<p class="list-group-item">No matches found</p>');
+                        }
+                    },
+                    error: function () {
+                        $('#suggestions').empty().append('<p class="list-group-item">Error fetching suggestions</p>');
+                    }
+                });
+            } else {
+                $('#suggestions').empty();
+            }
+        });
+
+        // Hide suggestions when clicking outside the search input
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('#searchInput, #suggestions').length) {
+                $('#suggestions').empty();
+            }
+        });
+
+        // Ensure the form submits on Enter
+        $('#searchInput').on('keypress', function (e) {
+            if (e.key === 'Enter') {
+                $('#searchForm').submit();
+            }
+        });
     });
+</script>
 
-    // Hide suggestions when clicking outside the search input
-    $(document).click(function (e) {
-        if (!$(e.target).closest('#searchInput').length) {
-            $('#suggestions').empty();
-        }
-    });
-
-    // Ensure the form submits on Enter
-    // Ensure the form submits on Enter
-$('#searchInput').on('keypress', function (e) {
-    if (e.key === 'Enter') {
-        // Let the browser handle the form submission
-    }
-});
-
-});
-
-
-</script>   
 
 
 {% endblock content %}

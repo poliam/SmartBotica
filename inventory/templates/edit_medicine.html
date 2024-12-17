@@ -13,7 +13,7 @@
                 Edit Medicine
             </h1>
             <hr>
-            <form method="post" action="">
+            <form id="editMedicineForm" method="post" action="">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="id_generic_name">Generic Name</label>
@@ -44,7 +44,7 @@
                     {{ form.threshold|add_class:"form-control" }}
                 </div>
                 <div class="form-group text-center mt-4">
-                    <button type="submit" class="btn btn-primary px-4">
+                    <button type="button" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#confirmEditModal">
                         <i class="fas fa-save mr-2"></i> Save Changes
                     </button>
                     <a href="{% url 'add-medicine-history' %}" class="btn btn-secondary px-4">
@@ -55,15 +55,33 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Confirmation Modal -->
+<div class="modal fade" id="confirmEditModal" tabindex="-1" aria-labelledby="confirmEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmEditModalLabel">Confirm Save Changes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save these changes?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmSave">Yes, Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Confirmation prompt for saving changes
-        const editMedicineForm = document.querySelector("form");
-        editMedicineForm.addEventListener("submit", function (event) {
-            const confirmation = confirm("Are you sure you want to save these changes?");
-            if (!confirmation) {
-                event.preventDefault(); // Prevent form submission if not confirmed
-            }
+        const confirmSaveButton = document.getElementById("confirmSave");
+        const editMedicineForm = document.getElementById("editMedicineForm");
+
+        confirmSaveButton.addEventListener("click", function () {
+            editMedicineForm.submit();
         });
     });
 </script>

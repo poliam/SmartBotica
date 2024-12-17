@@ -25,7 +25,7 @@
                 Add New Dosage
             </div>
             <div class="card-body">
-                <form method="post" action="{% url 'populate-dosage-forms' %}">
+                <form id="addDosageForm" method="post" action="{% url 'populate-dosage-forms' %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="name" class="font-weight-bold">Dosage Label</label>
@@ -39,7 +39,7 @@
                         >
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmAddModal">
                             Add Dosage
                         </button>
                     </div>
@@ -74,17 +74,9 @@
                                 <a href="{% url 'edit-dosage-form' form.pk %}" class="btn btn-sm btn-warning">
                                     Edit
                                 </a>
-                                <form
-                                    method="post"
-                                    action="{% url 'delete-dosage-form' form.pk %}"
-                                    style="display: inline-block;"
-                                    onsubmit="return confirmDelete('{{ form.name }}')"
-                                >
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-sm btn-danger">
-                                        Delete
-                                    </button>
-                                </form>
+                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-dosage-name="{{ form.name }}" data-delete-url="{% url 'delete-dosage-form' form.pk %}">
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                         {% endfor %}
@@ -143,23 +135,68 @@
 </div>
 {% endif %}
 
-
+<!-- Add Confirmation Modal -->
+<div class="modal fade" id="confirmAddModal" tabindex="-1" aria-labelledby="confirmAddModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmAddModalLabel">Confirm Add Dosage</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to add this dosage form?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmAdd">Yes, Add</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>     
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete Dosage</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the dosage form "<span id="dosageName"></span>"?
+            </div>
+            <div class="modal-footer">
+                <form id="deleteForm" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Add confirmation prompt for Add Dosage button
-        const dosageForm = document.querySelector("form[action='{% url 'populate-dosage-forms' %}']");
-        dosageForm.addEventListener("submit", function (event) {
-            const confirmation = confirm("Are you sure you want to add this dosage form?");
-            if (!confirmation) {
-                event.preventDefault(); // Prevent form submission if not confirmed
-            }
+        // Add Dosage Modal
+        const confirmAddButton = document.getElementById("confirmAdd");
+        const addDosageForm = document.getElementById("addDosageForm");
+
+        confirmAddButton.addEventListener("click", function () {
+            addDosageForm.submit();
+        });
+
+        // Delete Dosage Modal
+        const confirmDeleteModal = document.getElementById("confirmDeleteModal");
+        confirmDeleteModal.addEventListener("show.bs.modal", function (event) {
+            const button = event.relatedTarget;
+            const dosageName = button.getAttribute("data-dosage-name");
+            const deleteUrl = button.getAttribute("data-delete-url");
+
+            document.getElementById("dosageName").textContent = dosageName;
+            document.getElementById("deleteForm").setAttribute("action", deleteUrl);
         });
     });
-
-    // Confirmation prompt for delete action (existing functionality)
-    function confirmDelete(dosageName) {
-        return confirm(`Are you sure you want to delete the dosage form "${dosageName}"?`);
-    }
 </script>
 {% endblock content %}

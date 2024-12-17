@@ -62,7 +62,9 @@
                 </div>
             </div>
         </div>
-    <!-- Filter Section -->
+    </div>
+
+    <!-- Filter Section - Moved Lower -->
     <div class="row mb-4">
         <div class="col-md-4">
             <label for="salesFilter" class="form-label fw-bold">Filter Sales By:</label>
@@ -112,30 +114,29 @@
             </div>
         </div>
 
-            <!-- Top Sales Products -->
-<div class="col-md-6">
-    <div class="card shadow-sm">
-        <div class="card-header bg-light">
-            <h5 class="fw-bold text-dark mb-0">Top Sales Products</h5>
-        </div>
-        <div class="card-body">
-            <ul id="topSalesProducts" class="list-group list-group-flush">
-                {% for product in top_products %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <strong>{{ product.product__generic_name }}</strong>
-                        <span class="badge bg-primary">Qty: {{ product.total_quantity }}</span>
-                    </li>
-                {% empty %}
-                    <div class="alert alert-info text-center m-0" role="alert">
-                        No sales data available.
-                    </div>
-                {% endfor %}
-            </ul>
+        <!-- Top Sales Products -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="fw-bold text-dark mb-0">Top Sales Products</h5>
+                </div>
+                <div class="card-body">
+                    <ul id="topSalesProducts" class="list-group list-group-flush">
+                        {% for product in top_products %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>{{ product.product__generic_name }}</strong>
+                                <span class="badge bg-primary">Qty: {{ product.total_quantity }}</span>
+                            </li>
+                        {% empty %}
+                            <div class="alert alert-info text-center m-0" role="alert">
+                                No sales data available.
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -226,6 +227,5 @@
         });
     });
 </script>
-
 
 {% endblock content %}
