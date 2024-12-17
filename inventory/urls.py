@@ -52,6 +52,4 @@ urlpatterns = [
     path('demand-predictions/', views.demand_predictions, name='demand-predictions'),
     path('data-analytics/', data_analytics, name='data-analytics'),  # Add the data-analytics path
     path('new-stock/', add_new_stock_view, name='new-stock'),
-
-
 ]

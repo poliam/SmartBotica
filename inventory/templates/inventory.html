@@ -21,12 +21,14 @@
             </form>
         </div>
         <div class="col-md-3 text-right d-flex justify-content-end gap-2">
-            <a class="btn btn-outline-success px-3 py-2 shadow-sm" href="{% url 'new-stock' %}">
-                <i class="fas fa-plus"></i> Stock In
-            </a>
-            <a class="btn btn-outline-warning px-3 py-2 shadow-sm" href="{% url 'general-stock-out' %}">
-                <i class="fas fa-minus"></i> Stock Out
-            </a>
+            {% if user.is_superuser %}
+                <a class="btn btn-outline-success px-3 py-2 shadow-sm" href="{% url 'new-stock' %}">
+                    <i class="fas fa-plus"></i> Stock In
+                </a>
+                <a class="btn btn-outline-warning px-3 py-2 shadow-sm" href="{% url 'general-stock-out' %}">
+                    <i class="fas fa-minus"></i> Stock Out
+                </a>
+            {% endif %}
         </div>
     </div>
 
@@ -158,44 +160,23 @@
 
 <script>
     $(document).ready(function () {
-    // Initialize DataTable without pagination
+    // Initialize DataTable with default filter enabled
     const table = $('#inventoryTable').DataTable({
         paging: false, // Disable built-in pagination
         info: false, // Disable "Showing X of Y entries"
         order: [[0, "asc"]], // Default sort by the first column
-        searching: true, // Enable search
+        searching: true, // Enable the default DataTable search
         columnDefs: [
             { orderable: false, targets: -1 } // Disable sorting for actions column
         ]
     });
 
-    // Handle live search functionality for the table
+    // Live search input with custom AJAX suggestions
     $('#searchInput').on('input', function () {
         const query = $(this).val().trim();
 
-        if (query.length > 0) {
-            // Send AJAX request to perform the server-side search
-            $.ajax({
-                url: "{% url 'inventory' %}",
-                type: "GET",
-                data: { search: query },
-                success: function (response) {
-                    // Replace table body with the new search results
-                    $('#inventoryTable tbody').html($(response).find('#inventoryTable tbody').html());
-                },
-                error: function () {
-                    alert('Failed to fetch search results.');
-                }
-            });
-        } else {
-            table.search('').draw(); // Reset search filter
-        }
-    });
-
-    // AJAX search suggestions
-    $('#searchInput').on('input', function () {
-        const query = $(this).val().trim();
         if (query.length > 1) {
+            // Fetch search suggestions
             $.ajax({
                 url: "{% url 'inventory-suggestions' %}",
                 data: { q: query },
@@ -205,11 +186,11 @@
                         data.suggestions.forEach(item => {
                             const suggestionText = `${item.generic_name} (${item.brand_name}) - ${item.dosage_strength || 'N/A'} [${item.form__name || 'N/A'}]`;
                             const suggestionLink = "{% url 'view-stock-history' 0 %}".replace('0', item.pk);
-                            $('#suggestions').append(`
-                                <a href="${suggestionLink}" class="list-group-item list-group-item-action suggestion-item">
+                            $('#suggestions').append(
+                                `<a href="${suggestionLink}" class="list-group-item list-group-item-action suggestion-item">
                                     ${suggestionText}
-                                </a>
-                            `);
+                                </a>`
+                            );
                         });
                     } else {
                         $('#suggestions').append('<p class="list-group-item">No matches found</p>');
@@ -224,23 +205,43 @@
         }
     });
 
-    // Hide suggestions when clicking outside
+    // Handle live search functionality for the table (AJAX call for server-side filtering)
+    $('#searchInput').on('input', function () {
+        const query = $(this).val().trim();
+
+        if (query.length > 0) {
+            $.ajax({
+                url: "{% url 'inventory' %}",
+                type: "GET",
+                data: { search: query },
+                success: function (response) {
+                    $('#inventoryTable tbody').html($(response).find('#inventoryTable tbody').html());
+                },
+                error: function () {
+                    alert('Failed to fetch search results.');
+                }
+            });
+        } else {
+            table.search('').draw(); // Reset default search filter
+        }
+    });
+
+    // Hide suggestions when clicking outside the search input
     $(document).click(function (e) {
         if (!$(e.target).closest('#searchInput').length) {
             $('#suggestions').empty();
         }
     });
 
-    // Handle click on a suggestion to populate the search box
+    // Handle suggestion click to populate the search box
     $(document).on('click', '.suggestion-item', function (e) {
         e.preventDefault();
         const text = $(this).text().trim();
         $('#searchInput').val(text);
         $('#suggestions').empty();
 
-        // Trigger table search after selecting suggestion
-        const query = text.split(' ')[0]; // Optional: Extract the first word
-        table.search(query).draw();
+        // Trigger default DataTable search
+        table.search(text).draw();
     });
 });
 

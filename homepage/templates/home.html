@@ -9,9 +9,9 @@
     <p class="text-muted">A quick data overview of the inventory.</p>
 
     <!-- Overview Cards Row -->
-    <div class="row text-center mb-4">
+    <div class="row text-center mb-4 justify-content-center">
         <!-- Inventory Status Card -->
-        <div class="col-md-3">
+        <div class="{% if user.is_superuser %}col-md-3{% else %}col-md-4{% endif %}">
             <div class="card border shadow h-100 {% if overview_data.inventory_status == 'Warning' %}border-danger{% else %}border-success{% endif %}">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center" style="height: 100%; padding-bottom: 15px;">
                     <i class="fas fa-shield-alt {% if overview_data.inventory_status == 'Warning' %}text-danger{% else %}text-success{% endif %} fa-3x mb-2"></i>
@@ -22,6 +22,7 @@
         </div>
 
         <!-- Revenue Card -->
+        {% if user.is_superuser %}
         <div class="col-md-3">
             <div class="card border border-warning shadow h-100">
                 <div class="card-body d-flex flex-column align-items-center">
@@ -32,9 +33,11 @@
                 </div>
             </div>
         </div>
+        {% endif %}
+
 
         <!-- Medicines Available Card -->
-        <div class="col-md-3">
+        <div class="{% if user.is_superuser %}col-md-3{% else %}col-md-4{% endif %}">
             <div class="card border border-info shadow h-100">
                 <div class="card-body d-flex flex-column align-items-center">
                     <i class="fas fa-capsules text-info fa-3x mb-3"></i>
@@ -46,7 +49,7 @@
         </div>
 
         <!-- Medicine Shortage Card -->
-        <div class="col-md-3">
+        <div class="{% if user.is_superuser %}col-md-3{% else %}col-md-4{% endif %}">
             <div class="card border shadow h-100 {% if overview_data.medicine_shortage == 0 %}border-success{% else %}border-danger{% endif %}">
                 <div class="card-body d-flex flex-column align-items-center">
                     <i class="fas fa-exclamation-triangle {% if overview_data.medicine_shortage == 0 %}text-success{% else %}text-danger{% endif %} fa-3x mb-3"></i>
@@ -56,7 +59,11 @@
                         {% if overview_data.medicine_shortage == 0 %}
                             All Good
                         {% else %}
-                            Resolve Now &raquo;
+                            {% if user.is_superuser %}
+                                Resolve Now &raquo;
+                            {% else %}
+                                View Shortage Products &raquo;
+                            {% endif %}
                         {% endif %}
                     </a>
                 </div>
@@ -64,25 +71,28 @@
         </div>
     </div>
 
-    <!-- Filter Section - Moved Lower -->
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <label for="salesFilter" class="form-label fw-bold">Filter Sales By:</label>
-            <select id="salesFilter" class="form-select">
-                <option value="overall" {% if selected_filter == 'overall' %}selected{% endif %}>Overall</option>
-                <option value="daily" {% if selected_filter == 'daily' %}selected{% endif %}>Daily</option>
-                <option value="weekly" {% if selected_filter == 'weekly' %}selected{% endif %}>Weekly</option>
-                <option value="monthly" {% if selected_filter == 'monthly' %}selected{% endif %}>Monthly</option>
-                <option value="yearly" {% if selected_filter == 'yearly' %}selected{% endif %}>Yearly</option>
-            </select>
+    {% if user.is_superuser %}
+        <!-- Filter Section -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="salesFilter" class="form-label fw-bold">Filter Sales By:</label>
+                <select id="salesFilter" class="form-select">
+                    <option value="overall" {% if selected_filter == 'overall' %}selected{% endif %}>Overall</option>
+                    <option value="daily" {% if selected_filter == 'daily' %}selected{% endif %}>Daily</option>
+                    <option value="weekly" {% if selected_filter == 'weekly' %}selected{% endif %}>Weekly</option>
+                    <option value="monthly" {% if selected_filter == 'monthly' %}selected{% endif %}>Monthly</option>
+                    <option value="yearly" {% if selected_filter == 'yearly' %}selected{% endif %}>Yearly</option>
+                </select>
+            </div>
         </div>
-    </div>
 
-    <!-- Sales Overview Graph -->
-    <h5 class="fw-bold mt-4">Sales Overview</h5>
-    <div id="container" class="mb-4" style="position: relative; height: 45vh; border: 1.2mm ridge #343a40; border-radius: 30px;">
-        <canvas id="line-graph"></canvas>
-    </div>
+        <!-- Sales Overview Graph -->
+        <h5 class="fw-bold mt-4">Sales Overview</h5>
+        <div id="container" class="mb-4" style="position: relative; height: 45vh; border: 1.2mm ridge #343a40; border-radius: 30px;">
+            <canvas id="line-graph"></canvas>
+        </div>
+    {% endif %}
+
 
     <!-- Alerts and Top Sales Products -->
     <div class="row mt-4">
